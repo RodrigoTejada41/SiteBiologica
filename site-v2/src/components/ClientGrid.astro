@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import { clients } from '../data/site';
+
+type Props = { limit?: number };
+const { limit } = Astro.props;
+const visibleClients = typeof limit === 'number' ? clients.slice(0, limit) : clients;
+---
+
+<div class="client-grid" aria-label="Clientes atendidos">
+  {visibleClients.map((client) => (
+    <div class="client-logo" title={client.name} data-reveal>
+      <Image
+        src={client.image}
+        alt={`Logomarca ${client.name}`}
+        widths={[180, 260]}
+        sizes="180px"
+        loading="lazy"
+      />
+    </div>
+  ))}
+</div>

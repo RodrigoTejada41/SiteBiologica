@@ -1,0 +1,85 @@
+---
+import { company, whatsappUrl } from '../data/site';
+
+type Props = { currentPath: string };
+const { currentPath } = Astro.props;
+
+const links = [
+  { href: '/', label: 'Início' },
+  { href: '/servicos', label: 'Serviços' },
+  { href: '/clientes', label: 'Clientes' },
+  { href: '/contato', label: 'Contato' },
+];
+
+const isActive = (href: string) =>
+  href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+---
+
+<header class="site-header" data-header>
+  <div class="header-inner container-wide">
+    <a class="brand" href="/" aria-label={`${company.name}, página inicial`}>
+      <img src="/images/logo.svg" alt={company.legalLabel} width="351" height="108" />
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-controls="primary-navigation"
+      aria-expanded="false"
+      aria-label="Abrir menu"
+      data-menu-toggle
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="primary-navigation" class="primary-navigation" aria-label="Navegação principal" data-menu>
+      <ul>
+        {links.map((link) => (
+          <li>
+            <a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a
+        class="button button-primary header-cta"
+        href={whatsappUrl('Olá! Gostaria de solicitar um orçamento.')}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Solicitar orçamento
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector('[data-header]');
+  const toggle = document.querySelector('[data-menu-toggle]');
+  const menu = document.querySelector('[data-menu]');
+
+  const closeMenu = () => {
+    toggle?.setAttribute('aria-expanded', 'false');
+    toggle?.setAttribute('aria-label', 'Abrir menu');
+    menu?.removeAttribute('data-open');
+    document.body.classList.remove('menu-open');
+  };
+
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    toggle.setAttribute('aria-label', expanded ? 'Abrir menu' : 'Fechar menu');
+    menu?.toggleAttribute('data-open', !expanded);
+    document.body.classList.toggle('menu-open', !expanded);
+  });
+
+  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 900) closeMenu();
+  });
+
+  const updateHeader = () => header?.toggleAttribute('data-scrolled', window.scrollY > 16);
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
+</script>

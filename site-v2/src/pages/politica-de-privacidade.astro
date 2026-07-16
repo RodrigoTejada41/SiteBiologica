@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { company } from '../data/site';
+---
+
+<BaseLayout
+  title="Política de privacidade"
+  description="Informações sobre o tratamento de dados pessoais no site da Evolução Biológica."
+>
+  <header class="page-hero">
+    <div class="page-hero-inner container">
+      <div>
+        <ol class="breadcrumb" aria-label="Navegação estrutural">
+          <li><a href="/">Início</a></li>
+          <li aria-current="page">Política de privacidade</li>
+        </ol>
+        <h1>Política de privacidade.</h1>
+      </div>
+      <p>Como as informações enviadas pelos canais de contato são utilizadas.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <article class="container content-prose">
+      <p><strong>Última atualização:</strong> 16 de julho de 2026.</p>
+      <h2>Dados informados pelo visitante</h2>
+      <p>O formulário deste site prepara uma mensagem no WhatsApp. Os dados não são enviados nem armazenados pelo site antes da abertura desse aplicativo.</p>
+      <h2>Finalidade</h2>
+      <p>As informações compartilhadas voluntariamente são usadas para responder ao contato, entender a necessidade e preparar o atendimento solicitado.</p>
+      <h2>Serviços de terceiros</h2>
+      <p>Ao seguir para o WhatsApp ou enviar um e-mail, o tratamento também estará sujeito às políticas do respectivo serviço.</p>
+      <h2>Contato</h2>
+      <p>Para dúvidas sobre privacidade, utilize o e-mail <a href={`mailto:${company.email}`}>{company.email}</a>.</p>
+    </article>
+  </section>
+</BaseLayout>

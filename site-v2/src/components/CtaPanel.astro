@@ -1,0 +1,33 @@
+---
+import { company, whatsappUrl } from '../data/site';
+
+type Props = {
+  title?: string;
+  text?: string;
+};
+
+const {
+  title = 'Precisa resolver um problema com pragas?',
+  text = 'Converse com nossa equipe, descreva a situação e solicite um orçamento sem compromisso.',
+} = Astro.props;
+---
+
+<section class="section" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta-panel" data-reveal>
+      <div>
+        <h2 id="cta-title">{title}</h2>
+        <p>{text}</p>
+      </div>
+      <a
+        class="button button-light"
+        href={whatsappUrl('Olá! Gostaria de solicitar um orçamento para controle de pragas.')}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Falar no WhatsApp
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,92 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CtaPanel from '../../components/CtaPanel.astro';
+import { services, whatsappUrl, type Service } from '../../data/site';
+
+export function getStaticPaths() {
+  return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
+}
+
+type Props = { service: Service };
+const { service } = Astro.props;
+const related = services.filter((item) => item.slug !== service.slug).slice(0, 3);
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: service.name,
+  description: service.short,
+  provider: {
+    '@type': 'Organization',
+    name: 'Evolução Biológica Controle de Pragas',
+  },
+  areaServed: 'São Paulo',
+};
+---
+
+<BaseLayout title={service.name} description={`${service.short} Atendimento em São Paulo pela Evolução Biológica.`}>
+  <header class="page-hero">
+    <div class="page-hero-inner container">
+      <div>
+        <ol class="breadcrumb" aria-label="Navegação estrutural">
+          <li><a href="/">Início</a></li>
+          <li><a href="/servicos">Serviços</a></li>
+          <li aria-current="page">{service.name}</li>
+        </ol>
+        <h1>{service.name}</h1>
+      </div>
+      <p>{service.short}</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container split-layout service-detail">
+      <div class="split-media" data-reveal>
+        <Image
+          src={service.image}
+          alt={service.imageAlt}
+          widths={[520, 760, 1024]}
+          sizes="(max-width: 899px) 100vw, 48vw"
+          loading="eager"
+        />
+      </div>
+      <div class="split-copy content-prose" data-reveal>
+        <span class="eyebrow">Sobre o serviço</span>
+        <h2>Atendimento orientado ao ambiente.</h2>
+        <p>{service.description}</p>
+        <h3>Indicado para</h3>
+        <ul class="tag-list">
+          {service.idealFor.map((item) => <li>{item}</li>)}
+        </ul>
+        <div class="detail-actions">
+          <a
+            class="button button-primary"
+            href={whatsappUrl(`Olá! Gostaria de solicitar um orçamento para ${service.name}.`)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >Solicitar orçamento</a>
+          <a class="button button-link" href="/contato">Outras formas de contato →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" aria-labelledby="related-title">
+    <div class="container">
+      <div class="section-heading" data-reveal>
+        <div>
+          <span class="eyebrow">Veja também</span>
+          <h2 id="related-title">Outros serviços.</h2>
+        </div>
+        <a class="button button-link" href="/servicos">Ver todos →</a>
+      </div>
+      <div class="services-grid services-grid-three">
+        {related.map((item, index) => <ServiceCard service={item} index={index} />)}
+      </div>
+    </div>
+  </section>
+
+  <CtaPanel />
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</BaseLayout>

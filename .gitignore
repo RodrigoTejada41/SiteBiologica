@@ -1,0 +1,56 @@
+# Backups e dados administrativos do cPanel
+/BKP OroginaL/
+/apache_tls/
+/api_tokens/
+/bandwidth/
+/bandwidth_db/
+/counters/
+/cp/
+/cron/
+/customizations/
+/custom_dmarc_flags/
+/dnssec_keys/
+/dnszones/
+/domainkeys/
+/homedir/
+/httpfiles/
+/ips/
+/locale/
+/logs/
+/meta/
+/mm/
+/mma/
+/mms/
+/mysql/
+/mysql-timestamps/
+/psql/
+/resellerconfig/
+/resellerfeatures/
+/resellerpackages/
+/ssl/
+/sslcerts/
+/sslkeys/
+/suspended/
+/suspendinfo/
+/team/
+/userconfig/
+/userdata/
+/va/
+/vad/
+/vf/
+
+# Copias locais e artefatos
+/site/
+/site-original/
+/output/
+/.playwright-cli/
+/tools/
+
+# Node e builds
+**/node_modules/
+**/dist/
+**/.astro/
+*.log
+.env
+.env.*
+!.env.example

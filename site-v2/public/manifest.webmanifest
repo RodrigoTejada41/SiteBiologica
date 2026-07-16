@@ -1,0 +1,10 @@
+{
+  "name": "Evolução Biológica",
+  "short_name": "Evolução",
+  "description": "Controle de pragas em São Paulo",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#19a94b",
+  "icons": []
+}

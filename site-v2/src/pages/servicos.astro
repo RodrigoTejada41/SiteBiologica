@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CtaPanel from '../components/CtaPanel.astro';
+import { services } from '../data/site';
+---
+
+<BaseLayout
+  title="Serviços de controle de pragas"
+  description="Conheça os serviços da Evolução Biológica: dedetização, desinsetização, desratização, descupinização, controle de pombos, higienização e sanitização."
+>
+  <header class="page-hero">
+    <div class="page-hero-inner container">
+      <div>
+        <ol class="breadcrumb" aria-label="Navegação estrutural">
+          <li><a href="/">Início</a></li>
+          <li aria-current="page">Serviços</li>
+        </ol>
+        <h1>Controle adequado para cada necessidade.</h1>
+      </div>
+      <p>Conheça as frentes de atendimento e escolha o serviço relacionado ao problema observado no seu ambiente.</p>
+    </div>
+  </header>
+
+  <section class="section" aria-labelledby="all-services-title">
+    <div class="container">
+      <div class="section-heading" data-reveal>
+        <div>
+          <span class="eyebrow">Soluções</span>
+          <h2 id="all-services-title">Serviços disponíveis.</h2>
+        </div>
+        <p>Em caso de dúvida, envie uma descrição do cenário. A equipe orientará o atendimento mais compatível.</p>
+      </div>
+      <div class="services-grid">
+        {services.map((service, index) => <ServiceCard service={service} index={index} />)}
+      </div>
+    </div>
+  </section>
+
+  <CtaPanel
+    title="Não sabe qual serviço solicitar?"
+    text="Descreva o problema e o tipo de imóvel. A equipe ajudará a identificar o atendimento adequado."
+  />
+</BaseLayout>

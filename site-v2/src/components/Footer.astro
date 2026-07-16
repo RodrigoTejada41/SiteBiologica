@@ -1,0 +1,54 @@
+---
+import { company, whatsappUrl } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="/images/logo.svg" alt={company.legalLabel} width="351" height="108" loading="lazy" />
+      <p>Controle de pragas para ambientes residenciais, comerciais e empresariais.</p>
+    </div>
+
+    <div>
+      <h2>Atendimento</h2>
+      <p>{company.hours}</p>
+      <a href={whatsappUrl('Olá! Gostaria de solicitar um orçamento.')} target="_blank" rel="noopener noreferrer">
+        WhatsApp {company.whatsappDisplay}
+      </a>
+      {company.phones.map((phone) => <a href={phone.href}>{phone.display}</a>)}
+      <a href={`mailto:${company.email}`}>{company.email}</a>
+    </div>
+
+    <div>
+      <h2>Navegação</h2>
+      <a href="/servicos">Serviços</a>
+      <a href="/clientes">Clientes</a>
+      <a href="/contato">Contato</a>
+      <a href="/politica-de-privacidade">Política de privacidade</a>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© {year} {company.name}. Todos os direitos reservados.</p>
+    <p>Atendimento em {company.region}.</p>
+  </div>
+</footer>
+
+<a
+  class="mobile-contact-bar"
+  data-mobile-contact
+  href={whatsappUrl('Olá! Gostaria de solicitar um orçamento.')}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`Solicitar orçamento pelo WhatsApp ${company.whatsappDisplay}`}
+>
+  <span aria-hidden="true">●</span>
+  Orçamento pelo WhatsApp
+</a>
+
+<script>
+  const contactBar = document.querySelector('[data-mobile-contact]');
+  const updateContactBar = () => contactBar?.toggleAttribute('data-visible', window.scrollY > 420);
+  updateContactBar();
+  window.addEventListener('scroll', updateContactBar, { passive: true });
+</script>

@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { company, services, whatsappUrl } from '../data/site';
+---
+
+<BaseLayout
+  title="Contato e orçamento"
+  description="Entre em contato com a Evolução Biológica e solicite orçamento para controle de pragas em São Paulo."
+>
+  <header class="page-hero">
+    <div class="page-hero-inner container">
+      <div>
+        <ol class="breadcrumb" aria-label="Navegação estrutural">
+          <li><a href="/">Início</a></li>
+          <li aria-current="page">Contato</li>
+        </ol>
+        <h1>Conte o que está acontecendo.</h1>
+      </div>
+      <p>Envie as informações do ambiente para facilitar a orientação inicial e a preparação do orçamento.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container contact-layout">
+      <aside class="contact-details" data-reveal>
+        <span class="eyebrow">Fale conosco</span>
+        <h2>Canais de atendimento.</h2>
+        <p>Escolha o canal mais prático. Para orçamento, inclua o tipo de ambiente, a cidade e o problema observado.</p>
+        <ul class="contact-list">
+          <li>
+            <span>WhatsApp</span>
+            <a href={whatsappUrl('Olá! Gostaria de solicitar um orçamento.')} target="_blank" rel="noopener noreferrer">
+              {company.whatsappDisplay}
+            </a>
+          </li>
+          <li>
+            <span>Telefones</span>
+            {company.phones.map((phone) => <a href={phone.href}>{phone.display}</a>)}
+          </li>
+          <li>
+            <span>E-mail</span>
+            <a href={`mailto:${company.email}`}>{company.email}</a>
+          </li>
+          <li>
+            <span>Horário</span>
+            <p>{company.hours}</p>
+          </li>
+        </ul>
+      </aside>
+
+      <form class="quote-form" data-quote-form data-whatsapp={company.whatsappNumber} data-reveal>
+        <span class="eyebrow">Orçamento</span>
+        <h2>Inicie pelo WhatsApp.</h2>
+        <p>Preencha os campos. Ao enviar, uma mensagem será preparada no WhatsApp para você conferir.</p>
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Nome</label>
+            <input id="name" name="name" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="phone">Telefone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required />
+          </div>
+          <div class="field">
+            <label for="service">Serviço</label>
+            <select id="service" name="service" required>
+              <option value="">Selecione</option>
+              {services.map((service) => <option value={service.name}>{service.name}</option>)}
+              <option value="Não sei identificar">Não sei identificar</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="profile">Tipo de ambiente</label>
+            <select id="profile" name="profile" required>
+              <option value="">Selecione</option>
+              <option>Residência</option>
+              <option>Condomínio</option>
+              <option>Comércio</option>
+              <option>Empresa</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="field field-full">
+            <label for="city">Cidade e bairro</label>
+            <input id="city" name="city" autocomplete="address-level2" required />
+          </div>
+          <div class="field field-full">
+            <label for="message">Descreva o problema</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+        </div>
+        <label class="form-consent">
+          <input name="consent" type="checkbox" required />
+          <span>Autorizo o uso destas informações para iniciar o atendimento pelo WhatsApp.</span>
+        </label>
+        <button class="button button-primary" type="submit">Preparar mensagem no WhatsApp</button>
+        <p class="form-feedback" data-form-feedback aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const form = document.querySelector<HTMLFormElement>('[data-quote-form]');
+    const feedback = document.querySelector<HTMLElement>('[data-form-feedback]');
+
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const data = new FormData(form);
+      const lines = [
+        'Olá! Gostaria de solicitar um orçamento.',
+        '',
+        `Nome: ${data.get('name')}`,
+        `Telefone: ${data.get('phone')}`,
+        `Serviço: ${data.get('service')}`,
+        `Ambiente: ${data.get('profile')}`,
+        `Cidade/bairro: ${data.get('city')}`,
+        `Descrição: ${data.get('message')}`,
+      ];
+      const number = form.dataset.whatsapp;
+      const url = `https://wa.me/${number}?text=${encodeURIComponent(lines.join('\n'))}`;
+      feedback && (feedback.textContent = 'Mensagem preparada. O WhatsApp será aberto em uma nova guia.');
+      window.open(url, '_blank', 'noopener,noreferrer');
+    });
+  </script>
+</BaseLayout>

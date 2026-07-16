@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ClientGrid from '../components/ClientGrid.astro';
+import CtaPanel from '../components/CtaPanel.astro';
+---
+
+<BaseLayout
+  title="Clientes"
+  description="Conheça marcas que fazem parte da trajetória de atendimento da Evolução Biológica em controle de pragas."
+>
+  <header class="page-hero">
+    <div class="page-hero-inner container">
+      <div>
+        <ol class="breadcrumb" aria-label="Navegação estrutural">
+          <li><a href="/">Início</a></li>
+          <li aria-current="page">Clientes</li>
+        </ol>
+        <h1>Relações construídas com atendimento responsável.</h1>
+      </div>
+      <p>Marcas apresentadas na trajetória institucional da Evolução Biológica.</p>
+    </div>
+  </header>
+
+  <section class="section section-soft" aria-labelledby="client-list-title">
+    <div class="container">
+      <div class="section-heading" data-reveal>
+        <div>
+          <span class="eyebrow">Clientes</span>
+          <h2 id="client-list-title">Empresas atendidas.</h2>
+        </div>
+        <p>Experiência com ambientes comerciais, corporativos e operações de diferentes perfis.</p>
+      </div>
+      <ClientGrid />
+    </div>
+  </section>
+
+  <CtaPanel
+    title="Sua empresa precisa de controle de pragas?"
+    text="Informe o tipo de operação e a necessidade observada para iniciar o atendimento."
+  />
+</BaseLayout>
