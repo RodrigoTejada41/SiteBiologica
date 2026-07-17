@@ -5,7 +5,7 @@ import { company, mapsUrl, services, whatsappUrl } from '../data/site';
 
 <BaseLayout
   title="Contato e orçamento"
-  description="Entre em contato com a Evolução Biológica e solicite orçamento para controle de pragas em São Paulo."
+  description="Solicite um orçamento para controle de vetores e pragas urbanas, limpeza de caixas d'água e desinfecção de ambientes em São Paulo."
 >
   <header class="page-hero">
     <div class="page-hero-inner container">
@@ -14,9 +14,9 @@ import { company, mapsUrl, services, whatsappUrl } from '../data/site';
           <li><a href="/">Início</a></li>
           <li aria-current="page">Contato</li>
         </ol>
-        <h1>Conte o que está acontecendo.</h1>
+        <h1>Vamos entender a sua necessidade.</h1>
       </div>
-      <p>Envie as informações do ambiente para facilitar a orientação inicial e a preparação do orçamento.</p>
+      <p>Compartilhe os sinais observados e as características do ambiente para receber uma orientação inicial mais precisa.</p>
     </div>
   </header>
 
@@ -24,8 +24,8 @@ import { company, mapsUrl, services, whatsappUrl } from '../data/site';
     <div class="container contact-layout">
       <aside class="contact-details" data-reveal>
         <span class="eyebrow">Fale conosco</span>
-        <h2>Canais de atendimento.</h2>
-        <p>Escolha o canal mais prático. Para orçamento, inclua o tipo de ambiente, a cidade e o problema observado.</p>
+        <h2>Fale com nossa equipe.</h2>
+        <p>Escolha o canal mais conveniente. Para agilizar a análise inicial, informe o ambiente, a localização e os sinais encontrados.</p>
         <ul class="contact-list">
           <li>
             <span>WhatsApp</span>
@@ -35,7 +35,7 @@ import { company, mapsUrl, services, whatsappUrl } from '../data/site';
           </li>
           <li>
             <span>Telefones</span>
-            {company.phones.map((phone) => <a href={phone.href}>{phone.display}</a>)}
+            {company.phones.map((phone) => <div><a href={phone.href}>{phone.display}</a></div>)}
           </li>
           <li>
             <span>E-mail</span>
@@ -58,8 +58,8 @@ import { company, mapsUrl, services, whatsappUrl } from '../data/site';
 
       <form class="quote-form" data-quote-form data-whatsapp={company.whatsappNumber} data-reveal>
         <span class="eyebrow">Orçamento</span>
-        <h2>Inicie pelo WhatsApp.</h2>
-        <p>Preencha os campos. Ao enviar, uma mensagem será preparada no WhatsApp para você conferir.</p>
+        <h2>Solicite seu orçamento.</h2>
+        <p>Preencha os dados abaixo. A mensagem será preparada para você revisar e enviar pelo WhatsApp.</p>
         <div class="form-grid">
           <div class="field">
             <label for="name">Nome</label>
@@ -113,7 +113,7 @@ import { company, mapsUrl, services, whatsappUrl } from '../data/site';
           <input name="consent" type="checkbox" required />
           <span>Autorizo o uso destas informações para iniciar o atendimento pelo WhatsApp.</span>
         </label>
-        <button class="button button-primary" type="submit">Preparar mensagem no WhatsApp</button>
+        <button class="button button-primary" type="submit">Continuar no WhatsApp</button>
         <a
           class="button button-link form-fallback"
           data-wa-fallback
@@ -148,7 +148,7 @@ import { company, mapsUrl, services, whatsappUrl } from '../data/site';
       ];
       const number = form.dataset.whatsapp;
       if (!number) {
-        feedback && (feedback.textContent = 'Não foi possível preparar o contato. Use um dos canais ao lado.');
+        feedback && (feedback.textContent = 'Não foi possível preparar a mensagem. Utilize um dos canais de atendimento.');
         return;
       }
 
@@ -157,7 +157,7 @@ import { company, mapsUrl, services, whatsappUrl } from '../data/site';
       const popup = window.open(url, '_blank', 'noopener,noreferrer');
 
       if (popup) {
-        feedback && (feedback.textContent = 'Mensagem preparada. O WhatsApp foi aberto em uma nova guia.');
+        feedback && (feedback.textContent = 'Tudo certo. Revise a mensagem na nova guia antes de enviar.');
         return;
       }
 
@@ -166,7 +166,7 @@ import { company, mapsUrl, services, whatsappUrl } from '../data/site';
         fallback.hidden = false;
         fallback.focus();
       }
-      feedback && (feedback.textContent = 'A nova guia foi bloqueada. Use o link para abrir o WhatsApp.');
+      feedback && (feedback.textContent = 'O navegador bloqueou a nova guia. Use o link acima para abrir o WhatsApp.');
     });
   </script>
 </BaseLayout>

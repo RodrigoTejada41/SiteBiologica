@@ -2,6 +2,58 @@
 
 Cada registro deve informar data, arquivo, motivo, antes, depois, benefício e impacto.
 
+## 2026-07-17 — Conteúdo institucional e catálogo de serviços
+
+| Campo | Registro |
+|---|---|
+| Status | Concluído e validado |
+| Arquivos | `site.ts`, componentes de conteúdo e páginas institucionais |
+| Motivo | Tornar a comunicação mais profissional, clara, persuasiva e compatível com a nomenclatura técnica atual |
+| Antes | Descrições genéricas, termos inconsistentes e benefícios pouco explícitos |
+| Depois | Copy revisada em todo o site; serviços nomeados como controle de pragas urbanas, controle de insetos, controle de roedores, controle de cupins, manejo de pombos, controle integrado, limpeza de caixas d'água e desinfecção de ambientes |
+| Benefício | Compreensão imediata, maior credibilidade, melhor intenção de busca e conversão |
+| Impacto | Conteúdo, SEO e experiência; termos populares preservados naturalmente para orientação e busca |
+| Validação | `npm test`: 14 páginas, 202 links internos, 23 JSON-LD e quatro hashes CSP |
+
+## 2026-07-17 — Refinamento dos cards de serviços
+
+| Campo | Registro |
+|---|---|
+| Status | Concluído e validado |
+| Arquivos | `ServiceCard.astro`, `global.css` |
+| Motivo | Melhorar leitura, consistência visual, acessibilidade e resposta à interação |
+| Antes | Espaçamento irregular, CTA genérico e transições menos consistentes |
+| Depois | Altura uniforme, padding responsivo, título e descrição equilibrados, CTA mais claro, foco visível, elevação suave, sombra e zoom de 250 ms |
+| Benefício | Escaneabilidade, percepção de qualidade e maior clareza de ação |
+| Impacto | Todas as grades de serviços, sem alterar grid, identidade ou responsividade |
+| Validação | Build Astro e verificação responsiva local |
+
+## 2026-07-17 — Selo Prêmio Quality Brasil
+
+| Campo | Registro |
+|---|---|
+| Status | Concluído e validado |
+| Arquivos | `src/assets/brand/`, `index.astro`, `Footer.astro`, `global.css` |
+| Motivo | Incorporar a prova visual fornecida sem substituir a fotografia ou a identidade existentes |
+| Antes | Selo ausente do site e arquivo original em baixa resolução |
+| Depois | Versão aprimorada e original preservadas; selo sobreposto à fotografia do hero e exibido no rodapé, com tamanhos responsivos e texto alternativo |
+| Benefício | Maior destaque institucional e confiança, mantendo a imagem principal intacta |
+| Impacto | Página inicial e rodapé; imagens convertidas e otimizadas para WebP pelo build |
+| Validação | Verificação visual desktop/mobile e confirmação de fotografia e selo no HTML servido |
+
+## 2026-07-17 — Publicação local consolidada
+
+| Campo | Registro |
+|---|---|
+| Status | Concluída |
+| Arquivos | Imagem Docker local `evolucaosite-site-v2` |
+| Motivo | Disponibilizar a versão aprovada apenas no ambiente local |
+| Antes | Container com versão anterior do site |
+| Depois | Container reconstruído e saudável em `http://localhost:8083/` |
+| Benefício | Versão completa disponível para conferência sem alterar produção |
+| Impacto | Somente Docker local; nenhum arquivo enviado à internet |
+| Validação | HTTP 200 em `/`, `/servicos/`, `/contato/` e `/clientes/` |
+
 ## 2026-07-16 — Governança documental
 
 | Campo | Registro |

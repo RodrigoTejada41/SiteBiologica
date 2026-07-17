@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import heroImage from '../assets/hero-v2.jpg';
+import qualitySeal from '../assets/brand/selo-premio-quality-brasil.png';
 import sanitizacaoImage from '../assets/services/img_sanitizacao.jpg';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ServiceCard from '../components/ServiceCard.astro';
@@ -12,19 +13,19 @@ const featuredServices = services.slice(0, 4);
 const faqs = [
   {
     question: 'Como solicitar um orçamento?',
-    answer: 'Envie uma mensagem pelo WhatsApp ou preencha o formulário de contato com o tipo de ambiente, a cidade e o problema encontrado. A equipe dará sequência ao atendimento.',
+    answer: 'Envie uma mensagem pelo WhatsApp ou preencha o formulário de contato. Informe o tipo de ambiente, a localização e os sinais observados para facilitar a avaliação inicial.',
   },
   {
     question: 'A Evolução Biológica atende residências e empresas?',
-    answer: 'Sim. Os serviços são apresentados para ambientes residenciais, comerciais, condomínios e empresas, conforme a necessidade identificada.',
+    answer: 'Sim. Atendemos residências, condomínios, comércios e empresas com soluções definidas conforme o ambiente e a ocorrência identificada.',
   },
   {
     question: 'Qual serviço devo escolher?',
-    answer: 'Se houver dúvida, descreva os sinais observados e o ambiente. A identificação correta do problema ajuda a orientar o serviço mais adequado.',
+    answer: 'Não é necessário identificar a praga sozinho. Descreva os sinais e o ambiente para que a equipe indique o serviço mais adequado ao cenário.',
   },
   {
     question: 'Como funciona o atendimento?',
-    answer: 'O processo começa pelo contato e entendimento do cenário, seguido pela orientação do serviço e pelo agendamento da execução.',
+    answer: 'Primeiro entendemos o cenário e reunimos as informações necessárias. Depois orientamos o serviço, a preparação do ambiente e o agendamento.',
   },
   {
     question: 'Qual é o horário de atendimento?',
@@ -45,14 +46,14 @@ const faqSchema = {
 
 <BaseLayout
   title={company.name}
-  description="Controle de pragas para residências, comércios, condomínios e empresas em São Paulo. Solicite um orçamento com a Evolução Biológica."
+  description="Controle de vetores e pragas urbanas em São Paulo para residências, condomínios e empresas. Solicite uma avaliação e orçamento sem compromisso."
 >
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-content">
-      <span class="eyebrow">Controle de pragas em São Paulo</span>
-      <h1 id="hero-title">Agilidade e precisão no controle de pragas.</h1>
+      <span class="eyebrow">Controle de vetores e pragas urbanas em São Paulo</span>
+      <h1 id="hero-title">Precisão para cuidar do seu ambiente.</h1>
       <p class="hero-copy">
-        Atendimento para residências, comércios e empresas, com avaliação da necessidade e orçamento sem compromisso.
+        Soluções para residências, condomínios e empresas, definidas conforme o ambiente e os sinais encontrados.
       </p>
       <div class="hero-actions">
         <a
@@ -64,12 +65,13 @@ const faqSchema = {
           Solicitar orçamento
           <span aria-hidden="true">→</span>
         </a>
-        <a class="button button-outline-light" href="/servicos">Conhecer serviços</a>
+        <a class="button button-outline-light" href="/servicos">Explorar serviços</a>
       </div>
       <p class="hero-note">Atendimento: {company.hours.toLowerCase()}.</p>
     </div>
-    <div class="hero-media" aria-hidden="true">
+    <div class="hero-media">
       <Image
+        class="hero-image"
         src={heroImage}
         alt=""
         widths={[640, 960, 1280, 1693]}
@@ -77,6 +79,17 @@ const faqSchema = {
         loading="eager"
         fetchpriority="high"
       />
+      <div class="hero-award">
+        <Image
+          class="hero-award-image"
+          src={qualitySeal}
+          alt="Selo Prêmio Quality Brasil"
+          widths={[128, 192]}
+          sizes="(max-width: 899px) 72px, 104px"
+          loading="eager"
+        />
+        <span>Prêmio Quality Brasil</span>
+      </div>
     </div>
   </section>
 
@@ -84,15 +97,15 @@ const faqSchema = {
     <div class="trust-rail-inner container-wide">
       <div class="trust-item">
         <span class="trust-number" aria-hidden="true">01</span>
-        <p><strong>Atendimento residencial</strong><br />Soluções conforme o ambiente.</p>
+        <p><strong>Soluções residenciais</strong><br />Cuidado alinhado à rotina do imóvel.</p>
       </div>
       <div class="trust-item">
         <span class="trust-number" aria-hidden="true">02</span>
-        <p><strong>Soluções para empresas</strong><br />Comércios, condomínios e operações.</p>
+        <p><strong>Proteção para empresas</strong><br />Planejamento conforme a operação.</p>
       </div>
       <div class="trust-item">
         <span class="trust-number" aria-hidden="true">03</span>
-        <p><strong>Contato direto</strong><br />Orçamento rápido pelo WhatsApp.</p>
+        <p><strong>Orientação desde o contato</strong><br />Informações claras antes do serviço.</p>
       </div>
     </div>
   </div>
@@ -102,10 +115,10 @@ const faqSchema = {
       <div class="section-heading" data-reveal>
         <div>
           <span class="eyebrow">Serviços</span>
-          <h2 id="services-title">Soluções para diferentes ambientes.</h2>
+          <h2 id="services-title">O controle certo para cada cenário.</h2>
         </div>
         <div>
-          <p>Atuação orientada ao tipo de ocorrência, às características do imóvel e à rotina do local.</p>
+          <p>Cada serviço considera a ocorrência, as características do imóvel e a rotina de quem utiliza o espaço.</p>
           <a class="button button-link" href="/servicos">Ver todos os serviços →</a>
         </div>
       </div>
@@ -128,14 +141,14 @@ const faqSchema = {
       </div>
       <div class="split-copy" data-reveal>
         <span class="eyebrow">Evolução Biológica</span>
-        <h2 id="about-title">Atendimento pensado para o seu ambiente.</h2>
+        <h2 id="about-title">Cada ambiente exige uma estratégia própria.</h2>
         <p>
-          Cada ocorrência exige leitura do local, identificação dos pontos críticos e orientação clara sobre o serviço recomendado.
+          Entender os sinais, os acessos e a rotina do local permite orientar uma solução mais precisa e responsável.
         </p>
         <ul class="feature-list">
-          <li><span><strong>Diagnóstico do cenário</strong><br />Entendimento do ambiente e dos sinais observados.</span></li>
-          <li><span><strong>Solução direcionada</strong><br />Definição do atendimento conforme a necessidade.</span></li>
-          <li><span><strong>Orientação objetiva</strong><br />Informações sobre preparação, execução e cuidados posteriores.</span></li>
+          <li><span><strong>Leitura do ambiente</strong><br />Análise dos sinais, acessos e pontos de maior atividade.</span></li>
+          <li><span><strong>Plano direcionado</strong><br />Método definido conforme a ocorrência e a estrutura.</span></li>
+          <li><span><strong>Orientação em cada etapa</strong><br />Preparação, execução e cuidados posteriores explicados com clareza.</span></li>
         </ul>
       </div>
     </div>
@@ -146,22 +159,22 @@ const faqSchema = {
       <div class="section-heading" data-reveal>
         <div>
           <span class="eyebrow">Como funciona</span>
-          <h2 id="process-title">Do primeiro contato ao atendimento.</h2>
+          <h2 id="process-title">Um processo simples, do contato à execução.</h2>
         </div>
-        <p>Um fluxo direto para entender o problema, orientar a solução e organizar a execução.</p>
+        <p>Você informa o cenário, recebe a orientação inicial e organiza o atendimento com mais clareza.</p>
       </div>
       <div class="process-grid">
         <article class="process-step" data-reveal>
-          <h3>Conte o que está acontecendo</h3>
-          <p>Informe o tipo de ambiente, a cidade e os sinais encontrados.</p>
+          <h3>Descreva o cenário</h3>
+          <p>Informe o ambiente, a localização e os sinais que chamaram sua atenção.</p>
         </article>
         <article class="process-step" data-reveal>
-          <h3>Receba a orientação</h3>
-          <p>A equipe identifica o serviço aplicável e os dados necessários para o orçamento.</p>
+          <h3>Receba uma orientação inicial</h3>
+          <p>A equipe avalia as informações e indica o serviço compatível com a necessidade.</p>
         </article>
         <article class="process-step" data-reveal>
-          <h3>Organize o atendimento</h3>
-          <p>Com o escopo definido, o serviço é agendado conforme a disponibilidade.</p>
+          <h3>Agende com clareza</h3>
+          <p>Com o escopo definido, você recebe as instruções de preparação e combina a execução.</p>
         </article>
       </div>
     </div>
@@ -172,11 +185,11 @@ const faqSchema = {
       <div class="section-heading" data-reveal>
         <div>
           <span class="eyebrow">Clientes</span>
-          <h2 id="clients-title">Marcas presentes em nossa trajetória.</h2>
+          <h2 id="clients-title">Experiência em diferentes operações.</h2>
         </div>
         <div>
-          <p>Atendimento também voltado a operações comerciais e empresariais com diferentes necessidades.</p>
-          <a class="button button-link" href="/clientes">Conhecer clientes →</a>
+          <p>Marcas de diferentes segmentos fazem parte da trajetória de atendimento da Evolução Biológica.</p>
+          <a class="button button-link" href="/clientes">Ver clientes →</a>
         </div>
       </div>
       <ClientGrid limit={7} />
@@ -188,9 +201,9 @@ const faqSchema = {
       <div class="section-heading" data-reveal>
         <div>
           <span class="eyebrow">Dúvidas frequentes</span>
-          <h2 id="faq-title">Informação clara antes do contato.</h2>
+          <h2 id="faq-title">Respostas para decidir com mais segurança.</h2>
         </div>
-        <p>As orientações específicas variam conforme o ambiente e o tipo de ocorrência.</p>
+        <p>Entenda como solicitar um orçamento, escolher o serviço e preparar as informações iniciais.</p>
       </div>
       <div class="faq-list">
         {faqs.map((faq) => (

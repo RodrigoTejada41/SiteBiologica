@@ -35,3 +35,16 @@
 - [x] Container reconstruído e saudável.
 - [x] Documentação atualizada.
 - [ ] DNS, HTTPS e publicação — executar somente na fase final.
+
+## Revisão editorial e selo de 2026-07-17
+
+- [x] Copy de todas as páginas revisada.
+- [x] Nomenclaturas técnicas e termos de busca consolidados.
+- [x] Limpeza de caixas d'água incluída no catálogo.
+- [x] Cards de serviços refinados sem alterar grid ou identidade.
+- [x] Fotografia original do hero preservada.
+- [x] Selo aprimorado adicionado ao hero e ao rodapé.
+- [x] Desktop e mobile verificados.
+- [x] `npm test` aprovado.
+- [x] Container local reconstruído e saudável.
+- [x] Produção externa mantida inalterada.

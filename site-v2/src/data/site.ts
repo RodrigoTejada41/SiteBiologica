@@ -65,11 +65,11 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: 'dedetizacao',
-    name: 'Dedetização',
-    short: 'Controle planejado para reduzir a presença de pragas em ambientes residenciais e profissionais.',
-    description: 'O atendimento começa pela identificação do ambiente e dos pontos de atividade. A aplicação é definida de acordo com a necessidade encontrada e com as orientações de segurança do local.',
+    name: 'Controle de pragas urbanas',
+    short: 'Combata baratas, aranhas e escorpiões com desinfestação técnica e direcionada.',
+    description: 'Conhecido popularmente como dedetização, o serviço começa pela inspeção do ambiente e dos pontos de atividade. O método de desinfestação é definido conforme a praga, a estrutura e as orientações de segurança.',
     image: dedetizacao,
-    imageAlt: 'Insetos que exigem serviço de dedetização',
+    imageAlt: 'Baratas em foco de infestação para controle de pragas urbanas',
     idealFor: ['Residências', 'Comércios', 'Condomínios', 'Empresas'],
     details: {
       signs: [
@@ -104,9 +104,9 @@ export const services: Service[] = [
   },
   {
     slug: 'desinsetizacao',
-    name: 'Desinsetização',
-    short: 'Tratamento direcionado para insetos rasteiros e voadores, conforme a ocorrência identificada.',
-    description: 'A desinsetização considera o tipo de inseto, os acessos, os abrigos e a rotina do imóvel para orientar uma aplicação mais precisa.',
+    name: 'Controle de insetos',
+    short: 'Combata insetos rasteiros e voadores com desinsetização técnica e direcionada.',
+    description: 'O controle de insetos, também chamado de desinsetização, considera a espécie, os acessos, os abrigos e a rotina do imóvel para definir uma intervenção precisa.',
     image: desinsetizacao,
     imageAlt: 'Inseto em superfície natural',
     idealFor: ['Cozinhas', 'Áreas de estoque', 'Áreas comuns', 'Ambientes comerciais'],
@@ -143,9 +143,9 @@ export const services: Service[] = [
   },
   {
     slug: 'desratizacao',
-    name: 'Desratização',
-    short: 'Diagnóstico de acessos e focos para controle de roedores e prevenção de novas ocorrências.',
-    description: 'O serviço combina inspeção, definição dos pontos de controle e recomendações para reduzir fontes de abrigo, alimento e entrada.',
+    name: 'Controle de roedores',
+    short: 'Reduza a presença de roedores e novos focos com desratização técnica e preventiva.',
+    description: 'O controle de roedores combina inspeção, desratização, pontos de controle protegidos e recomendações para reduzir fontes de abrigo, alimento e entrada.',
     image: desratizacao,
     imageAlt: 'Roedor em ambiente controlado',
     idealFor: ['Restaurantes', 'Depósitos', 'Condomínios', 'Residências'],
@@ -182,9 +182,9 @@ export const services: Service[] = [
   },
   {
     slug: 'descupinizacao',
-    name: 'Descupinização',
-    short: 'Avaliação técnica para identificar sinais de cupins e definir o tratamento adequado ao material afetado.',
-    description: 'A estratégia depende da espécie, da extensão observada e do tipo de estrutura. A inspeção é essencial para orientar o tratamento.',
+    name: 'Controle de cupins',
+    short: 'Proteja móveis e estruturas com controle de cupins definido após inspeção técnica.',
+    description: 'O controle de cupins, conhecido como descupinização, depende da espécie, da extensão observada e do tipo de estrutura. A inspeção orienta o tratamento adequado.',
     image: descupinizacao,
     imageAlt: 'Cupins em madeira',
     idealFor: ['Móveis', 'Estruturas de madeira', 'Imóveis residenciais', 'Ambientes comerciais'],
@@ -221,9 +221,9 @@ export const services: Service[] = [
   },
   {
     slug: 'controle-de-pombos',
-    name: 'Controle de pombos',
-    short: 'Medidas de manejo e barreira para reduzir pouso, abrigo e permanência de pombos.',
-    description: 'O atendimento avalia pontos de pouso e acesso para recomendar soluções compatíveis com a estrutura e com o uso do imóvel.',
+    name: 'Manejo de pombos',
+    short: 'Reduza pouso e abrigo com manejo ambiental e barreiras adequadas à estrutura.',
+    description: 'O manejo de pombos integra o controle de fauna sinantrópica nociva e avalia pontos de pouso, abrigo e acesso para definir barreiras compatíveis com o imóvel.',
     image: pombos,
     imageAlt: 'Pombos em área urbana',
     idealFor: ['Fachadas', 'Galpões', 'Condomínios', 'Áreas comerciais'],
@@ -260,9 +260,9 @@ export const services: Service[] = [
   },
   {
     slug: 'controle-integrado-de-pragas',
-    name: 'Controle integrado de pragas',
-    short: 'Acompanhamento contínuo para ambientes que precisam de prevenção, registro e ações recorrentes.',
-    description: 'O controle integrado reúne inspeção, monitoramento, orientação preventiva e intervenções compatíveis com a necessidade do ambiente.',
+    name: 'Controle integrado',
+    short: 'Previna infestações com controle integrado de vetores e pragas urbanas.',
+    description: 'O controle integrado de vetores e pragas urbanas reúne inspeção, monitoramento, manejo ambiental, orientação preventiva e intervenções compatíveis com o risco do ambiente.',
     image: controleIntegrado,
     imageAlt: 'Formiga em área externa',
     idealFor: ['Empresas', 'Indústrias', 'Restaurantes', 'Condomínios'],
@@ -287,7 +287,7 @@ export const services: Service[] = [
       ],
       faqs: [
         {
-          question: 'Controle integrado significa aplicação frequente de produtos?',
+          question: 'Controle integrado exige aplicação frequente de produtos?',
           answer: 'Não necessariamente. O programa combina inspeção, monitoramento, prevenção e intervenção conforme os indícios e o risco do ambiente.',
         },
         {
@@ -299,11 +299,11 @@ export const services: Service[] = [
   },
   {
     slug: 'higienizacao-de-caixa-dagua',
-    name: "Higienização de caixa d'água",
-    short: 'Limpeza programada para apoiar a conservação do reservatório e da qualidade da água armazenada.',
-    description: 'O serviço é organizado para realizar a limpeza do reservatório com atenção ao acesso, à segurança e ao retorno de uso do sistema.',
+    name: "Limpeza de caixas d'água",
+    short: "Cuide da água armazenada com limpeza e desinfecção técnica da caixa d'água.",
+    description: "A limpeza e desinfecção de reservatórios de água, também buscada como higienização de caixa d'água, remove sujidades e prepara o sistema para retomar o uso conforme as orientações técnicas.",
     image: higienizacao,
-    imageAlt: "Profissional realizando higienização de caixa d'água",
+    imageAlt: "Profissional realizando limpeza de caixa d'água",
     idealFor: ['Residências', 'Condomínios', 'Comércios', 'Empresas'],
     details: {
       signs: [
@@ -313,7 +313,7 @@ export const services: Service[] = [
       ],
       approach: [
         'Avaliação do acesso, do reservatório e das condições para execução.',
-        'Organização da interrupção, limpeza e retorno do sistema.',
+        'Organização da interrupção, limpeza, desinfecção e retorno do sistema.',
         'Orientação sobre conservação e registro do atendimento realizado.',
       ],
       preparation: [
@@ -321,7 +321,7 @@ export const services: Service[] = [
         'Garantir acesso seguro ao reservatório e informar restrições estruturais.',
       ],
       aftercare: [
-        'Seguir a orientação para retorno do abastecimento e verificação inicial.',
+        'Seguir a orientação para retorno do abastecimento após a limpeza e desinfecção.',
         'Manter o reservatório vedado e registrar a data para o planejamento futuro.',
       ],
       faqs: [
@@ -330,29 +330,29 @@ export const services: Service[] = [
           answer: 'O período varia com o acesso, o volume, as condições do reservatório e a organização do sistema. A estimativa deve ser confirmada antes do agendamento.',
         },
         {
-          question: 'A limpeza corrige problemas estruturais da caixa?',
-          answer: 'Não. Trincas, vedação, tampa, boia e outros componentes podem exigir manutenção específica antes ou depois da higienização.',
+          question: 'A limpeza e desinfecção corrigem problemas estruturais?',
+          answer: 'Não. Trincas, vedação, tampa, boia e outros componentes podem exigir manutenção específica antes ou depois do serviço.',
         },
       ],
     },
   },
   {
     slug: 'sanitizacao',
-    name: 'Sanitização',
-    short: 'Aplicação técnica para apoiar a higienização de ambientes conforme a necessidade do local.',
-    description: 'O atendimento considera circulação, superfícies e rotina do imóvel para planejar a aplicação e as orientações posteriores.',
+    name: 'Desinfecção de ambientes',
+    short: 'Reforce a higiene do espaço com desinfecção técnica de superfícies e ambientes.',
+    description: 'A limpeza e desinfecção de ambientes, também procurada como sanitização, considera o tipo de superfície, a circulação e a rotina do imóvel para definir produtos regularizados, aplicação e retorno de uso.',
     image: sanitizacao,
     imageAlt: 'Profissional com equipamento de aplicação em ambiente comercial',
     idealFor: ['Escritórios', 'Comércios', 'Condomínios', 'Áreas de circulação'],
     details: {
       signs: [
-        'Necessidade de complementar a rotina de limpeza de um ambiente.',
+        'Necessidade de complementar a rotina de limpeza com desinfecção.',
         'Áreas de circulação ou superfícies que exigem planejamento específico.',
         'Retomada de uso após situações que demandam cuidado adicional com o espaço.',
       ],
       approach: [
         'Entendimento do objetivo, das superfícies e da circulação no local.',
-        'Definição da aplicação e das áreas incluídas no atendimento.',
+        'Definição do produto, da aplicação e das áreas incluídas no atendimento.',
         'Orientação sobre preparação, ventilação e retorno de uso.',
       ],
       preparation: [
@@ -361,12 +361,12 @@ export const services: Service[] = [
       ],
       aftercare: [
         'Respeitar o prazo e as condições de retorno informados para o atendimento.',
-        'Manter a rotina de limpeza; sanitização não substitui conservação contínua.',
+        'Manter a rotina de limpeza; a desinfecção não substitui a remoção de sujidades.',
       ],
       faqs: [
         {
-          question: 'Sanitização substitui a limpeza do ambiente?',
-          answer: 'Não. A limpeza remove sujeira e prepara superfícies; a sanitização é uma etapa complementar definida conforme a necessidade do local.',
+          question: 'A desinfecção substitui a limpeza do ambiente?',
+          answer: 'Não. A limpeza remove sujidades e prepara as superfícies; a desinfecção é uma etapa complementar definida conforme a necessidade do local.',
         },
         {
           question: 'Qualquer superfície pode receber a mesma aplicação?',

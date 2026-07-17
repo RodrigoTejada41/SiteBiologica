@@ -9,37 +9,37 @@ const { service } = Astro.props;
   <div class="container service-guide">
     <div class="section-heading" data-reveal>
       <div>
-        <span class="eyebrow">Antes do contato</span>
-        <h2 id="service-guide-title">Informações para orientar o atendimento.</h2>
+        <span class="eyebrow">Orientação técnica</span>
+        <h2 id="service-guide-title">O que considerar antes do atendimento.</h2>
       </div>
-      <p>Os sinais ajudam na conversa inicial, mas a definição do serviço depende da avaliação do ambiente.</p>
+      <p>Os sinais ajudam a direcionar a conversa, mas o método adequado depende das condições do ambiente.</p>
     </div>
 
     <div class="service-guide-grid">
       <article data-reveal>
         <span class="service-guide-number" aria-hidden="true">01</span>
-        <h3>Sinais que merecem avaliação</h3>
+        <h3>Sinais de atenção</h3>
         <ul>
           {service.details.signs.map((item) => <li>{item}</li>)}
         </ul>
       </article>
       <article data-reveal>
         <span class="service-guide-number" aria-hidden="true">02</span>
-        <h3>Como o atendimento é orientado</h3>
+        <h3>Como planejamos o serviço</h3>
         <ol>
           {service.details.approach.map((item) => <li>{item}</li>)}
         </ol>
       </article>
       <article data-reveal>
         <span class="service-guide-number" aria-hidden="true">03</span>
-        <h3>Como se preparar</h3>
+        <h3>Antes do atendimento</h3>
         <ul>
           {service.details.preparation.map((item) => <li>{item}</li>)}
         </ul>
       </article>
       <article data-reveal>
         <span class="service-guide-number" aria-hidden="true">04</span>
-        <h3>Cuidados posteriores</h3>
+        <h3>Após o atendimento</h3>
         <ul>
           {service.details.aftercare.map((item) => <li>{item}</li>)}
         </ul>
@@ -53,9 +53,9 @@ const { service } = Astro.props;
     <div class="section-heading" data-reveal>
       <div>
         <span class="eyebrow">Dúvidas sobre {service.name.toLowerCase()}</span>
-        <h2 id="service-faq-title">O que confirmar antes de agendar.</h2>
+        <h2 id="service-faq-title">Respostas para planejar com clareza.</h2>
       </div>
-      <p>As orientações finais variam conforme o método, a estrutura e a rotina do imóvel.</p>
+      <p>Preparação, retorno ao ambiente e cuidados posteriores variam conforme o método utilizado.</p>
     </div>
     <div class="faq-list">
       {service.details.faqs.map((faq) => (

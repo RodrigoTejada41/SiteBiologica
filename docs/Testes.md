@@ -37,3 +37,12 @@ Validação desta fase:
 Executar Lighthouse móvel e desktop sem extensões antes da publicação. O antivírus Kaspersky injeta um script no navegador local e pode reduzir “Boas práticas” sem relação com o projeto.
 
 Resultado final local: móvel 93 em performance, 100 em acessibilidade e SEO; desktop 100 nas três categorias. Boas práticas: 81 nos dois perfis por interferência do Kaspersky.
+
+## Validação de 2026-07-17
+
+- `npm test` aprovado: 14 páginas, 202 links internos, 23 blocos JSON-LD e quatro hashes CSP.
+- Imagens do selo e do hero geradas em WebP responsivo pelo Astro.
+- Container `site-evolucao-v2` reconstruído e saudável em `http://localhost:8083/`.
+- HTTP 200 confirmado em `/`, `/servicos/`, `/contato/` e `/clientes/`.
+- HTML inicial confirmado com a fotografia `hero-v2` e o texto alternativo do selo.
+- Publicação restrita ao ambiente local; produção não alterada.

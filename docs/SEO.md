@@ -21,3 +21,11 @@
 ## Regra editorial
 
 Conteúdo deve responder à intenção do usuário. Não repetir palavras-chave artificialmente e não criar páginas locais sem conteúdo ou operação comprovados.
+
+## Atualização editorial de 2026-07-17
+
+- Descrições institucionais e CTAs revisados para maior clareza e intenção de conversão.
+- Nomenclaturas técnicas alinhadas à RDC Anvisa 622/2022 e termos populares mantidos de forma contextual.
+- Catálogo cobre controle de pragas urbanas, controle de insetos, controle de roedores, controle de cupins, manejo de pombos, controle integrado, limpeza de caixas d'água e desinfecção de ambientes.
+- Slugs existentes preservados para evitar quebra de URLs e perda de histórico de busca.
+- Nenhuma licença, certificação ou garantia não comprovada foi adicionada ao conteúdo.

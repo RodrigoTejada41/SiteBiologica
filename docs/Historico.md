@@ -1,5 +1,16 @@
 # Histórico
 
+## 2026-07-17
+
+- Textos de todas as páginas revisados para uma linguagem mais profissional, objetiva e orientada à conversão.
+- Cards de serviços receberam descrições com problema, solução e benefício, além de altura uniforme, espaçamento, hover, foco visível e imagens padronizadas.
+- Nomenclaturas dos serviços atualizadas conforme o vocabulário técnico da Anvisa e da RDC 622/2022, preservando termos populares nas descrições para busca e compreensão.
+- Serviço de limpeza e desinfecção de caixas d'água incorporado ao catálogo.
+- Selo Prêmio Quality Brasil aprimorado, preservado também em sua versão original e incorporado como prova visual no hero da página inicial e no rodapé.
+- Fotografia original do hero foi mantida; o selo funciona como elemento complementar e responsivo.
+- Build e validação aprovados: 14 páginas, 202 links internos, 23 blocos JSON-LD e quatro hashes CSP.
+- Container local reconstruído e validado como saudável em `http://localhost:8083/`; nenhuma publicação externa realizada.
+
 ## 2026-07-16
 
 - Auditoria multidisciplinar concluída.

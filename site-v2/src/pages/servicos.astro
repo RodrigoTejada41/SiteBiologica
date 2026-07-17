@@ -6,8 +6,8 @@ import { services } from '../data/site';
 ---
 
 <BaseLayout
-  title="Serviços de controle de pragas"
-  description="Conheça os serviços da Evolução Biológica: dedetização, desinsetização, desratização, descupinização, controle de pombos, higienização e sanitização."
+  title="Serviços de controle de vetores e pragas urbanas"
+  description="Controle de vetores e pragas urbanas, desinfestação, desinsetização, desratização, controle de cupins, manejo de pombos, limpeza de caixas d'água e desinfecção de ambientes."
 >
   <header class="page-hero">
     <div class="page-hero-inner container">
@@ -16,9 +16,9 @@ import { services } from '../data/site';
           <li><a href="/">Início</a></li>
           <li aria-current="page">Serviços</li>
         </ol>
-        <h1>Controle adequado para cada necessidade.</h1>
+        <h1>A solução certa começa por uma boa avaliação.</h1>
       </div>
-      <p>Conheça as frentes de atendimento e escolha o serviço relacionado ao problema observado no seu ambiente.</p>
+      <p>Do controle de pragas à limpeza de caixas d'água, cada serviço é orientado pelo ambiente e pela necessidade identificada.</p>
     </div>
   </header>
 
@@ -27,9 +27,9 @@ import { services } from '../data/site';
       <div class="section-heading" data-reveal>
         <div>
           <span class="eyebrow">Soluções</span>
-          <h2 id="all-services-title">Serviços disponíveis.</h2>
+          <h2 id="all-services-title">Encontre o serviço adequado.</h2>
         </div>
-        <p>Em caso de dúvida, envie uma descrição do cenário. A equipe orientará o atendimento mais compatível.</p>
+        <p>Não precisa identificar o problema sozinho. Descreva os sinais e a equipe orientará o próximo passo.</p>
       </div>
       <div class="services-grid">
         {services.map((service, index) => <ServiceCard service={service} index={index} />)}
@@ -38,7 +38,7 @@ import { services } from '../data/site';
   </section>
 
   <CtaPanel
-    title="Não sabe qual serviço solicitar?"
-    text="Descreva o problema e o tipo de imóvel. A equipe ajudará a identificar o atendimento adequado."
+    title="Ainda não sabe qual serviço escolher?"
+    text="Conte o que observou e informe o tipo de imóvel. A equipe ajudará a direcionar seu atendimento."
   />
 </BaseLayout>

@@ -54,3 +54,12 @@ Marca técnica, cuidadosa e confiável, apresentada com fotografia limpa, verde 
 Geração: ferramenta integrada de imagem, caso de uso `photorealistic-natural`.
 
 Prompt final: fotografia editorial realista de um técnico treinado inspecionando cuidadosamente um ambiente comercial moderno e limpo; técnico e ação no centro-direita; área negativa à esquerda; luz natural; paleta neutra com verdes discretos; sem texto, logotipos, pragas visíveis, produtos químicos, marcas, watermark ou composição em colagem.
+
+## Refinamentos concluídos em 2026-07-17
+
+- Cards de serviços com altura uniforme, padding responsivo, hierarquia tipográfica e descrições de leitura rápida.
+- Hover de 250 ms com elevação discreta, sombra suave, mudança de cor do CTA e zoom leve da imagem.
+- Foco visível, rótulos acessíveis e textos alternativos preservados.
+- Selo Prêmio Quality Brasil adicionado sobre a fotografia do hero, sem substituí-la, e repetido no rodapé.
+- Versão aprimorada do selo em `src/assets/brand/selo-premio-quality-brasil.png` e original preservado em `src/assets/brand/selo-premio-quality-brasil-original.png`.
+- Composição validada em desktop e mobile, com escala e posição específicas por viewport.

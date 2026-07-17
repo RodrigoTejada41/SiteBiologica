@@ -10,7 +10,12 @@ type Props = {
 const { service, index } = Astro.props;
 ---
 
-<a class="service-card" href={`/servicos/${service.slug}`} data-reveal>
+<a
+  class="service-card"
+  href={`/servicos/${service.slug}`}
+  aria-label={`Ver detalhes sobre ${service.name}`}
+  data-reveal
+>
   <div class="service-card-media">
     <Image
       src={service.image}
@@ -24,6 +29,6 @@ const { service, index } = Astro.props;
     <span class="service-index">{String(index + 1).padStart(2, '0')}</span>
     <h3>{service.name}</h3>
     <p>{service.short}</p>
-    <span class="card-link">Conhecer serviço →</span>
+    <span class="card-link" aria-hidden="true">Ver detalhes <span>→</span></span>
   </div>
 </a>

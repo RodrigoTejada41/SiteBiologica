@@ -7,7 +7,9 @@ Fonte oficial para arquitetura, decisões, execução e manutenção do site Evo
 - Site legado preservado em `http://localhost:8082/`.
 - Site V2 em Astro disponível em `http://localhost:8083/`.
 - Identidade obrigatoriamente preservada: logomarca e cores institucionais.
-- Modernização local concluída; aguardando apenas conteúdo institucional verificável e publicação final.
+- Modernização local, revisão editorial, catálogo de serviços e selo institucional concluídos.
+- Container V2 atualizado e saudável; produção externa não foi alterada.
+- Publicação final continua pendente de autorização específica e acesso ao provedor.
 - DNS, domínio e HTTPS foram deliberadamente adiados para a última fase.
 
 ## Índice
