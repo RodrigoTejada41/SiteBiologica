@@ -36,5 +36,6 @@ Marca técnica, cuidadosa e confiável, apresentada com fotografia limpa, verde 
 ## Pendências
 
 - Substituir o hero que contém arte antiga embutida.
+- Até existir fotografia definitiva, ocultar a arte antiga com recorte responsivo validado no tablet.
 - Acrescentar prova real sem inventar dados.
 - Validar fotografias e permissões de uso.

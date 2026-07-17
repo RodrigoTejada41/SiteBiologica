@@ -12,7 +12,7 @@
 ## Pendências
 
 - Criar imagem Open Graph 1200×630 atualizada.
-- Preencher metadados explícitos do Twitter.
+- Metadados explícitos do Twitter implementados; repetir validação no domínio final.
 - Ampliar conteúdo único das páginas de serviço.
 - Adicionar link de mapa e perfis oficiais confirmados.
 - Validar domínio, canonicals, sitemap e indexação após publicação.

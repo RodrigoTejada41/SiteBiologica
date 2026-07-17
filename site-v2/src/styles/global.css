@@ -1380,3 +1380,18 @@ h3 {
     animation-iteration-count: 1 !important;
   }
 }
+
+@media (min-width: 641px) and (max-width: 899px) {
+  .hero-media {
+    overflow: hidden;
+  }
+
+  .hero-media picture {
+    transform: scale(1.68);
+    transform-origin: 60% center;
+  }
+
+  .hero-media img {
+    object-position: 60% center;
+  }
+}

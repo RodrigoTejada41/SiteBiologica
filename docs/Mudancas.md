@@ -13,6 +13,19 @@ Cada registro deve informar data, arquivo, motivo, antes, depois, benefício e i
 | Benefício | Rastreabilidade e continuidade do projeto |
 | Impacto | Apenas documentação; sem mudança no site |
 
+## 2026-07-16 — Acabamento responsivo e metadados sociais
+
+| Campo | Registro |
+|---|---|
+| Status | Concluída e validada em 768×1024 |
+| Arquivos | `global.css`, `BaseLayout.astro`, `manifest.webmanifest` |
+| Motivo | A arte antiga do hero aparecia no tablet; metadados sociais e manifesto estavam incompletos |
+| Antes | Texto e segunda logomarca podiam aparecer no recorte; apenas `twitter:card`; manifesto sem ícones |
+| Depois | Recorte temporário controlado, metadados explícitos e favicon vetorial declarado |
+| Benefício | Consistência visual e melhor apresentação em compartilhamento/instalação |
+| Impacto | Visual e SEO social; sem alteração da identidade |
+| Validação | Build Astro, `npm audit` sem vulnerabilidades e captura Playwright em tablet |
+
 ## Modelo
 
 ```text

@@ -7,6 +7,8 @@
 - Arquitetura confirmada como Astro estático + Nginx.
 - Riscos principais identificados: hero antigo, conteúdo superficial, confiança não verificável, fallback do WhatsApp, CSP e HSTS.
 - Governança documental criada antes da nova fase de implementação.
+- Recorte temporário do hero validado em tablet, sem exibir texto ou logomarca embutidos.
+- Metadados do Twitter e ícone vetorial do manifesto adicionados.
 
 ## Marcos anteriores
 
