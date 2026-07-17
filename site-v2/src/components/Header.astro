@@ -75,6 +75,35 @@ const isActive = (href: string) =>
   });
 
   menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+  document.addEventListener('keydown', (event) => {
+    if (toggle?.getAttribute('aria-expanded') !== 'true') return;
+
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeMenu();
+      if (toggle instanceof HTMLElement) toggle.focus();
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+
+    const focusable = [toggle, ...(menu?.querySelectorAll('a') ?? [])].filter(
+      (element): element is HTMLElement => element instanceof HTMLElement,
+    );
+    const first = focusable[0];
+    const last = focusable.at(-1);
+
+    if (!first || !last) return;
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 900) closeMenu();
   });
