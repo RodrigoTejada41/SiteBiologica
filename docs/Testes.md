@@ -16,6 +16,7 @@ npm audit
 - `rel="noopener noreferrer"` em novas guias;
 - JSON-LD válido;
 - manifesto com ícone;
+- Open Graph atual, dimensões 1200×630, descrições alternativas e arquivo abaixo de 200 KiB;
 - formulário com fallback e validação de telefone;
 - cobertura dos scripts inline pelos hashes da CSP.
 
@@ -23,8 +24,16 @@ npm audit
 
 Playwright é usado manualmente para menu, teclado, formulário, pop-up bloqueado e viewports 390, 768 e 1440 px.
 
+Validação desta fase:
+
+- hero completo no primeiro viewport em 390×844, 768×1024 e 1440×900;
+- menu móvel fecha com `Esc` e devolve foco ao botão;
+- `Shift+Tab` no primeiro item permanece no menu;
+- nenhum erro próprio do site no console;
+- container saudável e com o mesmo digest da imagem Docker atual.
+
 ## Performance
 
 Executar Lighthouse móvel e desktop sem extensões antes da publicação. O antivírus Kaspersky injeta um script no navegador local e pode reduzir “Boas práticas” sem relação com o projeto.
 
-Resultado final local: móvel 93 em performance, 100 em acessibilidade e SEO; desktop 100 nas três categorias.
+Resultado final local: móvel 93 em performance, 100 em acessibilidade e SEO; desktop 100 nas três categorias. Boas práticas: 81 nos dois perfis por interferência do Kaspersky.

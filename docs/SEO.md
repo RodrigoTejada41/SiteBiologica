@@ -4,18 +4,16 @@
 
 - URLs amigáveis e estáticas.
 - `title`, description, canonical e Open Graph.
+- Open Graph dedicado em 1200×630 com dimensões, descrição alternativa e Twitter Card explícitos.
 - `robots.txt` e sitemap automático.
 - `Organization`, `FAQPage` e `Service` em JSON-LD.
 - Idioma `pt-BR`, headings coerentes e textos alternativos.
 - Redirecionamentos das rotas legadas.
 
-## Pendências
+## Pendências externas
 
-- Criar imagem Open Graph 1200×630 atualizada.
-- Metadados explícitos do Twitter implementados; repetir validação no domínio final.
-- Conteúdo único das páginas de serviço ampliado em estrutura tipada.
-- `FAQPage` gerado por serviço a partir do mesmo conteúdo exibido na página.
-- Link de mapa implementado; perfis oficiais continuam pendentes de confirmação.
+- Repetir validação dos metadados sociais no domínio final.
+- Perfis oficiais continuam pendentes de confirmação.
 - Manter endereço textual junto do link de mapa para fortalecer consistência local.
 - Validar domínio, canonicals, sitemap e indexação após publicação.
 - Configurar Search Console e acompanhar consultas reais.

@@ -11,37 +11,37 @@ Concluído em 16/07/2026:
 - conteúdo aprofundado e FAQ nas oito páginas de serviço;
 - fallback do WhatsApp, validação de telefone e link de mapa;
 - metadados sociais e ícone do manifesto;
-- recorte temporário do hero no tablet;
+- fotografia limpa e hero full-bleed no celular/tablet;
+- Open Graph dedicado em 1200×630;
+- contenção de foco, fechamento por `Esc` e retorno de foco no menu móvel;
 - CSP estrita com hashes gerados no build;
 - HSTS removido do servidor HTTP interno;
 - teste automático de 14 páginas e 202 links internos.
 
-Continuam pendentes: fotografia definitiva do hero, Open Graph 1200×630, provas de confiança autorizadas, métricas consentidas e publicação HTTPS.
+Continuam pendentes apenas dependências externas: provas de confiança autorizadas, métricas consentidas e publicação com DNS/HTTPS.
 
 ## Resumo executivo
 
 O site já possui uma base moderna e enxuta: Astro estático, HTML semântico, navegação responsiva, tipografia Manrope, imagens otimizadas em WebP, baixo uso de JavaScript, sitemap, dados estruturados e cabeçalhos de segurança.
 
-Os principais obstáculos para uma aparência premium e maior conversão não são o framework nem o layout-base. São:
+Os bloqueadores técnicos locais foram resolvidos. Os obstáculos restantes dependem de dados ou infraestrutura externa:
 
-1. A imagem do hero contém texto e logomarca antigos embutidos e fica cortada no tablet.
-2. A prova de confiança ainda é fraca: há logotipos, mas faltam contexto, autorização, depoimentos verificáveis, credenciais e resultados reais.
-3. As oito páginas de serviço têm conteúdo muito curto e semelhante.
-4. O formulário depende da abertura de uma nova guia do WhatsApp e não trata bloqueio de pop-up.
-5. HTTPS e comportamento real em produção ainda não foram validados.
+1. autorização e contexto dos logotipos, depoimentos, credenciais e resultados reais;
+2. decisão de consentimento antes de instalar mensuração de conversão;
+3. domínio, DNS, HTTPS e comportamento real em produção.
 
 ## Medições
 
 | Métrica | Celular | Desktop | Avaliação |
 |---|---:|---:|---|
-| Lighthouse Performance | 94 | 100 | Forte |
+| Lighthouse Performance | 93 | 100 | Forte |
 | Lighthouse Accessibility | 100 | 100 | Forte |
 | Lighthouse SEO técnico | 100 | 100 | Forte |
-| FCP | 2,2 s | 0,6 s | Bom |
-| LCP | 2,7 s | 0,7 s | Celular ligeiramente acima da meta de 2,5 s |
-| TBT | 30 ms | 0 ms | Excelente |
+| FCP | 2,1 s | 0,6 s | Bom |
+| LCP | 2,9 s | 0,6 s | Celular acima da meta de laboratório; medir campo após publicar |
+| TBT | 0 ms | 0 ms | Excelente |
 | CLS | 0 | 0,003 | Excelente |
-| Peso transferido no teste | 328 KiB | 341 KiB | Baixo |
+| Peso transferido no teste | 353 KiB | 353 KiB | Baixo |
 
 O Lighthouse registrou 81 em “Boas práticas”, mas a perda foi causada pelo JavaScript e WebSocket injetados pelo antivírus Kaspersky no navegador de teste. Não é código do site. A CSP do próprio site bloqueou parte dessa injeção.
 
@@ -66,13 +66,14 @@ Notas de segurança e SEO são provisórias até o teste no domínio final com H
 
 ### Alta — corrigir antes da publicação
 
-#### A1. Hero usa um banner antigo como fotografia
+#### A1. Hero usa um banner antigo como fotografia — resolvido
 
 - **Problema:** `src/assets/hero.jpg` contém texto promocional e uma segunda logomarca dentro da própria imagem. Em 768 px, esse conteúdo aparece cortado ao lado do novo título.
 - **Impacto:** quebra a consistência visual, duplica a marca, reduz legibilidade e transmite aspecto de adaptação antiga.
 - **Solução:** substituir somente o arquivo por uma fotografia limpa, sem texto nem logotipo, mantendo as cores institucionais, o componente Astro e o enquadramento responsivo. Produzir uma imagem real de equipe/equipamento ou uma foto licenciada com espaço negativo à esquerda.
 - **Critério:** validar em 390, 768, 1024, 1440 e 1920 px; nenhuma informação essencial pode existir dentro da foto.
-- **Evidência:** `output/auditoria-v2/playwright/.playwright-cli/page-2026-07-17T01-10-35-068Z.png`.
+- **Implementação:** `hero-v2.jpg`, sem texto ou logomarca, com composição full-bleed em telas até 899 px.
+- **Evidência:** `output/playwright/home-mobile-fullbleed.png`, `home-tablet-fullbleed.png` e `home-desktop-final.png`.
 
 #### A2. Prova de confiança insuficiente
 
@@ -85,7 +86,7 @@ Notas de segurança e SEO são provisórias até o teste no domínio final com H
   - logotipos acompanhados de contexto, sem sugerir relação atual quando isso não for confirmado.
 - **Dependência:** o proprietário precisa fornecer provas, datas e permissões. Não usar estatísticas ou certificações inventadas.
 
-#### A3. Páginas de serviço têm conteúdo superficial
+#### A3. Páginas de serviço têm conteúdo superficial — resolvido
 
 - **Problema:** todas usam o mesmo template e apenas um parágrafo específico, uma lista “indicado para” e serviços relacionados.
 - **Impacto:** responde poucas dúvidas, enfraquece intenção de busca local e dificulta a decisão do visitante. Lighthouse 100 confirma a implementação técnica, não a qualidade ou competitividade do conteúdo.
@@ -120,7 +121,7 @@ O conteúdo deve ajudar pessoas, sem repetição artificial de palavras-chave. F
 
 ### Média — maior retorno após os bloqueadores
 
-#### M1. Contato informa sucesso mesmo se o WhatsApp for bloqueado
+#### M1. Contato informa sucesso mesmo se o WhatsApp for bloqueado — resolvido
 
 - **Problema:** `window.open()` não tem retorno verificado. Se o navegador bloquear a nova guia, a mensagem ainda diz que o WhatsApp será aberto.
 - **Impacto:** falsa confirmação e perda de lead.
@@ -142,7 +143,7 @@ if (!popup && fallback) {
 }
 ```
 
-#### M2. Telefone aceita qualquer texto
+#### M2. Telefone aceita qualquer texto — resolvido
 
 - **Problema:** `type="tel"` e `required` não verificam tamanho ou caracteres.
 - **Impacto:** mensagem de contato pode conter telefone inutilizável.
@@ -162,25 +163,26 @@ if (!popup && fallback) {
 - **Impacto:** mudanças de CRO não podem ser comparadas por dados reais.
 - **Solução:** adicionar mensuração compatível com a política de privacidade e consentimento aplicável. Eventos mínimos: `cta_whatsapp_click`, `form_start`, `form_valid_submit`, `whatsapp_opened`. Não carregar scripts pesados antes do consentimento quando ele for necessário.
 
-#### M4. LCP móvel medido em 2,7 s
+#### M4. LCP móvel medido em 2,9 s — acompanhar após publicação
 
 - **Problema:** o LCP ficou 0,2 s acima da referência “boa”.
 - **Impacto:** pequeno, mas importante em redes móveis reais.
 - **Solução:** primeiro substituir e recomprimir o hero; manter `loading="eager"` e `fetchpriority="high"`; evitar texto embutido; testar WebP/AVIF em 720, 960 e 1440; repetir Lighthouse sem extensões e medir dados de campo após publicação.
 
-#### M5. Imagem social está desatualizada e pesada
+#### M5. Imagem social está desatualizada e pesada — resolvido
 
 - **Problema:** `public/images/og.jpg` tem 415 KiB, formato panorâmico baixo e arte antiga. Não corresponde ao formato de compartilhamento amplo.
 - **Impacto:** prévias sociais cortadas, visual inconsistente e menor credibilidade.
 - **Solução:** criar arte dedicada de 1200×630 px, idealmente abaixo de 200 KiB, com a logomarca preservada, uma foto limpa, título curto e área segura. Adicionar `og:image:width`, `og:image:height`, `twitter:title`, `twitter:description` e `twitter:image`.
+- **Implementação:** `og-v2.jpg` com 1200×630 e 86 KiB; todas as metatags indicadas foram adicionadas.
 
-#### M6. CSP permite scripts inline
+#### M6. CSP permite scripts inline — resolvido para scripts executáveis
 
 - **Problema:** `script-src 'self' 'unsafe-inline'` reduz a proteção contra XSS.
 - **Impacto:** a superfície atual é baixa — site estático, sem `innerHTML`, `eval` ou dependências vulneráveis — mas a política fica menos resistente a futuras mudanças.
 - **Solução:** externalizar scripts executáveis ou gerar hashes/nonces no ponto de publicação; depois usar `script-src 'self'`. Manter JSON-LD somente com dados locais serializados por `JSON.stringify`.
 
-#### M7. HSTS com `includeSubDomains` está habilitado sem validação do domínio
+#### M7. HSTS com `includeSubDomains` está habilitado sem validação do domínio — resolvido localmente
 
 - **Problema:** o Nginx HTTP local envia `Strict-Transport-Security: max-age=31536000; includeSubDomains`.
 - **Impacto:** navegadores ignoram HSTS em HTTP local, mas em produção uma configuração prematura pode tornar subdomínios sem HTTPS inacessíveis.
@@ -206,17 +208,17 @@ if (!popup && fallback) {
 
 ### Baixa — acabamento
 
-#### B1. Manifesto sem ícones
+#### B1. Manifesto sem ícones — resolvido
 
 - **Problema:** `manifest.webmanifest` contém `"icons": []`.
 - **Solução:** gerar ícones próprios de 192×192 e 512×512 a partir de símbolo aprovado da marca. Não redesenhar a logomarca.
 
-#### B2. Metadados do Twitter dependem de fallback
+#### B2. Metadados do Twitter dependem de fallback — resolvido
 
 - **Problema:** existe `twitter:card`, mas título, descrição e imagem não são explícitos.
 - **Solução:** preencher as quatro tags a partir dos mesmos dados de Open Graph.
 
-#### B3. Endereço poderia ser mais acionável
+#### B3. Endereço poderia ser mais acionável — resolvido
 
 - **Problema:** o rodapé mostra o endereço como texto.
 - **Solução:** manter o texto e adicionar “Como chegar” com destino de mapa, sem transformar toda a linha em link.
@@ -225,8 +227,8 @@ if (!popup && fallback) {
 
 | Seção | Estado atual | Melhoria recomendada |
 |---|---|---|
-| Cabeçalho/menu | Claro, sem excesso, menu móvel funcional e estado acessível | Manter; acrescentar indicador de contato apenas se não competir com o CTA |
-| Hero | Hierarquia e CTA fortes; imagem antiga compromete o conjunto | Foto limpa, proposta mais concreta e uma prova verificada próxima ao CTA |
+| Cabeçalho/menu | Claro, menu móvel com foco contido, `Esc` e retorno de foco | Manter; acrescentar indicador de contato apenas se não competir com o CTA |
+| Hero | Fotografia limpa, hierarquia forte e composição full-bleed responsiva | Substituir por foto real apenas se houver ativo autorizado; acrescentar prova verificada próxima ao CTA |
 | Faixa de confiança | Explica perfis atendidos | Trocar numeração decorativa por três benefícios verificáveis ou credenciais reais |
 | Serviços | Cards consistentes e fáceis de escanear | Conteúdo específico por serviço e CTAs relacionados à intenção da página |
 | Sobre | Boa composição e texto objetivo | Acrescentar equipe/processo real e credencial verificável, se fornecida |
@@ -248,6 +250,7 @@ Pontos validados:
 - labels associados aos campos;
 - mensagem com `aria-live`;
 - menu móvel atualiza `aria-expanded` e o rótulo;
+- menu móvel contém o foco, fecha com `Esc` e devolve o foco ao botão;
 - foco visível;
 - contraste aprovado pelo Lighthouse;
 - suporte a `prefers-reduced-motion`;
@@ -307,13 +310,13 @@ Evitar carrosséis automáticos, vídeo de fundo, excesso de vidro/desfoque, par
 
 | Ordem | Prazo estimado | Entrega | Impacto |
 |---:|---:|---|---|
-| 1 | 1–2 dias | Nova foto do hero, nova imagem social, ajuste da mensagem principal | Alto e imediato no design |
-| 2 | 1 dia | Fallback do WhatsApp, telefone, link de mapa, metatags sociais e ícones | Alto na conversão; baixo esforço |
-| 3 | 3–5 dias | Conteúdo único das oito páginas de serviço e FAQs técnicas | Alto em SEO, confiança e conversão |
-| 4 | 2–4 dias, depende do cliente | Credenciais, depoimentos, autorizações e estudo de caso | Maior ganho de confiança |
-| 5 | 1–2 dias | Mensuração de funil e painel mínimo | Permite otimização baseada em dados |
-| 6 | 1–2 dias | CSP estrita, estratégia HSTS e validação de HTTPS no domínio | Segurança de produção |
-| 7 | 1 dia | Lighthouse sem extensões, teste de rotas, teclado e celulares reais | Liberação final |
+| 1 | Concluído | Foto do hero, imagem social e acabamento responsivo | Alto e imediato no design |
+| 2 | Concluído | Fallback do WhatsApp, telefone, mapa, metatags e ícones | Alto na conversão |
+| 3 | Concluído | Conteúdo único das oito páginas e FAQs | Alto em SEO e clareza |
+| 4 | Depende do cliente | Credenciais, depoimentos, autorizações e estudo de caso | Maior ganho de confiança |
+| 5 | Depende de decisão de consentimento | Mensuração de funil | Permite otimização baseada em dados |
+| 6 | Fase final | DNS, HTTPS, redirects, HSTS e validação do domínio | Liberação de produção |
+| 7 | Pós-publicação | Search Console, dados de campo e celulares reais | Otimização contínua |
 
 Prazo técnico estimado: 10–17 dias úteis. Conteúdo, fotos, credenciais e autorizações podem alterar o cronograma.
 

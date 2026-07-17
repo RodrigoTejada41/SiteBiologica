@@ -23,3 +23,15 @@
 - [ ] Lighthouse sem extensões.
 - [ ] Backup e rollback disponíveis.
 - [ ] Search Console configurado.
+
+## Fase visual local de 2026-07-16
+
+- [x] Logomarca e cores preservadas.
+- [x] Hero sem texto ou marca embutidos.
+- [x] Open Graph 1200×630 abaixo de 200 KiB.
+- [x] Desktop, tablet e celular validados.
+- [x] Teclado, foco, `Esc` e armadilha de foco do menu validados.
+- [x] `npm test` e `npm audit` aprovados.
+- [x] Container reconstruído e saudável.
+- [x] Documentação atualizada.
+- [ ] DNS, HTTPS e publicação — executar somente na fase final.

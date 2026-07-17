@@ -40,3 +40,9 @@ docker compose up -d --build site-v2
 - `src/data/site.ts`: dados institucionais, serviços e clientes.
 - `src/styles/global.css`: tokens e sistema visual.
 - `public`: logo, favicon, Open Graph, robots e manifesto.
+
+## Ativos principais
+
+- `src/assets/hero-v2.jpg`: fotografia limpa usada no hero.
+- `public/images/og-v2.jpg`: imagem social 1200×630.
+- `src/assets/hero.jpg` e `public/images/og.jpg`: ativos legados preservados, sem uso na V2 atual.

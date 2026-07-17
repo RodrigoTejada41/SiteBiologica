@@ -42,7 +42,15 @@ Marca técnica, cuidadosa e confiável, apresentada com fotografia limpa, verde 
 
 ## Pendências
 
-- Substituir o hero que contém arte antiga embutida.
-- Até existir fotografia definitiva, ocultar a arte antiga com recorte responsivo validado no tablet.
 - Acrescentar prova real sem inventar dados.
-- Validar fotografias e permissões de uso.
+- Substituir a fotografia gerada por fotografia real da equipe apenas se houver arquivo autorizado e tecnicamente adequado.
+
+## Ativos visuais concluídos em 2026-07-16
+
+- `site-v2/src/assets/hero-v2.jpg`: fotografia sem texto, logotipo ou informação essencial embutida.
+- `site-v2/public/images/og-v2.jpg`: arte social 1200×630, 86 KiB, usando a logomarca original sem alteração.
+- Hero móvel full-bleed validado em 390×844 e 768×1024; header, mensagem, CTAs e horário cabem no primeiro viewport.
+
+Geração: ferramenta integrada de imagem, caso de uso `photorealistic-natural`.
+
+Prompt final: fotografia editorial realista de um técnico treinado inspecionando cuidadosamente um ambiente comercial moderno e limpo; técnico e ação no centro-direita; área negativa à esquerda; luz natural; paleta neutra com verdes discretos; sem texto, logotipos, pragas visíveis, produtos químicos, marcas, watermark ou composição em colagem.

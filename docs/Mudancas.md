@@ -90,6 +90,32 @@ Cada registro deve informar data, arquivo, motivo, antes, depois, benefício e i
 | Benefício | Baseline atualizado para comparação pós-publicação |
 | Impacto | Documentação; variação móvel de laboratório dentro de um ponto |
 
+## 2026-07-16 — Hero definitivo e imagem social
+
+| Campo | Registro |
+|---|---|
+| Status | Concluída e validada |
+| Arquivos | `hero-v2.jpg`, `og-v2.jpg`, `index.astro`, `BaseLayout.astro`, `global.css` |
+| Motivo | Remover texto e logomarca embutidos na arte antiga e concluir a apresentação social |
+| Antes | Banner panorâmico antigo, recorte corretivo no tablet e Open Graph fora do formato recomendado |
+| Depois | Fotografia limpa; hero full-bleed responsivo; Open Graph 1200×630 com logomarca original e metadados completos |
+| Benefício | Aparência mais profissional, leitura consistente e prévia social controlada |
+| Impacto | Design, responsividade, performance e SEO social; identidade institucional preservada |
+| Validação | `npm test`, incluindo Open Graph; Playwright em 390×844, 768×1024 e 1440×900; Lighthouse móvel e desktop |
+
+## 2026-07-16 — Acessibilidade do menu móvel
+
+| Campo | Registro |
+|---|---|
+| Status | Concluída e validada |
+| Arquivos | `Header.astro` |
+| Motivo | O menu não respondia à tecla `Esc` e permitia que o foco saísse da navegação aberta |
+| Antes | Abertura e fechamento apenas pelo botão ou link |
+| Depois | `Esc` fecha, foco retorna ao botão e `Tab`/`Shift+Tab` permanecem no menu |
+| Benefício | Navegação por teclado previsível e compatível com diálogo móvel de tela inteira |
+| Impacto | Acessibilidade e UX; sem alteração visual |
+| Validação | Playwright: último CTA focado com `Shift+Tab`; botão “Abrir menu” focado após `Esc` |
+
 ## Modelo
 
 ```text

@@ -13,7 +13,7 @@
 
 ## ADR-003 — WhatsApp sem armazenamento local
 
-- **Status:** aceito com correção pendente.
+- **Status:** aceito e implementado.
 - **Motivo:** reduzir coleta de dados e evitar backend prematuro.
 - **Risco:** perda de lead se a nova guia for bloqueada ou abandonada.
 - **Tratamento:** criar fallback explícito e medir o funil antes de considerar backend.
@@ -32,3 +32,16 @@
 
 - **Status:** aceito.
 - **Decisão:** realizar commits pequenos por responsabilidade, com documentação, build e teste antes de avançar.
+
+## ADR-007 — Fotografia gerada sem interferência na marca
+
+- **Status:** aceito.
+- **Decisão:** usar fotografia gerada sem texto, logotipo, uniforme identificável, produtos químicos ou alegações visuais específicas.
+- **Motivo:** eliminar a arte antiga embutida sem inventar credenciais ou alterar a identidade institucional.
+- **Consequência:** o ativo pode permanecer em produção; uma fotografia real autorizada pode substituí-lo posteriormente mantendo o mesmo enquadramento.
+
+## ADR-008 — Infraestrutura somente na fase final
+
+- **Status:** aceito.
+- **Decisão:** DNS, certificado, redirecionamento HTTPS, canonical de produção e HSTS serão configurados somente após o aceite final do site.
+- **Consequência:** o ambiente local continua em HTTP; isso não deve ser tratado como falha do código da aplicação.

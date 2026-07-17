@@ -53,6 +53,8 @@ Marca técnica e confiável, com presença dominante do verde institucional, ár
 - Conteúdo aprofundado e FAQ para os oito serviços.
 - CSP estrita com hashes gerados a cada build.
 - Teste automático de páginas, links, metadados, JSON-LD e CSP.
+- Fotografia limpa no hero e Open Graph 1200×630.
+- Menu móvel com fechamento por `Esc`, retorno de foco e contenção de foco.
 
 ## Tecnologias
 
@@ -77,7 +79,7 @@ Marca técnica e confiável, com presença dominante do verde institucional, ár
 - Performance: 93.
 - Acessibilidade: 100.
 - SEO: 100.
-- LCP: 2,8 s.
+- LCP: 2,9 s.
 - CLS: 0.
 
 A pontuação local de boas práticas é afetada por um script injetado pelo Kaspersky no navegador de auditoria. O script não pertence ao projeto.
@@ -87,8 +89,8 @@ A pontuação local de boas práticas é afetada por um script injetado pelo Kas
 1. **Concluído — base técnica e UX:** arquitetura, design, páginas, SEO, acessibilidade, performance e container.
 2. **Concluído — conteúdo e segurança:** serviços aprofundados, contato resiliente, SEO local, CSP estrita e testes automáticos.
 3. **Próxima etapa — validação institucional:** confirmar licenças, certificações, responsável técnico, garantias e autorização dos logotipos.
-4. **Próxima etapa — ativos definitivos:** fotografia do hero e imagem Open Graph 1200×630.
-5. **Publicação:** configurar domínio, HTTPS, redirecionamentos e monitoramento.
+4. **Concluído — ativos visuais:** fotografia limpa do hero, composição móvel full-bleed e Open Graph 1200×630.
+5. **Fase final:** configurar domínio, DNS, HTTPS, redirecionamentos e monitoramento após o aceite do site.
 6. **Pós-publicação:** Search Console, métricas de conversão consentidas e ajustes baseados em dados reais.
 
 Checklist operacional: [`PUBLICACAO.md`](./PUBLICACAO.md).

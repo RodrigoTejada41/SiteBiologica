@@ -17,6 +17,11 @@
 - HSTS removido do container HTTP e reservado ao proxy HTTPS de produção.
 - Validador automático adicionado para páginas, links, SEO, JSON-LD, formulário, manifesto e CSP.
 - Lighthouse final: móvel 93/100 em performance e 100/100 em acessibilidade/SEO; desktop 100/100 nas três categorias.
+- Banner antigo substituído por fotografia limpa gerada para o projeto, sem texto ou logomarca incorporados.
+- Hero móvel transformado em composição full-bleed que cabe no primeiro viewport em celular e tablet.
+- Open Graph 1200×630 criado com a logomarca original e metadados de dimensão/descrição.
+- Menu móvel passou a fechar com `Esc`, devolver foco ao botão e conter a navegação por `Tab`.
+- Lighthouse repetido após a fase visual: móvel 93 e desktop 100 em performance; acessibilidade e SEO 100 em ambos.
 
 ## Marcos anteriores
 
