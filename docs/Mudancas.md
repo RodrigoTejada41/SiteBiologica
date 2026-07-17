@@ -78,6 +78,18 @@ Cada registro deve informar data, arquivo, motivo, antes, depois, benefício e i
 | Impacto | Desenvolvimento e CI futura; sem código enviado ao navegador |
 | Validação | `npm test`: 14 páginas, 202 links internos, 23 JSON-LD e quatro hashes CSP |
 
+## 2026-07-16 — Medição final local
+
+| Campo | Registro |
+|---|---|
+| Status | Concluída |
+| Arquivos | Relatórios locais em `output/auditoria-v2` e documentação |
+| Motivo | Confirmar impacto acumulado das mudanças |
+| Antes | Performance móvel 94, LCP 2,7 s |
+| Depois | Performance móvel 93, LCP 2,8 s; desktop 100 e LCP 0,6 s |
+| Benefício | Baseline atualizado para comparação pós-publicação |
+| Impacto | Documentação; variação móvel de laboratório dentro de um ponto |
+
 ## Modelo
 
 ```text

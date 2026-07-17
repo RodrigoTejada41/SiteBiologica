@@ -4,7 +4,7 @@
 
 - Site original preservado em `http://localhost:8082/`.
 - Versão modernizada disponível em `http://localhost:8083/`.
-- 14 rotas estáticas, container saudável e formulário funcional via WhatsApp.
+- 14 rotas estáticas, container saudável e formulário com validação e fallback via WhatsApp.
 - Logomarca e cores institucionais preservadas.
 
 ## Diagnóstico e prioridade
@@ -50,6 +50,9 @@ Marca técnica e confiável, com presença dominante do verde institucional, ár
 - Sitemap automático, robots, Open Graph e Organization schema.
 - Otimização automática de imagens e cache de arquivos versionados.
 - Cabeçalhos de segurança no Nginx.
+- Conteúdo aprofundado e FAQ para os oito serviços.
+- CSP estrita com hashes gerados a cada build.
+- Teste automático de páginas, links, metadados, JSON-LD e CSP.
 
 ## Tecnologias
 
@@ -71,7 +74,7 @@ Marca técnica e confiável, com presença dominante do verde institucional, ár
 
 ### V2 — auditoria móvel
 
-- Performance: 93–94.
+- Performance: 93.
 - Acessibilidade: 100.
 - SEO: 100.
 - LCP: 2,8 s.
@@ -82,10 +85,11 @@ A pontuação local de boas práticas é afetada por um script injetado pelo Kas
 ## Cronograma por prioridade
 
 1. **Concluído — base técnica e UX:** arquitetura, design, páginas, SEO, acessibilidade, performance e container.
-2. **Próxima etapa — validação institucional:** confirmar licenças, certificações, responsável técnico, garantias e autorização dos logotipos.
-3. **Próxima etapa — conteúdo de confiança:** inserir somente depoimentos, números e documentos comprovados.
-4. **Publicação:** configurar domínio, HTTPS, redirecionamentos das URLs antigas e monitoramento.
-5. **Pós-publicação:** Search Console, métricas de conversão consentidas e ajustes baseados em dados reais.
+2. **Concluído — conteúdo e segurança:** serviços aprofundados, contato resiliente, SEO local, CSP estrita e testes automáticos.
+3. **Próxima etapa — validação institucional:** confirmar licenças, certificações, responsável técnico, garantias e autorização dos logotipos.
+4. **Próxima etapa — ativos definitivos:** fotografia do hero e imagem Open Graph 1200×630.
+5. **Publicação:** configurar domínio, HTTPS, redirecionamentos e monitoramento.
+6. **Pós-publicação:** Search Console, métricas de conversão consentidas e ajustes baseados em dados reais.
 
 Checklist operacional: [`PUBLICACAO.md`](./PUBLICACAO.md).
 

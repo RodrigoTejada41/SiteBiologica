@@ -15,6 +15,13 @@ npm run dev
 npm run build
 ```
 
+O build gera a CSP com hashes dos scripts inline. Para validar páginas, links, SEO, JSON-LD e CSP:
+
+```sh
+npm test
+npm audit
+```
+
 ## Container local
 
 Na raiz do projeto:

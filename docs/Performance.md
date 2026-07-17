@@ -1,13 +1,13 @@
 # Performance
 
-## Baseline local de 2026-07-16
+## Medição final local de 2026-07-16
 
 | Métrica | Celular | Desktop |
 |---|---:|---:|
-| Lighthouse Performance | 94 | 100 |
+| Lighthouse Performance | 93 | 100 |
 | FCP | 2,2 s | 0,6 s |
-| LCP | 2,7 s | 0,7 s |
-| TBT | 30 ms | 0 ms |
+| LCP | 2,8 s | 0,6 s |
+| TBT | 10 ms | 0 ms |
 | CLS | 0 | 0,003 |
 
 ## Orçamento
@@ -25,3 +25,5 @@
 - Cache imutável para `_assets`.
 - CSS e JavaScript minificados pelo build.
 - Nova medição sem extensões após cada fase visual.
+
+O navegador local continua recebendo um script injetado pelo Kaspersky. Ele é bloqueado pela CSP e reduz “Boas práticas” para 81, mas não pertence ao projeto.

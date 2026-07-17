@@ -4,6 +4,20 @@ Data: 16/07/2026
 Ambiente auditado: `http://localhost:8083/`  
 Escopo: homepage, serviços, páginas de serviço, clientes, contato, política, 404, responsividade, teclado, SEO técnico, performance, dependências e configuração Nginx.
 
+## Atualização após implementação
+
+Concluído em 16/07/2026:
+
+- conteúdo aprofundado e FAQ nas oito páginas de serviço;
+- fallback do WhatsApp, validação de telefone e link de mapa;
+- metadados sociais e ícone do manifesto;
+- recorte temporário do hero no tablet;
+- CSP estrita com hashes gerados no build;
+- HSTS removido do servidor HTTP interno;
+- teste automático de 14 páginas e 202 links internos.
+
+Continuam pendentes: fotografia definitiva do hero, Open Graph 1200×630, provas de confiança autorizadas, métricas consentidas e publicação HTTPS.
+
 ## Resumo executivo
 
 O site já possui uma base moderna e enxuta: Astro estático, HTML semântico, navegação responsiva, tipografia Manrope, imagens otimizadas em WebP, baixo uso de JavaScript, sitemap, dados estruturados e cabeçalhos de segurança.
@@ -33,7 +47,7 @@ O Lighthouse registrou 81 em “Boas práticas”, mas a perda foi causada pelo 
 
 Os limites de referência para uma boa experiência são LCP até 2,5 s, INP até 200 ms e CLS até 0,1 no percentil 75. Fonte: [web.dev — Core Web Vitals thresholds](https://web.dev/articles/defining-core-web-vitals-thresholds).
 
-## Notas atuais
+## Notas do baseline anterior às correções
 
 | Área | Nota | Motivo principal |
 |---|---:|---|
@@ -138,7 +152,7 @@ if (!popup && fallback) {
 <label for="phone">Telefone</label>
 <input id="phone" name="phone" type="tel" autocomplete="tel"
   inputmode="tel" minlength="10" maxlength="20"
-  pattern="[0-9() +.-]{10,20}" aria-describedby="phone-hint" required />
+  pattern="[0-9\(\) +.\-]{10,20}" aria-describedby="phone-hint" required />
 <small id="phone-hint">Inclua DDD. Exemplo: (11) 99999-9999.</small>
 ```
 

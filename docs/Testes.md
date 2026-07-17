@@ -26,3 +26,5 @@ Playwright é usado manualmente para menu, teclado, formulário, pop-up bloquead
 ## Performance
 
 Executar Lighthouse móvel e desktop sem extensões antes da publicação. O antivírus Kaspersky injeta um script no navegador local e pode reduzir “Boas práticas” sem relação com o projeto.
+
+Resultado final local: móvel 93 em performance, 100 em acessibilidade e SEO; desktop 100 nas três categorias.
