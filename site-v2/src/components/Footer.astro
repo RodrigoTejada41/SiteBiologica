@@ -13,6 +13,10 @@ const year = new Date().getFullYear();
     <div>
       <h2>Atendimento</h2>
       <p>{company.hours}</p>
+      <address>
+        {company.address.street}<br />
+        CEP {company.address.postalCode} — {company.address.city}/{company.address.region}
+      </address>
       <a href={whatsappUrl('Olá! Gostaria de solicitar um orçamento.')} target="_blank" rel="noopener noreferrer">
         WhatsApp {company.whatsappDisplay}
       </a>

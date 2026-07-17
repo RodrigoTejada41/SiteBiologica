@@ -82,15 +82,13 @@ A pontuação local de boas práticas é afetada por um script injetado pelo Kas
 ## Cronograma por prioridade
 
 1. **Concluído — base técnica e UX:** arquitetura, design, páginas, SEO, acessibilidade, performance e container.
-2. **Próxima etapa — validação institucional:** confirmar endereço, horários, licenças, certificações, responsável técnico, garantias e autorização dos logotipos.
+2. **Próxima etapa — validação institucional:** confirmar licenças, certificações, responsável técnico, garantias e autorização dos logotipos.
 3. **Próxima etapa — conteúdo de confiança:** inserir somente depoimentos, números e documentos comprovados.
 4. **Publicação:** configurar domínio, HTTPS, redirecionamentos das URLs antigas e monitoramento.
 5. **Pós-publicação:** Search Console, métricas de conversão consentidas e ajustes baseados em dados reais.
 
 ## Dados que exigem confirmação
 
-- Atendimento 24 horas: conflita com o horário de segunda a sexta, das 8h30 às 18h.
-- Endereço: aparece apenas comentado no HTML antigo.
 - Licenças, certificações, responsável técnico e garantias.
 - Autorização de uso dos logotipos de clientes.
 - Estatísticas e depoimentos.

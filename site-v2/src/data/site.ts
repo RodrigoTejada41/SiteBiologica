@@ -34,7 +34,14 @@ export const company = {
     { display: '(11) 5932-5173', href: 'tel:+551159325173' },
     { display: '(11) 5662-8235', href: 'tel:+551156628235' },
   ],
-  hours: 'Segunda a sexta, das 8h30 às 18h',
+  hours: 'Segunda a sexta-feira, das 10h às 18h',
+  address: {
+    street: 'Avenida Fernando Amaro Miranda, 374',
+    postalCode: '04821-100',
+    city: 'São Paulo',
+    region: 'SP',
+    country: 'BR',
+  },
   region: 'São Paulo',
 };
 

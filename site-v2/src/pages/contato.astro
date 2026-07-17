@@ -45,6 +45,13 @@ import { company, services, whatsappUrl } from '../data/site';
             <span>Horário</span>
             <p>{company.hours}</p>
           </li>
+          <li>
+            <span>Endereço</span>
+            <address>
+              {company.address.street}<br />
+              CEP {company.address.postalCode} — {company.address.city}/{company.address.region}
+            </address>
+          </li>
         </ul>
       </aside>
 

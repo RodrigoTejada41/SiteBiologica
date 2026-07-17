@@ -26,13 +26,27 @@ const socialImage = new URL(image, Astro.site);
 
 const organization = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': 'LocalBusiness',
   name: company.legalLabel,
   url: Astro.site?.toString(),
   logo: new URL('/images/logo.svg', Astro.site).toString(),
   email: company.email,
   telephone: '+55 11 96586-2473',
   areaServed: company.region,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: company.address.street,
+    postalCode: company.address.postalCode,
+    addressLocality: company.address.city,
+    addressRegion: company.address.region,
+    addressCountry: company.address.country,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '10:00',
+    closes: '18:00',
+  },
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+55 11 96586-2473',

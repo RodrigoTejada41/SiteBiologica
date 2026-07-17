@@ -935,6 +935,15 @@ h3 {
   font-weight: 750;
 }
 
+.contact-list address,
+.footer-grid address {
+  font-style: normal;
+}
+
+.contact-list address {
+  color: var(--ink-soft);
+}
+
 .quote-form {
   padding: clamp(1.5rem, 4vw, 3rem);
   background: var(--surface-soft);
@@ -1056,6 +1065,11 @@ h3 {
   width: fit-content;
   margin-block: 0.55rem;
   color: rgb(255 255 255 / 84%);
+}
+
+.footer-grid address {
+  margin-bottom: 1rem;
+  color: rgb(255 255 255 / 72%);
 }
 
 .footer-grid a:hover {
