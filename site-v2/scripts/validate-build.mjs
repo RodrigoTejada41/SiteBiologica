@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -99,6 +99,18 @@ const contactHtml = readFileSync(join(distDir, 'contato/index.html'), 'utf8');
 check(contactHtml.includes('data-wa-fallback'), 'contato: fallback do WhatsApp ausente');
 check(contactHtml.includes('aria-describedby="phone-hint"'), 'contato: instrução acessível do telefone ausente');
 check(/id="phone"[^>]*pattern=/i.test(contactHtml), 'contato: validação de telefone ausente');
+
+const homeHtml = readFileSync(join(distDir, 'index.html'), 'utf8');
+const socialImagePath = join(distDir, 'images/og-v2.jpg');
+check(/property="og:image" content="[^"]+\/images\/og-v2\.jpg"/i.test(homeHtml), 'home: imagem Open Graph atual ausente');
+check(homeHtml.includes('property="og:image:width" content="1200"'), 'home: largura Open Graph ausente');
+check(homeHtml.includes('property="og:image:height" content="630"'), 'home: altura Open Graph ausente');
+check(/property="og:image:alt" content="[^"]+"/i.test(homeHtml), 'home: descrição Open Graph ausente');
+check(/name="twitter:image:alt" content="[^"]+"/i.test(homeHtml), 'home: descrição Twitter ausente');
+check(existsSync(socialImagePath), 'imagem Open Graph ausente no build');
+if (existsSync(socialImagePath)) {
+  check(statSync(socialImagePath).size <= 200 * 1024, 'imagem Open Graph acima de 200 KiB');
+}
 
 const cspPath = join(projectRoot, 'csp.conf');
 check(existsSync(cspPath), 'csp.conf ausente');

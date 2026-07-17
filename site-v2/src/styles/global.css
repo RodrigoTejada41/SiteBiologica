@@ -437,6 +437,7 @@ h3 {
 .hero-media {
   position: relative;
   min-height: 32rem;
+  overflow: hidden;
   background: var(--brand-800);
 }
 
@@ -448,7 +449,7 @@ h3 {
 
 .hero-media img {
   object-fit: cover;
-  object-position: 80% center;
+  object-position: 62% center;
 }
 
 .hero-media::after {
@@ -1249,18 +1250,20 @@ h3 {
   }
 
   .hero {
-    min-height: auto;
-    grid-template-columns: 1fr;
+    display: block;
+    min-height: calc(100svh - var(--header-height));
+    overflow: hidden;
   }
 
   .hero-content {
-    min-height: calc(78svh - var(--header-height));
-    padding: 4.5rem 1.25rem;
+    min-height: calc(100svh - var(--header-height));
+    padding: clamp(2rem, 6vw, 3rem) 1.25rem;
+    justify-content: flex-end;
   }
 
   .hero-content::before {
     inset: 0;
-    background: linear-gradient(180deg, rgb(11 111 49 / 97%), rgb(11 111 49 / 93%));
+    background: linear-gradient(180deg, transparent 8%, rgb(11 111 49 / 18%) 31%, rgb(11 111 49 / 92%) 58%, var(--brand-700) 78%);
   }
 
   .hero h1 {
@@ -1268,16 +1271,17 @@ h3 {
   }
 
   .hero-media {
-    min-height: 17rem;
-    order: -1;
+    position: absolute;
+    inset: 0;
+    min-height: 0;
   }
 
   .hero-media img {
-    object-position: 77% center;
+    object-position: 60% center;
   }
 
   .hero-media::after {
-    background: linear-gradient(0deg, var(--brand-700), transparent 34%);
+    background: linear-gradient(180deg, rgb(9 89 40 / 4%), rgb(9 89 40 / 12%) 30%, rgb(11 111 49 / 48%) 54%, var(--brand-700) 88%);
   }
 
   .trust-rail-inner {
@@ -1346,8 +1350,8 @@ h3 {
   }
 
   .hero-content {
-    min-height: auto;
-    padding-block: 3.75rem;
+    min-height: calc(100svh - var(--header-height));
+    padding-block: 2rem;
   }
 
   .hero-actions,
@@ -1449,17 +1453,45 @@ h3 {
   }
 }
 
-@media (min-width: 641px) and (max-width: 899px) {
-  .hero-media {
-    overflow: hidden;
+@media (prefers-reduced-motion: no-preference) {
+  .hero-content > * {
+    animation: hero-content-enter 420ms cubic-bezier(0.2, 0.75, 0.2, 1) both;
   }
 
-  .hero-media picture {
-    transform: scale(1.68);
-    transform-origin: 60% center;
+  .hero-content > :nth-child(2) {
+    animation-delay: 60ms;
+  }
+
+  .hero-content > :nth-child(3) {
+    animation-delay: 110ms;
+  }
+
+  .hero-content > :nth-child(4),
+  .hero-content > :nth-child(5) {
+    animation-delay: 160ms;
   }
 
   .hero-media img {
-    object-position: 60% center;
+    animation: hero-media-enter 800ms cubic-bezier(0.2, 0.75, 0.2, 1) both;
+  }
+}
+
+@keyframes hero-content-enter {
+  from {
+    transform: translateY(0.6rem);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-media-enter {
+  from {
+    transform: scale(1.018);
+  }
+
+  to {
+    transform: scale(1);
   }
 }
