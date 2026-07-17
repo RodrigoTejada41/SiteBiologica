@@ -26,6 +26,19 @@ Cada registro deve informar data, arquivo, motivo, antes, depois, benefício e i
 | Impacto | Visual e SEO social; sem alteração da identidade |
 | Validação | Build Astro, `npm audit` sem vulnerabilidades e captura Playwright em tablet |
 
+## 2026-07-16 — Robustez do contato
+
+| Campo | Registro |
+|---|---|
+| Status | Concluída e validada |
+| Arquivos | `site.ts`, `Footer.astro`, `contato.astro`, `global.css` |
+| Motivo | Evitar falsa confirmação quando o pop-up é bloqueado e melhorar a qualidade do telefone informado |
+| Antes | `window.open` sem verificação, telefone sem formato mínimo e endereço sem ação de mapa |
+| Depois | Fallback explícito, validação permissiva, instrução acessível e link “Como chegar” |
+| Benefício | Menor perda de contato e navegação local mais direta |
+| Impacto | UX, acessibilidade, conversão e SEO local; sem armazenamento de dados |
+| Validação | Build Docker; Playwright com telefone inválido e pop-up bloqueado; fallback visível e focado |
+
 ## Modelo
 
 ```text

@@ -33,6 +33,13 @@ Marca técnica, cuidadosa e confiável, apresentada com fotografia limpa, verde 
 - Alvos de toque com área adequada e foco nunca encoberto.
 - Header e hero devem caber no primeiro viewport sem cortar ações essenciais.
 
+## Formulários
+
+- Nunca confirmar uma ação externa sem verificar se ela foi iniciada.
+- Erros devem ser apresentados pelo navegador ou em região `aria-live`.
+- Instruções de formato devem estar associadas por `aria-describedby`.
+- Sempre oferecer recuperação quando uma nova guia puder ser bloqueada.
+
 ## Pendências
 
 - Substituir o hero que contém arte antiga embutida.

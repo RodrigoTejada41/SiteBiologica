@@ -9,6 +9,8 @@
 - Governança documental criada antes da nova fase de implementação.
 - Recorte temporário do hero validado em tablet, sem exibir texto ou logomarca embutidos.
 - Metadados do Twitter e ícone vetorial do manifesto adicionados.
+- Formulário passou a validar telefone e recuperar bloqueio de pop-up com link focado.
+- Link “Como chegar” adicionado ao contato e rodapé.
 
 ## Marcos anteriores
 

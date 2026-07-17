@@ -130,6 +130,10 @@ export const services: Service[] = [
   },
 ];
 
+export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  `${company.address.street}, CEP ${company.address.postalCode}, ${company.address.city} - ${company.address.region}`,
+)}`;
+
 export const clients: Array<{ name: string; image: ImageMetadata }> = [
   { name: 'Arte Verde', image: arteVerde },
   { name: 'De Marchi', image: deMarchi },

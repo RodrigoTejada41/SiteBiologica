@@ -1,5 +1,5 @@
 ---
-import { company, whatsappUrl } from '../data/site';
+import { company, mapsUrl, whatsappUrl } from '../data/site';
 const year = new Date().getFullYear();
 ---
 
@@ -17,6 +17,7 @@ const year = new Date().getFullYear();
         {company.address.street}<br />
         CEP {company.address.postalCode} — {company.address.city}/{company.address.region}
       </address>
+      <a href={mapsUrl} target="_blank" rel="noopener noreferrer">Como chegar</a>
       <a href={whatsappUrl('Olá! Gostaria de solicitar um orçamento.')} target="_blank" rel="noopener noreferrer">
         WhatsApp {company.whatsappDisplay}
       </a>

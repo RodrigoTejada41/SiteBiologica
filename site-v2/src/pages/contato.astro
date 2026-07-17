@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { company, services, whatsappUrl } from '../data/site';
+import { company, mapsUrl, services, whatsappUrl } from '../data/site';
 ---
 
 <BaseLayout
@@ -51,6 +51,7 @@ import { company, services, whatsappUrl } from '../data/site';
               {company.address.street}<br />
               CEP {company.address.postalCode} — {company.address.city}/{company.address.region}
             </address>
+            <a href={mapsUrl} target="_blank" rel="noopener noreferrer">Como chegar →</a>
           </li>
         </ul>
       </aside>
@@ -66,7 +67,19 @@ import { company, services, whatsappUrl } from '../data/site';
           </div>
           <div class="field">
             <label for="phone">Telefone</label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required />
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+              inputmode="tel"
+              minlength="10"
+              maxlength="20"
+              pattern="[0-9\(\) +.\-]{10,20}"
+              aria-describedby="phone-hint"
+              required
+            />
+            <small id="phone-hint">Inclua o DDD. Exemplo: (11) 99999-9999.</small>
           </div>
           <div class="field">
             <label for="service">Serviço</label>
@@ -101,6 +114,13 @@ import { company, services, whatsappUrl } from '../data/site';
           <span>Autorizo o uso destas informações para iniciar o atendimento pelo WhatsApp.</span>
         </label>
         <button class="button button-primary" type="submit">Preparar mensagem no WhatsApp</button>
+        <a
+          class="button button-link form-fallback"
+          data-wa-fallback
+          target="_blank"
+          rel="noopener noreferrer"
+          hidden
+        >Abrir WhatsApp manualmente →</a>
         <p class="form-feedback" data-form-feedback aria-live="polite"></p>
       </form>
     </div>
@@ -109,6 +129,7 @@ import { company, services, whatsappUrl } from '../data/site';
   <script>
     const form = document.querySelector<HTMLFormElement>('[data-quote-form]');
     const feedback = document.querySelector<HTMLElement>('[data-form-feedback]');
+    const fallback = document.querySelector<HTMLAnchorElement>('[data-wa-fallback]');
 
     form?.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -126,9 +147,26 @@ import { company, services, whatsappUrl } from '../data/site';
         `Descrição: ${data.get('message')}`,
       ];
       const number = form.dataset.whatsapp;
+      if (!number) {
+        feedback && (feedback.textContent = 'Não foi possível preparar o contato. Use um dos canais ao lado.');
+        return;
+      }
+
       const url = `https://wa.me/${number}?text=${encodeURIComponent(lines.join('\n'))}`;
-      feedback && (feedback.textContent = 'Mensagem preparada. O WhatsApp será aberto em uma nova guia.');
-      window.open(url, '_blank', 'noopener,noreferrer');
+      fallback?.toggleAttribute('hidden', true);
+      const popup = window.open(url, '_blank', 'noopener,noreferrer');
+
+      if (popup) {
+        feedback && (feedback.textContent = 'Mensagem preparada. O WhatsApp foi aberto em uma nova guia.');
+        return;
+      }
+
+      if (fallback) {
+        fallback.href = url;
+        fallback.hidden = false;
+        fallback.focus();
+      }
+      feedback && (feedback.textContent = 'A nova guia foi bloqueada. Use o link para abrir o WhatsApp.');
     });
   </script>
 </BaseLayout>
