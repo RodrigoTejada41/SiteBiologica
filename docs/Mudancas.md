@@ -39,6 +39,19 @@ Cada registro deve informar data, arquivo, motivo, antes, depois, benefício e i
 | Impacto | UX, acessibilidade, conversão e SEO local; sem armazenamento de dados |
 | Validação | Build Docker; Playwright com telefone inválido e pop-up bloqueado; fallback visível e focado |
 
+## 2026-07-16 — Conteúdo estruturado dos serviços
+
+| Campo | Registro |
+|---|---|
+| Status | Concluída e validada nas oito rotas |
+| Arquivos | `site.ts`, `ServiceInformation.astro`, `[slug].astro`, `global.css` |
+| Motivo | As páginas de serviço tinham apenas um parágrafo específico e pouca orientação antes do contato |
+| Antes | Resumo, indicação e CTA |
+| Depois | Sinais, abordagem, preparação, cuidados, FAQ e Schema estruturados |
+| Benefício | Mais clareza, conteúdo único, SEO e conversão contextual |
+| Impacto | Oito rotas de serviço; texto cauteloso sem promessas ou credenciais inventadas |
+| Validação | Build Astro; 500–570 palavras por rota; JSON-LD válido; Playwright em 1440×900 e 390×844 |
+
 ## Modelo
 
 ```text

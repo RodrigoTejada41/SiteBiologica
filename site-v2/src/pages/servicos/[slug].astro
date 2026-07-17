@@ -2,8 +2,9 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
+import ServiceInformation from '../../components/ServiceInformation.astro';
 import CtaPanel from '../../components/CtaPanel.astro';
-import { services, whatsappUrl, type Service } from '../../data/site';
+import { company, services, whatsappUrl, type Service } from '../../data/site';
 
 export function getStaticPaths() {
   return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
@@ -12,16 +13,27 @@ export function getStaticPaths() {
 type Props = { service: Service };
 const { service } = Astro.props;
 const related = services.filter((item) => item.slug !== service.slug).slice(0, 3);
-const schema = {
-  '@context': 'https://schema.org',
+const serviceSchema = {
   '@type': 'Service',
   name: service.name,
   description: service.short,
   provider: {
     '@type': 'Organization',
-    name: 'Evolução Biológica Controle de Pragas',
+    name: company.legalLabel,
   },
-  areaServed: 'São Paulo',
+  areaServed: company.region,
+};
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: service.details.faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [serviceSchema, faqSchema],
 };
 ---
 
@@ -71,6 +83,8 @@ const schema = {
       </div>
     </div>
   </section>
+
+  <ServiceInformation service={service} />
 
   <section class="section section-soft" aria-labelledby="related-title">
     <div class="container">

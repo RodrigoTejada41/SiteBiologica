@@ -1,0 +1,69 @@
+---
+import type { Service } from '../data/site';
+
+type Props = { service: Service };
+const { service } = Astro.props;
+---
+
+<section class="section" aria-labelledby="service-guide-title">
+  <div class="container service-guide">
+    <div class="section-heading" data-reveal>
+      <div>
+        <span class="eyebrow">Antes do contato</span>
+        <h2 id="service-guide-title">Informações para orientar o atendimento.</h2>
+      </div>
+      <p>Os sinais ajudam na conversa inicial, mas a definição do serviço depende da avaliação do ambiente.</p>
+    </div>
+
+    <div class="service-guide-grid">
+      <article data-reveal>
+        <span class="service-guide-number" aria-hidden="true">01</span>
+        <h3>Sinais que merecem avaliação</h3>
+        <ul>
+          {service.details.signs.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+      <article data-reveal>
+        <span class="service-guide-number" aria-hidden="true">02</span>
+        <h3>Como o atendimento é orientado</h3>
+        <ol>
+          {service.details.approach.map((item) => <li>{item}</li>)}
+        </ol>
+      </article>
+      <article data-reveal>
+        <span class="service-guide-number" aria-hidden="true">03</span>
+        <h3>Como se preparar</h3>
+        <ul>
+          {service.details.preparation.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+      <article data-reveal>
+        <span class="service-guide-number" aria-hidden="true">04</span>
+        <h3>Cuidados posteriores</h3>
+        <ul>
+          {service.details.aftercare.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft" aria-labelledby="service-faq-title">
+  <div class="container">
+    <div class="section-heading" data-reveal>
+      <div>
+        <span class="eyebrow">Dúvidas sobre {service.name.toLowerCase()}</span>
+        <h2 id="service-faq-title">O que confirmar antes de agendar.</h2>
+      </div>
+      <p>As orientações finais variam conforme o método, a estrutura e a rotina do imóvel.</p>
+    </div>
+    <div class="faq-list">
+      {service.details.faqs.map((faq) => (
+        <details data-reveal>
+          <summary>{faq.question}</summary>
+          <p>{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

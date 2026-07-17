@@ -24,6 +24,10 @@ Grade de logotipos disponíveis no acervo. Uso público depende de autorização
 
 Conversão final reutilizada nas páginas institucionais e de serviço.
 
+## `ServiceInformation`
+
+Conteúdo aprofundado e tipado de cada serviço: sinais, abordagem, preparação, cuidados posteriores e perguntas frequentes. Deve renderizar dados, não conter regras específicas de um serviço.
+
 ## Regras
 
 - Props tipadas.

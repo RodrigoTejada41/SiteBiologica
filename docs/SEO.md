@@ -13,7 +13,8 @@
 
 - Criar imagem Open Graph 1200×630 atualizada.
 - Metadados explícitos do Twitter implementados; repetir validação no domínio final.
-- Ampliar conteúdo único das páginas de serviço.
+- Conteúdo único das páginas de serviço ampliado em estrutura tipada.
+- `FAQPage` gerado por serviço a partir do mesmo conteúdo exibido na página.
 - Link de mapa implementado; perfis oficiais continuam pendentes de confirmação.
 - Manter endereço textual junto do link de mapa para fortalecer consistência local.
 - Validar domínio, canonicals, sitemap e indexação após publicação.
