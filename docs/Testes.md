@@ -10,7 +10,7 @@ npm audit
 
 `npm test` gera o site e valida:
 
-- presença das 14 páginas esperadas;
+- presença das 15 páginas esperadas;
 - idioma, H1, description e canonical;
 - resolução de links internos;
 - `rel="noopener noreferrer"` em novas guias;
@@ -46,3 +46,11 @@ Resultado final local: móvel 93 em performance, 100 em acessibilidade e SEO; de
 - HTTP 200 confirmado em `/`, `/servicos/`, `/contato/` e `/clientes/`.
 - HTML inicial confirmado com a fotografia `hero-v2` e o texto alternativo do selo.
 - Publicação restrita ao ambiente local; produção não alterada.
+- Área do cliente adicionada ao conjunto de testes: `noindex, nofollow` e mensagem “Em desenvolvimento” obrigatórios.
+- Resultado após a nova rota: 15 páginas, 242 links internos, 24 blocos JSON-LD e quatro hashes CSP.
+- Navegação para `/area-do-cliente/`, layout desktop 1440×900 e mobile 390×844 validados com Playwright.
+- Menu móvel confirmado com os botões “Área do cliente” e “Solicitar orçamento”, fechamento por `Esc` e foco preservado.
+- Validador garante que os números administrativo e financeiro não sejam exibidos fora de `/contato/`.
+- Chrome percorreu as 15 rotas e confirmou ausência visual dos números fora da página de contato.
+- Formulário conferido em 806×805 e 390×844: “Nome”/“Telefone” e “Serviço”/“Tipo de ambiente” alinhados; campos de largura total consistentes.
+- Container `site-evolucao-v2` reconstruído após as correções e confirmado como saudável.

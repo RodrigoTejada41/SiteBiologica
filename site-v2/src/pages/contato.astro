@@ -28,14 +28,20 @@ import { company, mapsUrl, services, whatsappUrl } from '../data/site';
         <p>Escolha o canal mais conveniente. Para agilizar a análise inicial, informe o ambiente, a localização e os sinais encontrados.</p>
         <ul class="contact-list">
           <li>
-            <span>WhatsApp</span>
-            <a href={whatsappUrl('Olá! Gostaria de solicitar um orçamento.')} target="_blank" rel="noopener noreferrer">
-              {company.whatsappDisplay}
+            <span>{company.contacts.administration.label}</span>
+            <a href={whatsappUrl('Olá! Gostaria de falar com o setor administrativo.')} target="_blank" rel="noopener noreferrer">
+              {company.contacts.administration.display}
             </a>
           </li>
           <li>
-            <span>Telefones</span>
-            {company.phones.map((phone) => <div><a href={phone.href}>{phone.display}</a></div>)}
+            <span>{company.contacts.financial.label}</span>
+            <a
+              href={whatsappUrl('Olá! Gostaria de falar com o setor financeiro.', company.contacts.financial.number)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {company.contacts.financial.display}
+            </a>
           </li>
           <li>
             <span>E-mail</span>
@@ -56,7 +62,7 @@ import { company, mapsUrl, services, whatsappUrl } from '../data/site';
         </ul>
       </aside>
 
-      <form class="quote-form" data-quote-form data-whatsapp={company.whatsappNumber} data-reveal>
+      <form class="quote-form" data-quote-form data-whatsapp={company.contacts.administration.number} data-reveal>
         <span class="eyebrow">Orçamento</span>
         <h2>Solicite seu orçamento.</h2>
         <p>Preencha os dados abaixo. A mensagem será preparada para você revisar e enviar pelo WhatsApp.</p>

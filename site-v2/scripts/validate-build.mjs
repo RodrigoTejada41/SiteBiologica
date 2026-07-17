@@ -8,6 +8,7 @@ const distDir = join(projectRoot, 'dist');
 const expectedPages = [
   'index.html',
   '404.html',
+  'area-do-cliente/index.html',
   'clientes/index.html',
   'contato/index.html',
   'politica-de-privacidade/index.html',
@@ -41,10 +42,18 @@ for (const relativeFile of expectedPages) {
   if (!existsSync(file)) continue;
 
   const html = readFileSync(file, 'utf8');
+  const visibleText = html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ');
   check(/<html\b[^>]*\blang=["']pt-BR["']/i.test(html), `${relativeFile}: idioma pt-BR ausente`);
   check((html.match(/<h1\b/gi) ?? []).length === 1, `${relativeFile}: deve existir exatamente um H1`);
   check(/<meta\b[^>]*\bname=["']description["'][^>]*\bcontent=["'][^"']+["']/i.test(html), `${relativeFile}: description ausente`);
   check(/<link\b[^>]*\brel=["']canonical["'][^>]*\bhref=["']https:\/\//i.test(html), `${relativeFile}: canonical HTTPS ausente`);
+  if (relativeFile !== 'contato/index.html') {
+    check(!visibleText.includes('(11) 96586-2473'), `${relativeFile}: telefone administrativo visível fora do contato`);
+    check(!visibleText.includes('(11) 99329-2873'), `${relativeFile}: telefone financeiro visível fora do contato`);
+  }
 
   for (const anchor of html.match(/<a\b[^>]*>/gi) ?? []) {
     const href = attribute(anchor, 'href');
@@ -99,6 +108,10 @@ const contactHtml = readFileSync(join(distDir, 'contato/index.html'), 'utf8');
 check(contactHtml.includes('data-wa-fallback'), 'contato: fallback do WhatsApp ausente');
 check(contactHtml.includes('aria-describedby="phone-hint"'), 'contato: instrução acessível do telefone ausente');
 check(/id="phone"[^>]*pattern=/i.test(contactHtml), 'contato: validação de telefone ausente');
+check(contactHtml.includes('wa.me/5511965862473'), 'contato: WhatsApp administrativo incorreto');
+check(contactHtml.includes('wa.me/5511993292873'), 'contato: WhatsApp financeiro incorreto');
+check(contactHtml.includes('(11) 96586-2473'), 'contato: telefone administrativo ausente');
+check(contactHtml.includes('(11) 99329-2873'), 'contato: telefone financeiro ausente');
 
 const homeHtml = readFileSync(join(distDir, 'index.html'), 'utf8');
 const socialImagePath = join(distDir, 'images/og-v2.jpg');
@@ -111,6 +124,10 @@ check(existsSync(socialImagePath), 'imagem Open Graph ausente no build');
 if (existsSync(socialImagePath)) {
   check(statSync(socialImagePath).size <= 200 * 1024, 'imagem Open Graph acima de 200 KiB');
 }
+
+const clientAreaHtml = readFileSync(join(distDir, 'area-do-cliente/index.html'), 'utf8');
+check(/name="robots" content="noindex, nofollow"/i.test(clientAreaHtml), 'área do cliente: noindex ausente');
+check(clientAreaHtml.includes('Em desenvolvimento'), 'área do cliente: status de desenvolvimento ausente');
 
 const cspPath = join(projectRoot, 'csp.conf');
 check(existsSync(cspPath), 'csp.conf ausente');

@@ -6,11 +6,15 @@ Estrutura HTML global, metadados, JSON-LD da organização, header, footer e rev
 
 ## `Header`
 
-Navegação principal, estado ativo, menu móvel e CTA de orçamento.
+Navegação principal, estado ativo, menu móvel, botão da área do cliente e CTA de orçamento.
 
 ## `Footer`
 
-Dados de contato, navegação secundária e barra de contato móvel.
+Endereço, mapa, e-mail, navegação secundária com acesso à área do cliente e barra de contato móvel. Telefones não são exibidos globalmente.
+
+## Página de contato
+
+Único local com os números do WhatsApp administrativo e financeiro. O formulário envia solicitações de orçamento ao atendimento administrativo.
 
 ## `ServiceCard`
 

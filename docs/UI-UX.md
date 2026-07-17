@@ -63,3 +63,6 @@ Prompt final: fotografia editorial realista de um técnico treinado inspecionand
 - Selo Prêmio Quality Brasil adicionado sobre a fotografia do hero, sem substituí-la, e repetido no rodapé.
 - Versão aprimorada do selo em `src/assets/brand/selo-premio-quality-brasil.png` e original preservado em `src/assets/brand/selo-premio-quality-brasil-original.png`.
 - Composição validada em desktop e mobile, com escala e posição específicas por viewport.
+- Verde-bandeira `#009C3B` definido como base da paleta digital, com variações escuras para textos brancos e tons claros para superfícies e estados.
+- Grid do formulário ajustado com alinhamento pelo topo para impedir alturas e posições diferentes quando apenas um campo possui texto auxiliar.
+- Telefones removidos do rodapé para reduzir repetição; números administrativo e financeiro concentrados na página de contato.

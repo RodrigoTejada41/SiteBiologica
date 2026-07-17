@@ -8,6 +8,9 @@ Fonte oficial para arquitetura, decisões, execução e manutenção do site Evo
 - Site V2 em Astro disponível em `http://localhost:8083/`.
 - Identidade obrigatoriamente preservada: logomarca e cores institucionais.
 - Modernização local, revisão editorial, catálogo de serviços e selo institucional concluídos.
+- Área do cliente disponível como página informativa em `/area-do-cliente/`, aguardando integração com o CRM.
+- Telefones fixos removidos; WhatsApps administrativo e financeiro disponíveis somente em `/contato/`.
+- Formulário de orçamento alinhado e validado em desktop e celular.
 - Container V2 atualizado e saudável; produção externa não foi alterada.
 - Publicação final continua pendente de autorização específica e acesso ao provedor.
 - DNS, domínio e HTTPS foram deliberadamente adiados para a última fase.

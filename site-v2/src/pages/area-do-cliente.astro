@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { whatsappUrl } from '../data/site';
+---
+
+<BaseLayout
+  title="Área do cliente"
+  description="Portal do cliente da Evolução Biológica em desenvolvimento."
+  noindex
+>
+  <section class="client-area-page" aria-labelledby="client-area-title">
+    <div class="client-area-inner container">
+      <div class="client-area-copy" data-reveal>
+        <span class="development-status">
+          <span aria-hidden="true"></span>
+          Em desenvolvimento
+        </span>
+        <h1 id="client-area-title">Sua área de acompanhamento está a caminho.</h1>
+        <p>
+          Estamos desenvolvendo um portal integrado ao novo sistema de gestão da Evolução Biológica. Em breve,
+          clientes autorizados poderão acompanhar suas ordens de serviço com mais praticidade e transparência.
+        </p>
+        <div class="client-area-actions">
+          <a class="button button-light" href="/">Voltar ao início</a>
+          <a
+            class="button button-outline-light"
+            href={whatsappUrl('Olá! Preciso de informações sobre uma ordem de serviço.')}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Falar com o atendimento
+          </a>
+        </div>
+      </div>
+
+      <div class="client-area-roadmap" data-reveal aria-labelledby="client-area-roadmap-title">
+        <span class="client-area-label">Portal do cliente</span>
+        <h2 id="client-area-roadmap-title">Recursos em preparação</h2>
+        <ul>
+          <li><span aria-hidden="true">01</span>Acompanhamento de ordens de serviço</li>
+          <li><span aria-hidden="true">02</span>Consulta ao histórico de atendimentos</li>
+          <li><span aria-hidden="true">03</span>Informações organizadas por cliente</li>
+        </ul>
+        <p>O acesso será liberado quando a integração estiver concluída e validada.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

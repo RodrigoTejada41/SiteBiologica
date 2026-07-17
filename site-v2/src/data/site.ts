@@ -28,12 +28,18 @@ export const company = {
   name: 'Evolução Biológica',
   legalLabel: 'Evolução Biológica Controle de Pragas',
   email: 'contato@evolucaobiologica.com',
-  whatsappDisplay: '(11) 96586-2473',
-  whatsappNumber: '5511965862473',
-  phones: [
-    { display: '(11) 5932-5173', href: 'tel:+551159325173' },
-    { display: '(11) 5662-8235', href: 'tel:+551156628235' },
-  ],
+  contacts: {
+    administration: {
+      label: 'Administrativo e WhatsApp',
+      display: '(11) 96586-2473',
+      number: '5511965862473',
+    },
+    financial: {
+      label: 'Financeiro e WhatsApp',
+      display: '(11) 99329-2873',
+      number: '5511993292873',
+    },
+  },
   hours: 'Segunda a sexta-feira, das 10h às 18h',
   address: {
     street: 'Avenida Fernando Amaro Miranda, 374',
@@ -398,5 +404,7 @@ export const clients: Array<{ name: string; image: ImageMetadata }> = [
   { name: 'Sacolão Higienópolis', image: sacolao },
 ];
 
-export const whatsappUrl = (message: string) =>
-  `https://wa.me/${company.whatsappNumber}?text=${encodeURIComponent(message)}`;
+export const whatsappUrl = (
+  message: string,
+  number = company.contacts.administration.number,
+) => `https://wa.me/${number}?text=${encodeURIComponent(message)}`;

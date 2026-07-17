@@ -42,14 +42,23 @@ const isActive = (href: string) =>
           </li>
         ))}
       </ul>
-      <a
-        class="button button-primary header-cta"
-        href={whatsappUrl('Olá! Gostaria de solicitar um orçamento.')}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Solicitar orçamento
-      </a>
+      <div class="header-actions">
+        <a
+          class="button button-secondary header-client"
+          href="/area-do-cliente"
+          aria-current={isActive('/area-do-cliente') ? 'page' : undefined}
+        >
+          Área do cliente
+        </a>
+        <a
+          class="button button-primary header-cta"
+          href={whatsappUrl('Olá! Gostaria de solicitar um orçamento.')}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Solicitar orçamento
+        </a>
+      </div>
     </nav>
   </div>
 </header>

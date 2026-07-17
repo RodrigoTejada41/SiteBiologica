@@ -2,6 +2,45 @@
 
 Cada registro deve informar data, arquivo, motivo, antes, depois, benefício e impacto.
 
+## 2026-07-17 — Contatos e alinhamento do orçamento
+
+| Campo | Registro |
+|---|---|
+| Status | Concluída, testada e publicada no ambiente local |
+| Arquivos | `site.ts`, `contato.astro`, `Footer.astro`, `BaseLayout.astro`, `global.css`, `validate-build.mjs` |
+| Motivo | Remover telefones fixos desativados, restringir a exibição dos números à página de contato e corrigir campos desalinhados |
+| Antes | Fixos `(11) 5932-5173` e `(11) 5662-8235`; telefones repetidos no rodapé; campo “Nome” esticado pelo texto auxiliar do telefone |
+| Depois | WhatsApp administrativo `(11) 96586-2473` e financeiro `(11) 99329-2873` visíveis somente em `/contato/`; controles da mesma linha alinhados pelo topo |
+| Benefício | Contatos corretos, menor duplicação visual e formulário consistente em desktop e celular |
+| Impacto | CTAs e formulário de orçamento continuam usando o WhatsApp administrativo; financeiro possui link próprio na página de contato |
+| Validação | `npm test`; 15 rotas inspecionadas no Chrome; geometria dos campos validada em 806×805 e 390×844; container saudável em `http://localhost:8083/` |
+
+## 2026-07-17 — Paleta verde-bandeira
+
+| Campo | Registro |
+|---|---|
+| Status | Concluída e validada localmente |
+| Arquivos | `global.css`, `BaseLayout.astro`, `manifest.webmanifest` |
+| Motivo | Adotar o verde-bandeira solicitado como cor principal do site |
+| Antes | Verde principal `#19A94B` e escala institucional anterior |
+| Depois | Verde-bandeira `#009C3B` como base; tons `#00752D` e `#005E24` em fundos e CTAs com texto branco |
+| Benefício | Identidade cromática mais alinhada à preferência do cliente sem perda de legibilidade |
+| Impacto | Botões, fundos, destaques, tema do navegador e manifesto; logomarca original preservada |
+| Validação | Build automatizado, contraste da escala e conferência visual desktop/mobile |
+
+## 2026-07-17 — Área do cliente em desenvolvimento
+
+| Campo | Registro |
+|---|---|
+| Status | Concluída e publicada somente no ambiente local |
+| Arquivos | `Header.astro`, `Footer.astro`, `area-do-cliente.astro`, `global.css`, `validate-build.mjs` |
+| Motivo | Preparar o acesso futuro dos clientes às ordens de serviço do CRM em desenvolvimento |
+| Antes | Site sem entrada para o futuro portal do cliente |
+| Depois | Botão destacado no cabeçalho, link no rodapé e página informativa com status, recursos planejados e contato atual |
+| Benefício | Comunica a evolução do serviço sem criar expectativa de login já disponível |
+| Impacto | Nova rota estática, responsiva e marcada como `noindex, nofollow`; nenhuma autenticação ou integração implementada nesta fase |
+| Validação | `npm test`: 15 páginas, 242 links internos, 24 JSON-LD e quatro hashes CSP; Playwright em 1440×900 e 390×844 |
+
 ## 2026-07-17 — Conteúdo institucional e catálogo de serviços
 
 | Campo | Registro |

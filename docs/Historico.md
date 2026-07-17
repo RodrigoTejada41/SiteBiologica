@@ -10,6 +10,14 @@
 - Fotografia original do hero foi mantida; o selo funciona como elemento complementar e responsivo.
 - Build e validação aprovados: 14 páginas, 202 links internos, 23 blocos JSON-LD e quatro hashes CSP.
 - Container local reconstruído e validado como saudável em `http://localhost:8083/`; nenhuma publicação externa realizada.
+- Botão “Área do cliente” adicionado ao cabeçalho e ao rodapé, com página responsiva de desenvolvimento em `/area-do-cliente/`.
+- Página futura do portal marcada como `noindex, nofollow`, sem formulário de acesso ou funcionalidade simulada.
+- Validação ampliada para 15 páginas, 242 links internos, 24 blocos JSON-LD e quatro hashes CSP.
+- Paleta digital atualizada para verde-bandeira `#009C3B`, com tons derivados mais escuros para preservar contraste e acessibilidade.
+- Telefones fixos antigos removidos; contatos centralizados em WhatsApp administrativo `(11) 96586-2473` e financeiro `(11) 99329-2873`.
+- Números deixaram de aparecer no rodapé e nas páginas globais, permanecendo visíveis somente em `/contato/`; CTAs genéricos continuam direcionando ao WhatsApp administrativo.
+- Formulário de orçamento corrigido para impedir o esticamento desigual entre campos da mesma linha.
+- Todas as 15 rotas foram verificadas no Chrome; alinhamento do formulário aprovado em desktop e celular.
 
 ## 2026-07-16
 
