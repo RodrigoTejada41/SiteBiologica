@@ -13,6 +13,8 @@
 - Link “Como chegar” adicionado ao contato e rodapé.
 - Oito páginas de serviço ampliadas com sinais, abordagem, preparação, cuidados e FAQ.
 - Dados `Service` e `FAQPage` consolidados em JSON-LD por rota.
+- CSP passou a aceitar somente scripts próprios com hashes gerados no build.
+- HSTS removido do container HTTP e reservado ao proxy HTTPS de produção.
 
 ## Marcos anteriores
 

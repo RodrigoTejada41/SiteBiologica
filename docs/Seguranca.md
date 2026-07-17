@@ -12,16 +12,18 @@
 ### SEC-001 — CSP permite script inline
 
 - **Severidade:** média.
-- **Local:** `site-v2/nginx.conf:20`.
-- **Evidência:** `script-src 'self' 'unsafe-inline'`.
+- **Status:** corrigido.
+- **Local:** `site-v2/scripts/generate-csp.mjs` e `site-v2/nginx.conf`.
+- **Evidência atual:** `script-src 'self'` seguido apenas pelos hashes SHA-256 gerados após o build.
 - **Impacto:** enfraquece defesa em profundidade contra XSS futuro.
 - **Correção:** externalizar scripts executáveis ou usar hashes; remover `unsafe-inline` após teste completo.
+- **Decisão de implementação:** gerar hashes SHA-256 do HTML final e incluir o arquivo resultante no Nginx.
 
 ### SEC-002 — HSTS fora do terminador TLS
 
 - **Severidade:** média operacional.
-- **Local:** `site-v2/nginx.conf:21`.
-- **Evidência:** um ano com `includeSubDomains` no servidor HTTP interno.
+- **Status:** corrigido no container.
+- **Evidência atual:** o servidor HTTP interno não envia `Strict-Transport-Security`.
 - **Impacto:** configuração prematura em produção pode bloquear subdomínios sem HTTPS.
 - **Correção:** remover do container HTTP e configurar no proxy HTTPS somente após validação.
 

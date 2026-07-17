@@ -14,6 +14,7 @@ Astro 7 + TypeScript
   └─ styles: tokens e estilos globais
           ↓ astro build
      HTML/CSS/JS/imagens versionadas
+          + hashes CSP do build
           ↓
         Nginx
 ```
@@ -36,6 +37,7 @@ Astro 7 + TypeScript
 - `src/pages`: composição de cada rota.
 - `src/styles/global.css`: tokens, layout, estados, responsividade e movimento.
 - `nginx.conf`: cache, redirecionamentos, erros e cabeçalhos HTTP.
+- `scripts/generate-csp.mjs`: hashes dos scripts inline presentes no HTML final.
 
 ## Restrições
 

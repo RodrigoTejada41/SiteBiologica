@@ -8,6 +8,8 @@ npm ci
 npm run build
 ```
 
+O build também gera `csp.conf` com hashes dos scripts executáveis do HTML final. A imagem Docker copia esse arquivo para o Nginx.
+
 ## Container local
 
 ```sh

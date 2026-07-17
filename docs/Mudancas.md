@@ -52,6 +52,19 @@ Cada registro deve informar data, arquivo, motivo, antes, depois, benefício e i
 | Impacto | Oito rotas de serviço; texto cauteloso sem promessas ou credenciais inventadas |
 | Validação | Build Astro; 500–570 palavras por rota; JSON-LD válido; Playwright em 1440×900 e 390×844 |
 
+## 2026-07-16 — CSP estrita e HSTS no ponto correto
+
+| Campo | Registro |
+|---|---|
+| Status | Concluída no ambiente local |
+| Arquivos | `generate-csp.mjs`, `package.json`, `Dockerfile`, `nginx.conf`, `.gitignore` |
+| Motivo | Remover `unsafe-inline` de scripts sem quebrar os módulos Astro e evitar HSTS prematuro no servidor HTTP interno |
+| Antes | CSP aceitava qualquer script inline; HSTS de um ano com subdomínios no container HTTP |
+| Depois | Hashes SHA-256 gerados por build e HSTS reservado ao proxy HTTPS |
+| Benefício | Defesa contra XSS mais forte e menor risco operacional de domínio |
+| Impacto | Pipeline de build e cabeçalhos HTTP; sem mudança de interface |
+| Validação | Quatro hashes gerados; `nginx -t`; headers via HTTP; menu e formulário via Playwright |
+
 ## Modelo
 
 ```text

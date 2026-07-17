@@ -50,6 +50,7 @@
 **/node_modules/
 **/dist/
 **/.astro/
+/site-v2/csp.conf
 *.log
 .env
 .env.*
