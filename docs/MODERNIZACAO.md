@@ -87,6 +87,8 @@ A pontuação local de boas práticas é afetada por um script injetado pelo Kas
 4. **Publicação:** configurar domínio, HTTPS, redirecionamentos das URLs antigas e monitoramento.
 5. **Pós-publicação:** Search Console, métricas de conversão consentidas e ajustes baseados em dados reais.
 
+Checklist operacional: [`PUBLICACAO.md`](./PUBLICACAO.md).
+
 ## Dados que exigem confirmação
 
 - Licenças, certificações, responsável técnico e garantias.
