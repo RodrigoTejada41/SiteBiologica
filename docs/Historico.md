@@ -15,6 +15,7 @@
 - Dados `Service` e `FAQPage` consolidados em JSON-LD por rota.
 - CSP passou a aceitar somente scripts próprios com hashes gerados no build.
 - HSTS removido do container HTTP e reservado ao proxy HTTPS de produção.
+- Validador automático adicionado para páginas, links, SEO, JSON-LD, formulário, manifesto e CSP.
 
 ## Marcos anteriores
 

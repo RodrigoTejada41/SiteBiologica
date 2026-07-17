@@ -65,6 +65,19 @@ Cada registro deve informar data, arquivo, motivo, antes, depois, benefício e i
 | Impacto | Pipeline de build e cabeçalhos HTTP; sem mudança de interface |
 | Validação | Quatro hashes gerados; `nginx -t`; headers via HTTP; menu e formulário via Playwright |
 
+## 2026-07-16 — Validação automática do build
+
+| Campo | Registro |
+|---|---|
+| Status | Concluída |
+| Arquivos | `validate-build.mjs`, `package.json`, `docs/Testes.md` |
+| Motivo | O projeto dependia apenas de verificações manuais e do build do Astro |
+| Antes | Erros de links, metadados ou CSP podiam passar até a auditoria manual |
+| Depois | Teste determinístico do HTML final e da política CSP |
+| Benefício | Regressões detectadas antes do container e da publicação |
+| Impacto | Desenvolvimento e CI futura; sem código enviado ao navegador |
+| Validação | `npm test`: 14 páginas, 202 links internos, 23 JSON-LD e quatro hashes CSP |
+
 ## Modelo
 
 ```text

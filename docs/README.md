@@ -25,6 +25,7 @@ Fonte oficial para arquitetura, decisões, execução e manutenção do site Evo
 - [API](./API.md)
 - [Deploy](./Deploy.md)
 - [Checklist](./Checklist.md)
+- [Testes](./Testes.md)
 - [Histórico](./Historico.md)
 - [Modernização anterior](./MODERNIZACAO.md)
 - [Publicação anterior](./PUBLICACAO.md)

@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build && node scripts/generate-csp.mjs",
+    "test": "npm run build && node scripts/validate-build.mjs",
+    "validate": "node scripts/validate-build.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
