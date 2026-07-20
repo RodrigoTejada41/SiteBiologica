@@ -45,3 +45,11 @@
 - **Status:** aceito.
 - **Decisão:** DNS, certificado, redirecionamento HTTPS, canonical de produção e HSTS serão configurados somente após o aceite final do site.
 - **Consequência:** o ambiente local continua em HTTP; isso não deve ser tratado como falha do código da aplicação.
+
+## ADR-009 — Host HTTPS temporário para demonstração
+
+- **Status:** aceito e implementado em 2026-07-20.
+- **Decisão:** publicar a versão aprovada em uma VPS isolada usando `sslip.io` e Caddy somente para demonstração ao cliente.
+- **Motivo:** disponibilizar HTTPS válido sem alterar antecipadamente o DNS oficial.
+- **Consequência:** a URL temporária depende do DNS externo `sslip.io` e não deve ser tratada como produção.
+- **Limite:** domínio oficial, DNS, HSTS e Search Console permanecem pendentes de autorização específica.

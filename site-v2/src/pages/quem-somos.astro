@@ -1,0 +1,135 @@
+---
+import { Image } from 'astro:assets';
+import sanitizacaoImage from '../assets/services/img_sanitizacao.jpg';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaPanel from '../components/CtaPanel.astro';
+
+const values = [
+  {
+    name: 'Ética e Transparência',
+    description: 'Agimos com honestidade, respeito e responsabilidade em todas as nossas relações.',
+  },
+  {
+    name: 'Compromisso com o Cliente',
+    description: 'Buscamos compreender cada necessidade para oferecer soluções personalizadas e resultados efetivos.',
+  },
+  {
+    name: 'Excelência Técnica',
+    description: 'Investimos continuamente na capacitação da equipe, em tecnologia e na melhoria dos processos.',
+  },
+  {
+    name: 'Segurança',
+    description: 'Priorizamos a proteção das pessoas, dos animais e do meio ambiente em todas as nossas operações.',
+  },
+  {
+    name: 'Responsabilidade Ambiental',
+    description: 'Atuamos com práticas sustentáveis, utilizando métodos e produtos aprovados pelos órgãos competentes.',
+  },
+  {
+    name: 'Inovação',
+    description: 'Buscamos constantemente novas tecnologias e metodologias para aumentar a eficiência e a qualidade dos nossos serviços.',
+  },
+  {
+    name: 'Qualidade',
+    description: 'Mantemos elevados padrões de desempenho, assegurando serviços confiáveis e duradouros.',
+  },
+];
+---
+
+<BaseLayout
+  title="Quem somos"
+  description="Conheça a Evolução Biológica, empresa com mais de 15 anos de experiência em Manejo Integrado de Pragas Urbanas, sua missão, visão e valores."
+>
+  <header class="page-hero institutional-hero">
+    <div class="page-hero-inner container">
+      <div>
+        <ol class="breadcrumb" aria-label="Navegação estrutural">
+          <li><a href="/">Início</a></li>
+          <li aria-current="page">Quem somos</li>
+        </ol>
+        <h1>Quem somos</h1>
+      </div>
+      <p>Experiência, conhecimento técnico e responsabilidade para proteger pessoas, patrimônios e negócios.</p>
+    </div>
+  </header>
+
+  <section class="section" aria-labelledby="about-story-title">
+    <div class="container institutional-story">
+      <div class="institutional-intro" data-reveal>
+        <span class="eyebrow">Evolução Biológica</span>
+        <h2 id="about-story-title">Mais de 15 anos de atuação especializada.</h2>
+        <Image
+          src={sanitizacaoImage}
+          alt="Profissional da Evolução Biológica realizando aplicação técnica"
+          widths={[520, 760, 1024]}
+          sizes="(max-width: 899px) 100vw, 42vw"
+          loading="eager"
+        />
+      </div>
+
+      <div class="institutional-copy" data-reveal>
+        <p class="institutional-lead">
+          Há mais de 15 anos, a <strong>Evolução Biológica</strong> atua com excelência no segmento de <strong>Manejo Integrado de Pragas Urbanas</strong>, oferecendo soluções seguras, eficazes e ambientalmente responsáveis para residências, condomínios, empresas e indústrias.
+        </p>
+        <p>
+          Ao longo dessa trajetória, construímos uma reputação baseada na confiança, na qualidade dos serviços prestados e no compromisso com a satisfação de nossos clientes. Nossa experiência nos permite identificar, controlar e prevenir infestações com precisão, utilizando as melhores práticas do mercado.
+        </p>
+        <p>
+          Contamos com uma equipe técnica altamente qualificada e em constante aperfeiçoamento, aliando conhecimento, inovação e tecnologia de ponta para desenvolver soluções personalizadas para cada necessidade. Utilizamos exclusivamente produtos registrados pela <strong>ANVISA</strong> e seguimos rigorosamente todas as normas e regulamentações sanitárias vigentes, garantindo segurança, eficácia e total conformidade em cada atendimento.
+        </p>
+        <p>
+          Mais do que eliminar pragas, nosso propósito é proteger pessoas, patrimônios e negócios, proporcionando ambientes mais saudáveis, seguros e livres de riscos. Trabalhamos diariamente para oferecer tranquilidade, bem-estar e a confiança de contar com uma empresa sólida, comprometida com a excelência e com o respeito ao meio ambiente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark" aria-label="Missão e visão">
+    <div class="container principles-grid">
+      <article data-reveal>
+        <span class="principle-number" aria-hidden="true">01</span>
+        <span class="eyebrow">Missão</span>
+        <h2>Proteção com responsabilidade e precisão.</h2>
+        <p>
+          Proteger pessoas, patrimônios e negócios por meio de soluções especializadas em Manejo Integrado de Pragas Urbanas, utilizando tecnologia, responsabilidade ambiental e profissionais qualificados para oferecer serviços seguros, eficazes e em conformidade com as normas sanitárias, promovendo saúde, bem-estar e tranquilidade aos nossos clientes.
+        </p>
+      </article>
+      <article data-reveal>
+        <span class="principle-number" aria-hidden="true">02</span>
+        <span class="eyebrow">Visão</span>
+        <h2>Ser referência em controle de pragas urbanas.</h2>
+        <p>
+          Ser reconhecida como uma das principais referências em controle de pragas urbanas no Brasil, destacando-se pela excelência técnica, inovação, sustentabilidade e qualidade no atendimento, construindo relações de confiança e oferecendo soluções cada vez mais eficientes para nossos clientes.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-soft" aria-labelledby="values-title">
+    <div class="container">
+      <div class="section-heading" data-reveal>
+        <div>
+          <span class="eyebrow">Valores</span>
+          <h2 id="values-title">Princípios presentes em cada atendimento.</h2>
+        </div>
+        <p>Decisões técnicas e relações profissionais guiadas por segurança, transparência e respeito.</p>
+      </div>
+      <ol class="values-list">
+        {values.map((value, index) => (
+          <li data-reveal>
+            <span class="value-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{value.name}</h3>
+              <p>{value.description}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <CtaPanel
+    title="Conte com experiência e responsabilidade."
+    text="Descreva sua necessidade e receba uma orientação inicial para o seu ambiente."
+  />
+</BaseLayout>

@@ -10,7 +10,7 @@ npm audit
 
 `npm test` gera o site e valida:
 
-- presença das 15 páginas esperadas;
+- presença das páginas esperadas;
 - idioma, H1, description e canonical;
 - resolução de links internos;
 - `rel="noopener noreferrer"` em novas guias;
@@ -54,3 +54,14 @@ Resultado final local: móvel 93 em performance, 100 em acessibilidade e SEO; de
 - Chrome percorreu as 15 rotas e confirmou ausência visual dos números fora da página de contato.
 - Formulário conferido em 806×805 e 390×844: “Nome”/“Telefone” e “Serviço”/“Tipo de ambiente” alinhados; campos de largura total consistentes.
 - Container `site-evolucao-v2` reconstruído após as correções e confirmado como saudável.
+
+## Validação de 2026-07-20
+
+- `npm test` aprovado após a criação de `/quem-somos/`.
+- Build: 16 rotas geradas, incluindo a página 404.
+- Validador: 15 páginas, 273 links internos, 24 blocos JSON-LD e quatro hashes CSP.
+- Build Docker executado na VPS com zero vulnerabilidades npm reportadas.
+- Container `site-evolucao-v2` confirmado como saudável.
+- HTTP redireciona para HTTPS com status 308 no host de demonstração.
+- `/`, `/quem-somos/`, `/servicos/`, `/robots.txt` e `/sitemap-index.xml` responderam com HTTP 200.
+- CSS da página institucional respondeu com `Content-Type: text/css` e HTTP 200 via HTTPS.

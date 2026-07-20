@@ -41,3 +41,13 @@
 - Evitar HTML dinâmico; usar `textContent` ou componentes.
 - Minimizar scripts de terceiros; exigir política e consentimento quando aplicável.
 - HTTPS será validado no domínio real, não no localhost.
+
+## Demonstração HTTPS de 2026-07-20
+
+- Certificado público válido emitido para `172-238-213-72.sslip.io`.
+- Caddy encerra TLS e renova o certificado automaticamente.
+- HTTP redireciona permanentemente para HTTPS.
+- Firewall da VPS permite OpenSSH, HTTP e HTTPS.
+- Aplicação permanece isolada na rede Docker e não publica porta diretamente no host.
+- HSTS permanece desativado por se tratar de host temporário.
+- Nenhuma credencial foi registrada no repositório.

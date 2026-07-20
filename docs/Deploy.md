@@ -26,4 +26,16 @@ docker compose ps
 5. Validar rotas legadas, sitemap, robots, 404 e contatos.
 6. Manter imagem anterior disponível para rollback.
 
+## Demonstração externa de 2026-07-20
+
+- URL: `https://172-238-213-72.sslip.io/`.
+- Uso: apresentação temporária ao cliente.
+- Proxy TLS: Caddy em container separado.
+- Aplicação: imagem `evolucao-site:20260720-1417`, container `site-evolucao-v2`.
+- HTTPS: certificado público e renovação automática.
+- Domínio oficial e DNS: não alterados.
+- HSTS: não ativado no host temporário.
+
+Procedimento, verificação e rollback: [DEMO_VPS.md](./DEMO_VPS.md).
+
 Checklist detalhado anterior: [PUBLICACAO.md](./PUBLICACAO.md).

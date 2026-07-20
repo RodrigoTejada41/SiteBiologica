@@ -48,3 +48,17 @@
 - [x] `npm test` aprovado.
 - [x] Container local reconstruído e saudável.
 - [x] Produção externa mantida inalterada.
+
+## Página institucional e demo de 2026-07-20
+
+- [x] História, missão, visão e valores incorporados.
+- [x] Navegação atualizada no cabeçalho, home e rodapé.
+- [x] Layout responsivo e acessível.
+- [x] `npm test` aprovado.
+- [x] Imagem Docker construída na VPS.
+- [x] Container da aplicação saudável.
+- [x] HTTPS público válido e renovação automática.
+- [x] HTTP redirecionado para HTTPS.
+- [x] Firewall restrito a SSH, HTTP e HTTPS.
+- [x] Rollback documentado.
+- [x] Domínio e DNS oficiais mantidos sem alteração.

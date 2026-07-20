@@ -2,6 +2,19 @@
 
 Cada registro deve informar data, arquivo, motivo, antes, depois, benefício e impacto.
 
+## 2026-07-20 — Página institucional e demonstração HTTPS
+
+| Campo | Registro |
+|---|---|
+| Status | Concluída, testada e publicada em ambiente externo de demonstração |
+| Arquivos | `quem-somos.astro`, `index.astro`, `Header.astro`, `Footer.astro`, `global.css`, documentação de estado e deploy |
+| Motivo | Incorporar história, missão, visão e valores e disponibilizar a versão ao cliente sem alterar a produção oficial |
+| Antes | Home continha apenas um resumo genérico; não havia página institucional dedicada nem demo externa segura |
+| Depois | Rota `/quem-somos/`, acessos globais, composição responsiva e demo HTTPS em `172-238-213-72.sslip.io` |
+| Benefício | Conteúdo institucional completo, navegação clara e apresentação remota sem aviso de segurança |
+| Impacto | Nova rota estática e infraestrutura externa temporária; domínio e DNS oficiais preservados |
+| Validação | `npm test`; 16 rotas geradas; 15 páginas, 273 links, 24 JSON-LD e quatro hashes CSP; containers ativos; HTTP 308 para HTTPS; página e CSS com HTTP 200 |
+
 ## 2026-07-17 — Contatos e alinhamento do orçamento
 
 | Campo | Registro |

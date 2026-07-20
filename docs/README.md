@@ -12,8 +12,9 @@ Fonte oficial para arquitetura, decisões, execução e manutenção do site Evo
 - Telefones fixos removidos; WhatsApps administrativo e financeiro disponíveis somente em `/contato/`.
 - Formulário de orçamento alinhado e validado em desktop e celular.
 - Container V2 atualizado e saudável; produção externa não foi alterada.
-- Publicação final continua pendente de autorização específica e acesso ao provedor.
-- DNS, domínio e HTTPS foram deliberadamente adiados para a última fase.
+- Página institucional “Quem somos”, missão, visão e valores concluída.
+- Demo externa ativa em `https://172-238-213-72.sslip.io/`, com HTTPS válido e renovação automática.
+- Domínio e DNS oficiais não foram alterados; publicação final continua pendente de autorização.
 
 ## Índice
 
@@ -30,6 +31,8 @@ Fonte oficial para arquitetura, decisões, execução e manutenção do site Evo
 - [Padrão de código](./PadraoCodigo.md)
 - [API](./API.md)
 - [Deploy](./Deploy.md)
+- [Demonstração na VPS](./DEMO_VPS.md)
+- [Estado atual do projeto](./ESTADO_ATUAL_PROJETO.md)
 - [Checklist](./Checklist.md)
 - [Testes](./Testes.md)
 - [Histórico](./Historico.md)

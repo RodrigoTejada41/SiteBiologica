@@ -1,5 +1,16 @@
 # Histórico
 
+## 2026-07-20
+
+- Página `/quem-somos/` criada com história, missão, visão e valores institucionais.
+- Página inicial, cabeçalho e rodapé passaram a direcionar para o conteúdo institucional completo.
+- Layout responsivo específico adicionado sem novas dependências ou alteração da identidade visual.
+- `npm test` aprovado: 16 rotas geradas; 15 páginas, 273 links internos, 24 blocos JSON-LD e quatro hashes CSP validados.
+- Demo publicada em VPS isolada usando Docker, Nginx e Caddy.
+- HTTPS público ativado em `https://172-238-213-72.sslip.io/`, com renovação automática e redirecionamento HTTP.
+- Falha inicial de assets em HTTP diagnosticada como efeito de `upgrade-insecure-requests`; corrigida no terminador TLS, sem mudar conteúdo ou layout.
+- Domínio e DNS oficiais mantidos sem alteração.
+
 ## 2026-07-17
 
 - Textos de todas as páginas revisados para uma linguagem mais profissional, objetiva e orientada à conversão.
