@@ -770,35 +770,44 @@ h3 {
 /* Clients */
 .client-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(0.8rem, 1.6vw, 1.15rem);
 }
 
 .client-logo {
-  display: grid;
-  min-height: 7.5rem;
-  padding: 1rem;
+  display: flex;
+  min-height: 8rem;
+  padding: clamp(1rem, 1.7vw, 1.35rem);
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1.55;
   background: white;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
-  place-items: center;
+  box-shadow: 0 0.75rem 2rem rgb(13 40 24 / 5%);
 }
 
-.client-logo picture,
-.client-logo img {
+.client-logo picture {
+  display: flex;
   width: 100%;
   height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .client-logo img {
-  max-height: 5.2rem;
+  width: auto;
+  height: auto;
+  max-width: 92%;
+  max-height: 5.7rem;
   object-fit: contain;
-  filter: saturate(0.78);
-  transition: filter var(--transition), transform var(--transition);
+  filter: saturate(0.98);
+  transition: filter var(--transition), opacity var(--transition), transform var(--transition);
 }
 
 .client-logo:hover img {
   filter: saturate(1);
+  opacity: 1;
   transform: scale(1.03);
 }
 
@@ -1257,6 +1266,308 @@ h3 {
   font-weight: 800;
 }
 
+/* Pest catalog */
+.catalog-hero h1 {
+  max-width: 11ch;
+}
+
+.catalog-heading h2 {
+  max-width: 14ch;
+}
+
+.catalog-tools {
+  display: grid;
+  margin-bottom: 1.25rem;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  grid-template-columns: minmax(16rem, 0.9fr) minmax(0, 1.1fr);
+  gap: 1.25rem;
+  align-items: end;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.catalog-search {
+  gap: 0.5rem;
+}
+
+.catalog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.catalog-filter {
+  min-height: 2.75rem;
+  padding: 0.55rem 0.9rem;
+  color: var(--brand-800);
+  background: white;
+  border: 1px solid #b8d9c4;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.catalog-filter[aria-pressed='true'] {
+  color: white;
+  background: var(--brand-700);
+  border-color: var(--brand-700);
+}
+
+.catalog-count,
+.catalog-empty {
+  margin: 0 0 1.5rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  font-weight: 750;
+}
+
+.catalog-empty {
+  padding: 1.5rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.pest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.pest-grid-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pest-card {
+  min-width: 0;
+}
+
+.pest-card[hidden] {
+  display: none;
+}
+
+.pest-card > a {
+  display: flex;
+  min-height: 100%;
+  overflow: hidden;
+  color: var(--ink);
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  flex-direction: column;
+  text-decoration: none;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.pest-card > a:hover,
+.pest-card > a:focus-visible {
+  border-color: #a4d7b5;
+  box-shadow: 0 16px 40px rgb(16 35 26 / 12%);
+  transform: translateY(-4px);
+}
+
+.pest-card-media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--brand-50);
+}
+
+.pest-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--transition);
+}
+
+.pest-card > a:hover .pest-card-media img,
+.pest-card > a:focus-visible .pest-card-media img {
+  transform: scale(1.03);
+}
+
+.pest-card-body {
+  display: flex;
+  padding: clamp(1.25rem, 2.2vw, 1.6rem);
+  flex: 1;
+  flex-direction: column;
+}
+
+.pest-category {
+  width: fit-content;
+  margin-bottom: 0.75rem;
+  padding: 0.35rem 0.6rem;
+  color: var(--brand-800);
+  background: var(--brand-50);
+  border: 1px solid #c5e8d2;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pest-card h3 {
+  margin-bottom: 0.35rem;
+  font-size: clamp(1.22rem, 2vw, 1.55rem);
+}
+
+.scientific-name {
+  margin-bottom: 1rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.pest-card-body > p:not(.scientific-name) {
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+  line-height: 1.58;
+}
+
+.pest-card .card-link {
+  display: inline-flex;
+  margin-top: auto;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--brand-700);
+  font-weight: 800;
+}
+
+.pest-detail-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(3rem, 7vw, 6rem);
+  align-items: start;
+}
+
+.pest-detail-media {
+  margin: 0;
+}
+
+.pest-detail-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.pest-detail-media figcaption {
+  margin-top: 0.75rem;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+
+.pest-detail-media figcaption a {
+  color: var(--brand-700);
+  font-weight: 750;
+}
+
+.pest-detail-summary h2 {
+  max-width: 13ch;
+}
+
+.pest-identity,
+.risk-list {
+  display: grid;
+  margin: 0 0 1.75rem;
+  gap: 0.75rem;
+}
+
+.pest-identity div,
+.risk-list div {
+  display: grid;
+  padding: 0.9rem 1rem;
+  grid-template-columns: minmax(9rem, 0.75fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.pest-identity dt,
+.risk-list dt {
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pest-identity dd,
+.risk-list dd {
+  margin: 0;
+  font-weight: 800;
+}
+
+.compact-risk {
+  margin-bottom: 1rem;
+}
+
+.compact-risk div {
+  padding: 0.65rem 0.8rem;
+  grid-template-columns: auto 1fr;
+}
+
+.risk-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.risk-grid div {
+  grid-template-columns: 1fr;
+  align-content: start;
+}
+
+.risk-grid dd {
+  color: var(--brand-800);
+  font-size: 1.3rem;
+}
+
+.pest-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+}
+
+.pest-info-grid article {
+  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2.5rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.pest-info-grid article:nth-child(odd) {
+  padding-left: 0;
+  border-right: 1px solid var(--line);
+}
+
+.pest-info-grid h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(1.45rem, 3vw, 2.2rem);
+}
+
+.pest-info-grid ul {
+  display: grid;
+  margin: 0;
+  padding-left: 1.25rem;
+  gap: 0.65rem;
+  color: var(--ink-soft);
+}
+
+.pest-info-grid li::marker {
+  color: var(--brand-700);
+  font-weight: 800;
+}
+
+.catalog-cta-actions {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: flex-end;
+}
+
 /* Contact */
 .contact-layout {
   display: grid;
@@ -1513,11 +1824,15 @@ h3 {
 @media (max-width: 1100px) {
   .header-inner,
   .primary-navigation {
-    gap: 1rem;
+    gap: 0.85rem;
   }
 
   .primary-navigation ul {
-    gap: 1rem;
+    gap: 0.85rem;
+  }
+
+  .primary-navigation ul a {
+    font-size: 0.86rem;
   }
 
   .header-actions {
@@ -1534,8 +1849,17 @@ h3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .pest-grid,
+  .pest-grid-three {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .risk-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .client-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -1697,7 +2021,9 @@ h3 {
   .page-hero-inner,
   .contact-layout,
   .institutional-story,
-  .principles-grid {
+  .principles-grid,
+  .catalog-tools,
+  .pest-detail-intro {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
@@ -1786,8 +2112,39 @@ h3 {
   .footer-grid,
   .form-grid,
   .service-guide-grid,
-  .values-list {
+  .values-list,
+  .pest-grid,
+  .pest-grid-three,
+  .risk-grid,
+  .pest-info-grid {
     grid-template-columns: 1fr;
+  }
+
+  .catalog-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+  }
+
+  .catalog-filter {
+    flex: 0 0 auto;
+  }
+
+  .pest-info-grid article,
+  .pest-info-grid article:nth-child(odd) {
+    padding-inline: 0;
+    border-right: 0;
+  }
+
+  .pest-identity div,
+  .risk-list div {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .catalog-cta-actions,
+  .catalog-cta-actions .button {
+    width: 100%;
   }
 
   .values-list li,
@@ -1811,7 +2168,7 @@ h3 {
   }
 
   .client-logo {
-    min-height: 6.5rem;
+    min-height: 7rem;
   }
 
   .page-hero {

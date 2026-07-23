@@ -9,20 +9,21 @@ import controleIntegrado from '../assets/services/img_controle_pragas.jpg';
 import higienizacao from '../assets/services/img_higienizacao.jpg';
 import sanitizacao from '../assets/services/img_sanitizacao.jpg';
 
-import arteVerde from '../assets/clients/img_arte_verde.jpg';
-import deMarchi from '../assets/clients/img_de_marchi.jpg';
-import feijaoDeCorda from '../assets/clients/img_feijao_corda.jpg';
-import frugal from '../assets/clients/img_frugal.jpg';
-import hetros from '../assets/clients/img_hetros.jpg';
-import iw from '../assets/clients/img_iw.jpg';
-import jeca from '../assets/clients/img_jeca.jpg';
-import megadur from '../assets/clients/img_megadur.jpg';
-import mixArabia from '../assets/clients/img_mix_arabia.jpg';
-import pegPese from '../assets/clients/img_peg_pese.jpg';
-import pizzaria from '../assets/clients/img_pizzaria.jpg';
-import rizzo from '../assets/clients/img_rizzo.jpg';
-import sabesp from '../assets/clients/img_sabesp.jpg';
-import sacolao from '../assets/clients/img_sacolao.jpg';
+import amazo from '../assets/clients/img_amazo.png';
+import avagro from '../assets/clients/img_avagro.png';
+import bgFood from '../assets/clients/img_bg_food.png';
+import bgfAlimentos from '../assets/clients/img_bgf_alimentos.png';
+import bomGosto from '../assets/clients/img_bom_gosto.png';
+import ceagesp from '../assets/clients/img_ceagesp.png';
+import deMarchi from '../assets/clients/img_de_marchi.png';
+import feijaoDeCorda from '../assets/clients/img_feijao_de_corda.png';
+import kfDistribuidora from '../assets/clients/img_kf_distribuidora.png';
+import pegPese from '../assets/clients/img_peg_pese.png';
+import perdizes from '../assets/clients/img_perdizes.png';
+import rizzoGourmet from '../assets/clients/img_rizzo_gourmet.png';
+import sabesp from '../assets/clients/img_sabesp.png';
+import sacolaoHigienopolis from '../assets/clients/img_sacolao_higienopolis.png';
+import sacolaoLapa from '../assets/clients/img_sacolao_lapa.png';
 
 export const company = {
   name: 'Evolução Biológica',
@@ -40,7 +41,7 @@ export const company = {
       number: '5511993292873',
     },
   },
-  hours: 'Segunda a sexta-feira, das 10h às 18h',
+  hours: 'Segunda a sexta-feira: das 8:30 às 18h.',
   address: {
     street: 'Avenida Fernando Amaro Miranda, 374',
     postalCode: '04821-100',
@@ -388,20 +389,21 @@ export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encode
 )}`;
 
 export const clients: Array<{ name: string; image: ImageMetadata }> = [
-  { name: 'Arte Verde', image: arteVerde },
-  { name: 'De Marchi', image: deMarchi },
+  { name: 'BGF Alimentos', image: bgfAlimentos },
+  { name: 'BG Food', image: bgFood },
   { name: 'Feijão de Corda', image: feijaoDeCorda },
-  { name: 'Frugal', image: frugal },
-  { name: 'Hetros', image: hetros },
-  { name: 'iW', image: iw },
-  { name: 'Jeca', image: jeca },
-  { name: 'Megadur', image: megadur },
-  { name: 'Mix Arabia', image: mixArabia },
-  { name: 'Peg Pese', image: pegPese },
-  { name: 'Pizzaria Tentação da Praia', image: pizzaria },
-  { name: 'Rizzo', image: rizzo },
+  { name: 'Rizzo Gourmet', image: rizzoGourmet },
+  { name: 'KF Distribuidora', image: kfDistribuidora },
+  { name: 'Perdizes', image: perdizes },
   { name: 'Sabesp', image: sabesp },
-  { name: 'Sacolão Higienópolis', image: sacolao },
+  { name: 'Amazo', image: amazo },
+  { name: 'De Marchi', image: deMarchi },
+  { name: 'Bom Gosto Hortifruti', image: bomGosto },
+  { name: 'AVAgro', image: avagro },
+  { name: 'Sacolão Lapa', image: sacolaoLapa },
+  { name: 'CEAGESP', image: ceagesp },
+  { name: 'Sacolão Higienópolis', image: sacolaoHigienopolis },
+  { name: 'PegPese Hortifruti', image: pegPese },
 ];
 
 export const whatsappUrl = (

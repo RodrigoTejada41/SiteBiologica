@@ -44,7 +44,7 @@ const policy = [
   "default-src 'self'",
   `script-src 'self' ${[...hashes].sort().join(' ')}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data:",
+  "img-src 'self' data: https://commons.wikimedia.org",
   "font-src 'self' data:",
   "connect-src 'self'",
   "form-action 'self'",

@@ -65,3 +65,16 @@ Resultado final local: móvel 93 em performance, 100 em acessibilidade e SEO; de
 - HTTP redireciona para HTTPS com status 308 no host de demonstração.
 - `/`, `/quem-somos/`, `/servicos/`, `/robots.txt` e `/sitemap-index.xml` responderam com HTTP 200.
 - CSS da página institucional respondeu com `Content-Type: text/css` e HTTP 200 via HTTPS.
+
+## Validação de 2026-07-23
+
+- `npm test` aprovado após a criação do catálogo de pragas.
+- Build: 48 rotas geradas, incluindo a página 404.
+- Validador: 21 páginas, 461 links internos, 36 blocos JSON-LD e cinco hashes CSP.
+- Catálogo local verificado em `http://127.0.0.1:4322/catalogo-de-pragas/`.
+- 31 imagens locais em `/images/pragas/` confirmadas com conteúdo de imagem.
+- VPS atualizada com a imagem `evolucao-site:20260723-180820`.
+- Container `site-evolucao-v2` confirmado como `healthy`.
+- `/`, `/catalogo-de-pragas/`, `/catalogo-de-pragas/lacraia/`, `/catalogo-de-pragas/barata-americana/`, `/robots.txt` e `/sitemap-index.xml` responderam com HTTP 200 via HTTPS.
+- Varredura externa confirmou 31 páginas de detalhe e 31 imagens locais sem falha.
+- HTML público verificado sem mojibake (`Ã`, `Â` ou caractere inválido).

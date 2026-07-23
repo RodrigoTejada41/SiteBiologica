@@ -26,9 +26,9 @@ site-evolucao-v2 (Nginx + arquivos Astro)
 
 | Recurso | Identificador |
 |---|---|
-| Release | `/opt/evolucao-site/releases/20260720-1417` |
+| Release | `/opt/evolucao-site/releases/20260723-180820` |
 | Link atual | `/opt/evolucao-site/current` |
-| Imagem | `evolucao-site:20260720-1417` |
+| Imagem | `evolucao-site:20260723-180820` |
 | Container do site | `site-evolucao-v2` |
 | Container HTTPS | `evolucao-https` |
 | Rede Docker | `evolucao-demo` |
@@ -50,6 +50,8 @@ Executar de uma máquina externa:
 ```powershell
 Invoke-WebRequest -Uri 'https://172-238-213-72.sslip.io/' -UseBasicParsing
 Invoke-WebRequest -Uri 'https://172-238-213-72.sslip.io/quem-somos/' -UseBasicParsing
+Invoke-WebRequest -Uri 'https://172-238-213-72.sslip.io/catalogo-de-pragas/' -UseBasicParsing
+Invoke-WebRequest -Uri 'https://172-238-213-72.sslip.io/catalogo-de-pragas/lacraia/' -UseBasicParsing
 Invoke-WebRequest -Uri 'https://172-238-213-72.sslip.io/robots.txt' -UseBasicParsing
 Invoke-WebRequest -Uri 'https://172-238-213-72.sslip.io/sitemap-index.xml' -UseBasicParsing
 ```
@@ -86,6 +88,17 @@ docker run -d \
 ```
 
 O proxy `evolucao-https` não precisa ser recriado durante rollback do conteúdo.
+
+## Release 2026-07-23
+
+- Release ativo: `/opt/evolucao-site/releases/20260723-180820`.
+- Imagem Docker ativa: `evolucao-site:20260723-180820`.
+- Container `site-evolucao-v2` validado como `healthy`.
+- Catálogo público de pragas publicado em `/catalogo-de-pragas/`.
+- 31 páginas de detalhe de pragas retornaram HTTP 200.
+- 31 imagens locais em `/images/pragas/` retornaram HTTP 200.
+- HTML público verificado sem mojibake (`Ã`, `Â` ou caractere inválido).
+- Domínio oficial mantido sem alteração.
 
 ## Produção oficial
 

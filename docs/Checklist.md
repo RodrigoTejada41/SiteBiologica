@@ -62,3 +62,17 @@
 - [x] Firewall restrito a SSH, HTTP e HTTPS.
 - [x] Rollback documentado.
 - [x] Domínio e DNS oficiais mantidos sem alteração.
+
+## Catálogo de pragas e demo de 2026-07-23
+
+- [x] Catálogo público criado em `/catalogo-de-pragas/`.
+- [x] 31 páginas de detalhe geradas.
+- [x] Imagens migradas para assets locais em `/images/pragas/`.
+- [x] Cabeçalho e rodapé atualizados.
+- [x] Acentuação verificada sem mojibake no HTML público.
+- [x] `npm test` aprovado.
+- [x] Imagem Docker construída na VPS.
+- [x] Container da aplicação saudável.
+- [x] 31 detalhes com HTTP 200 via HTTPS.
+- [x] 31 imagens com HTTP 200 via HTTPS.
+- [x] Domínio e DNS oficiais mantidos sem alteração.

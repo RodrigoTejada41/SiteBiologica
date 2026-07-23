@@ -2,6 +2,19 @@
 
 Cada registro deve informar data, arquivo, motivo, antes, depois, benefício e impacto.
 
+## 2026-07-23 — Catálogo de pragas e atualização da demo
+
+| Campo | Registro |
+|---|---|
+| Status | Concluída, testada localmente e publicada na VPS de demonstração |
+| Arquivos | `pests.ts`, `catalogo-de-pragas/index.astro`, `catalogo-de-pragas/[slug].astro`, `Header.astro`, `Footer.astro`, `global.css`, `public/images/pragas/`, documentação de estado e deploy |
+| Motivo | Criar catálogo público de pragas urbanas e corrigir falhas de imagens e acentuação detectadas na revisão visual |
+| Antes | Site sem catálogo de pragas; algumas imagens externas não carregavam; títulos podiam aparecer com acentuação desconfigurada quando havia problema de codificação |
+| Depois | Rota `/catalogo-de-pragas/`, 31 páginas de detalhe, imagens locais versionadas e HTML público validado sem mojibake |
+| Benefício | Conteúdo técnico mais completo, navegação melhor para SEO e carregamento de imagens independente de origem externa |
+| Impacto | Novas rotas estáticas, novos assets públicos e atualização da imagem Docker da demo para `evolucao-site:20260723-180820`; domínio oficial preservado |
+| Validação | `npm test`; 48 rotas geradas; 21 páginas, 461 links internos, 36 JSON-LD e cinco hashes CSP; container healthy; 31 detalhes e 31 imagens com HTTP 200 em HTTPS |
+
 ## 2026-07-20 — Página institucional e demonstração HTTPS
 
 | Campo | Registro |

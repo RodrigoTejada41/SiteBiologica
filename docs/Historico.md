@@ -1,5 +1,17 @@
 # Histórico
 
+## 2026-07-23
+
+- Catálogo público de pragas criado em `/catalogo-de-pragas/`, com 31 páginas de detalhe.
+- Navegação global atualizada no cabeçalho e rodapé.
+- Imagens do catálogo migradas para arquivos locais em `/images/pragas/` para eliminar falhas de carregamento externo.
+- Textos com acentuação corrigida e verificados sem mojibake no HTML público.
+- `npm test` aprovado: 48 rotas geradas; 21 páginas, 461 links internos, 36 blocos JSON-LD e cinco hashes CSP validados.
+- Demo da VPS atualizada para a imagem `evolucao-site:20260723-180820`.
+- Release ativo em `/opt/evolucao-site/releases/20260723-180820`.
+- Validação externa confirmou HTTP 200 no catálogo, nas 31 páginas de detalhe e nas 31 imagens locais.
+- Domínio e DNS oficiais mantidos sem alteração.
+
 ## 2026-07-20
 
 - Página `/quem-somos/` criada com história, missão, visão e valores institucionais.

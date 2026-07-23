@@ -29,3 +29,11 @@ Conteúdo deve responder à intenção do usuário. Não repetir palavras-chave 
 - Catálogo cobre controle de pragas urbanas, controle de insetos, controle de roedores, controle de cupins, manejo de pombos, controle integrado, limpeza de caixas d'água e desinfecção de ambientes.
 - Slugs existentes preservados para evitar quebra de URLs e perda de histórico de busca.
 - Nenhuma licença, certificação ou garantia não comprovada foi adicionada ao conteúdo.
+
+## Catálogo de pragas de 2026-07-23
+
+- Nova rota `/catalogo-de-pragas/` com páginas estáticas de detalhe para 31 pragas urbanas.
+- Conteúdo organizado por categoria, risco, sinais, prevenção, danos, saúde, dúvidas frequentes e serviços relacionados.
+- Imagens servidas localmente por `/images/pragas/`, com textos alternativos descritivos.
+- Sitemap gerado com as novas rotas.
+- HTML público validado sem mojibake.

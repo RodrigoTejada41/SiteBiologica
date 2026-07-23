@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pests, pestCategories } from '../../data/pests';
+import { whatsappUrl } from '../../data/site';
+
+const catalogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Catálogo de Pragas Urbanas',
+  description: 'Principais pragas urbanas, riscos, sinais de infestação, prevenção e soluções profissionais indicadas.',
+  mainEntity: pests.map((pest) => ({
+    '@type': 'WebPage',
+    name: pest.name,
+    url: new URL(`/catalogo-de-pragas/${pest.slug}/`, Astro.site).toString(),
+  })),
+};
+---
+
+<BaseLayout
+  title="Catálogo de Pragas Urbanas"
+  description="Conheça as principais pragas urbanas, riscos à saúde e ao patrimônio, sinais de infestação, prevenção e soluções profissionais de controle."
+>
+  <header class="page-hero catalog-hero">
+    <div class="page-hero-inner container">
+      <div>
+        <ol class="breadcrumb" aria-label="Navegação estrutural">
+          <li><a href="/">Início</a></li>
+          <li aria-current="page">Catálogo de Pragas</li>
+        </ol>
+        <h1>Catálogo de Pragas Urbanas</h1>
+      </div>
+      <p>Conheça as principais pragas urbanas, os riscos que podem oferecer à saúde e ao patrimônio, os sinais de infestação e as soluções profissionais indicadas para cada situação.</p>
+    </div>
+  </header>
+
+  <section class="section" aria-labelledby="catalog-title">
+    <div class="container">
+      <div class="section-heading catalog-heading">
+        <div>
+          <span class="eyebrow">Identificação</span>
+          <h2 id="catalog-title">Pesquise por nome, categoria ou sinal observado.</h2>
+        </div>
+        <p>O conteúdo é educativo e não substitui inspeção técnica. A indicação do tratamento depende da espécie, do ambiente e do nível de infestação.</p>
+      </div>
+
+      <div class="catalog-tools">
+        <div class="field catalog-search">
+          <label for="pest-search">Pesquisar praga</label>
+          <input id="pest-search" type="search" placeholder="Pesquisar uma praga..." autocomplete="off" data-pest-search />
+        </div>
+        <div class="catalog-filters" role="list" aria-label="Filtrar por categoria">
+          {pestCategories.map((category) => (
+            <button class="catalog-filter" type="button" data-category={category} aria-pressed={category === 'Todas' ? 'true' : 'false'}>
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <p class="catalog-count" data-pest-count>{pests.length} pragas encontradas</p>
+
+      <div class="pest-grid" data-pest-grid>
+        {pests.map((pest, index) => (
+          <article
+            class="pest-card"
+            data-pest-card
+            data-category={pest.category}
+            data-search={`${pest.name} ${pest.scientificName} ${pest.category} ${pest.summary} ${(pest.aliases ?? []).join(' ')}`}
+          >
+            <a href={`/catalogo-de-pragas/${pest.slug}/`} aria-label={`Ver detalhes sobre ${pest.name}`}>
+              <div class="pest-card-media">
+                <img
+                  src={pest.image.url}
+                  alt={pest.image.alt}
+                  title={pest.image.title}
+                  width="900"
+                  height="675"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+              <div class="pest-card-body">
+                <span class="pest-category">{pest.category}</span>
+                <h3>{pest.name}</h3>
+                <p class="scientific-name"><em>{pest.scientificName}</em></p>
+                <dl class="risk-list compact-risk">
+                  <div><dt>Risco</dt><dd>{pest.risk}</dd></div>
+                </dl>
+                <p>{pest.summary}</p>
+                <span class="card-link" aria-hidden="true">Ver detalhes <span>→</span></span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <p class="catalog-empty" data-pest-empty hidden>Nenhuma praga encontrada para os filtros selecionados.</p>
+    </div>
+  </section>
+
+  <section class="section section-soft" aria-labelledby="catalog-cta-title">
+    <div class="container">
+      <div class="cta-panel">
+        <div>
+          <h2 id="catalog-cta-title">Encontrou sinais de infestação?</h2>
+          <p>Solicite uma inspeção técnica para identificar a espécie, avaliar o nível da infestação e definir o tratamento mais adequado para o ambiente.</p>
+        </div>
+        <div class="catalog-cta-actions">
+          <a class="button button-light" href="/contato">Solicitar orçamento</a>
+          <a
+            class="button button-outline-light"
+            href={whatsappUrl('Olá, encontrei informações no catálogo de pragas do site e gostaria de solicitar uma avaliação.')}
+            target="_blank"
+            rel="noopener noreferrer"
+          >Falar pelo WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(catalogSchema)} />
+  <script>
+    const searchInput = document.querySelector('[data-pest-search]');
+    const filterButtons = [...document.querySelectorAll('[data-category]')];
+    const cards = [...document.querySelectorAll('[data-pest-card]')];
+    const count = document.querySelector('[data-pest-count]');
+    const empty = document.querySelector('[data-pest-empty]');
+    let activeCategory = 'Todas';
+
+    const normalize = (value) => value.toLocaleLowerCase('pt-BR').normalize('NFD').replace(/\p{Diacritic}/gu, '');
+
+    const applyFilters = () => {
+      const query = normalize(searchInput?.value ?? '');
+      let visible = 0;
+
+      for (const card of cards) {
+        const category = card.getAttribute('data-category');
+        const text = normalize(card.getAttribute('data-search') ?? '');
+        const matchesCategory = activeCategory === 'Todas' || category === activeCategory;
+        const matchesSearch = query.length === 0 || text.includes(query);
+        const show = matchesCategory && matchesSearch;
+        card.toggleAttribute('hidden', !show);
+        if (show) visible += 1;
+      }
+
+      if (count) count.textContent = `${visible} ${visible === 1 ? 'praga encontrada' : 'pragas encontradas'}`;
+      empty?.toggleAttribute('hidden', visible !== 0);
+    };
+
+    searchInput?.addEventListener('input', applyFilters);
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        activeCategory = button.getAttribute('data-category') ?? 'Todas';
+        filterButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+        applyFilters();
+      });
+    });
+  </script>
+</BaseLayout>

@@ -13,8 +13,8 @@ const visibleClients = typeof limit === 'number' ? clients.slice(0, limit) : cli
       <Image
         src={client.image}
         alt={`Logomarca ${client.name}`}
-        widths={[180, 260]}
-        sizes="180px"
+        widths={[220, 320, 520, 680]}
+        sizes="(max-width: 620px) 42vw, (max-width: 899px) 28vw, (max-width: 1100px) 22vw, 190px"
         loading="lazy"
       />
     </div>

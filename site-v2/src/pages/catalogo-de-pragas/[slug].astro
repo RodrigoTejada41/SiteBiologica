@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pests, type Pest } from '../../data/pests';
+import { whatsappUrl } from '../../data/site';
+
+export function getStaticPaths() {
+  return pests.map((pest) => ({ params: { slug: pest.slug }, props: { pest } }));
+}
+
+type Props = { pest: Pest };
+const { pest } = Astro.props;
+const title = `${pest.name}: riscos, sinais e controle`;
+const description = `Conheça os riscos de ${pest.name}, sinais de infestação, prevenção e soluções profissionais indicadas para controle.`;
+const related = pests.filter((item) => item.slug !== pest.slug && item.category === pest.category).slice(0, 3);
+const detailUrl = new URL(`/catalogo-de-pragas/${pest.slug}/`, Astro.site).toString();
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Início', item: new URL('/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 2, name: 'Catálogo de Pragas', item: new URL('/catalogo-de-pragas/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 3, name: pest.name, item: detailUrl },
+  ],
+};
+const pageSchema = {
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: detailUrl,
+  image: pest.image.url,
+};
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: pest.faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+const schema = { '@context': 'https://schema.org', '@graph': [breadcrumbSchema, pageSchema, faqSchema] };
+---
+
+<BaseLayout title={title} description={description} image={pest.image.url} imageAlt={pest.image.alt}>
+  <header class="page-hero">
+    <div class="page-hero-inner container">
+      <div>
+        <ol class="breadcrumb" aria-label="Navegação estrutural">
+          <li><a href="/">Início</a></li>
+          <li><a href="/catalogo-de-pragas/">Catálogo de Pragas</a></li>
+          <li aria-current="page">{pest.name}</li>
+        </ol>
+        <h1>{pest.name}</h1>
+      </div>
+      <p>{pest.summary}</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container pest-detail-intro">
+      <figure class="pest-detail-media">
+        <img src={pest.image.url} alt={pest.image.alt} title={pest.image.title} width="900" height="675" loading="eager" decoding="async" />
+        <figcaption><a href={pest.image.sourceUrl} target="_blank" rel="noopener noreferrer">{pest.image.credit}</a></figcaption>
+      </figure>
+
+      <div class="pest-detail-summary content-prose">
+        <span class="eyebrow">Identificação</span>
+        <h2>Dados principais</h2>
+        <dl class="pest-identity">
+          <div><dt>Nome popular</dt><dd>{pest.name}</dd></div>
+          <div><dt>Nome científico</dt><dd><em>{pest.scientificName}</em></dd></div>
+          <div><dt>Categoria</dt><dd>{pest.category}</dd></div>
+          <div><dt>Nível de risco</dt><dd>{pest.risk}</dd></div>
+        </dl>
+        <p>{pest.description}</p>
+        <div class="detail-actions">
+          <a class="button button-primary" href="/contato">Solicitar orçamento</a>
+          <a
+            class="button button-secondary"
+            href={whatsappUrl(`Olá, encontrei informações sobre ${pest.name} no site e gostaria de solicitar uma avaliação.`)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >Falar pelo WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" aria-labelledby="risk-title">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Risco</span>
+          <h2 id="risk-title">Indicadores para avaliação técnica.</h2>
+        </div>
+        <p>Os níveis abaixo orientam a leitura do risco. A conduta depende da inspeção do ambiente e da confirmação da espécie.</p>
+      </div>
+      <dl class="risk-list risk-grid">
+        <div><dt>Risco à saúde</dt><dd>{pest.healthRisk}</dd></div>
+        <div><dt>Risco ao patrimônio</dt><dd>{pest.propertyRisk}</dd></div>
+        <div><dt>Facilidade de infestação</dt><dd>{pest.infestationEase}</dd></div>
+        <div><dt>Dificuldade de controle</dt><dd>{pest.controlDifficulty}</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container pest-info-grid">
+      <article>
+        <h2>Características</h2>
+        <ul>{pest.characteristics.map((item) => <li>{item}</li>)}</ul>
+      </article>
+      <article>
+        <h2>Onde costuma aparecer</h2>
+        <ul>{pest.places.map((item) => <li>{item}</li>)}</ul>
+      </article>
+      <article>
+        <h2>Sinais de infestação</h2>
+        <ul>{pest.signs.map((item) => <li>{item}</li>)}</ul>
+      </article>
+      <article>
+        <h2>Riscos à saúde</h2>
+        <ul>{pest.healthRisks.map((item) => <li>{item}</li>)}</ul>
+      </article>
+      <article>
+        <h2>Danos ao patrimônio</h2>
+        <ul>{pest.propertyDamage.map((item) => <li>{item}</li>)}</ul>
+      </article>
+      <article>
+        <h2>Prevenção</h2>
+        <ul>{pest.prevention.map((item) => <li>{item}</li>)}</ul>
+      </article>
+      <article>
+        <h2>Solução profissional indicada</h2>
+        <ul>{pest.professionalSolutions.map((item) => <li>{item}</li>)}</ul>
+      </article>
+      <article>
+        <h2>Produtos e técnicas</h2>
+        <ul>{pest.techniques.map((item) => <li>{item}</li>)}</ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-soft" aria-labelledby="professional-title">
+    <div class="container content-prose">
+      <span class="eyebrow">Controle profissional</span>
+      <h2 id="professional-title">Por que contratar uma empresa especializada?</h2>
+      <p>O controle profissional identifica corretamente a espécie, localiza focos e acessos, avalia o nível da infestação, seleciona o método adequado e reduz riscos de intoxicação por aplicação indevida. A orientação técnica também protege pessoas, animais, alimentos e ajuda a reduzir recorrências por meio de monitoramento e melhorias estruturais.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Dúvidas</span>
+          <h2 id="faq-title">Perguntas frequentes.</h2>
+        </div>
+      </div>
+      <div class="faq-list">
+        {pest.faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {related.length > 0 && (
+    <section class="section section-soft" aria-labelledby="related-pests-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Relacionadas</span>
+            <h2 id="related-pests-title">Outras pragas da categoria.</h2>
+          </div>
+          <a class="button button-link" href="/catalogo-de-pragas/">Ver catálogo →</a>
+        </div>
+        <div class="pest-grid pest-grid-three">
+          {related.map((item) => (
+            <article class="pest-card">
+              <a href={`/catalogo-de-pragas/${item.slug}/`} aria-label={`Ver detalhes sobre ${item.name}`}>
+                <div class="pest-card-media">
+                  <img src={item.image.url} alt={item.image.alt} title={item.image.title} width="900" height="675" loading="eager" decoding="async" />
+                </div>
+                <div class="pest-card-body">
+                  <span class="pest-category">{item.category}</span>
+                  <h3>{item.name}</h3>
+                  <p>{item.summary}</p>
+                  <span class="card-link" aria-hidden="true">Ver detalhes <span>→</span></span>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section" aria-labelledby="detail-cta-title">
+    <div class="container">
+      <div class="cta-panel">
+        <div>
+          <h2 id="detail-cta-title">Encontrou sinais desta praga?</h2>
+          <p>Solicite uma inspeção técnica para identificar o foco, avaliar o nível da infestação e definir o tratamento mais adequado para o ambiente.</p>
+        </div>
+        <div class="catalog-cta-actions">
+          <a class="button button-light" href="/contato">Solicitar orçamento</a>
+          <a
+            class="button button-outline-light"
+            href={whatsappUrl(`Olá, encontrei informações sobre ${pest.name} no site e gostaria de solicitar uma avaliação.`)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >Falar pelo WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</BaseLayout>

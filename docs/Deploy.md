@@ -31,10 +31,17 @@ docker compose ps
 - URL: `https://172-238-213-72.sslip.io/`.
 - Uso: apresentação temporária ao cliente.
 - Proxy TLS: Caddy em container separado.
-- Aplicação: imagem `evolucao-site:20260720-1417`, container `site-evolucao-v2`.
+- Aplicação atual: imagem `evolucao-site:20260723-180820`, container `site-evolucao-v2`.
 - HTTPS: certificado público e renovação automática.
 - Domínio oficial e DNS: não alterados.
 - HSTS: não ativado no host temporário.
+
+## Atualização da demonstração em 2026-07-23
+
+- Release: `/opt/evolucao-site/releases/20260723-180820`.
+- Publicado o catálogo `/catalogo-de-pragas/`.
+- Validação externa: home, catálogo, detalhes de pragas, `robots.txt` e `sitemap-index.xml` com HTTP 200.
+- Varredura do catálogo: 31 links de detalhe e 31 imagens locais sem falha.
 
 Procedimento, verificação e rollback: [DEMO_VPS.md](./DEMO_VPS.md).
 

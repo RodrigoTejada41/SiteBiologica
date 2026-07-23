@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     question: 'Qual é o horário de atendimento?',
-    answer: company.hours + '.',
+    answer: company.hours,
   },
 ];
 
@@ -67,7 +67,7 @@ const faqSchema = {
         </a>
         <a class="button button-outline-light" href="/servicos">Explorar serviços</a>
       </div>
-      <p class="hero-note">Atendimento: {company.hours.toLowerCase()}.</p>
+      <p class="hero-note">Atendimento: {company.hours}</p>
     </div>
     <div class="hero-media">
       <Image
@@ -193,7 +193,7 @@ const faqSchema = {
           <a class="button button-link" href="/clientes">Ver clientes →</a>
         </div>
       </div>
-      <ClientGrid limit={7} />
+      <ClientGrid />
     </div>
   </section>
 
