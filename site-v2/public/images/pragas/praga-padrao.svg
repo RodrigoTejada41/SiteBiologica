@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Imagem ilustrativa de praga</title>
+  <desc id="desc">Imagem padrão para registros sem fotografia validada da espécie.</desc>
+  <rect width="1200" height="900" fill="#eef9f2"/>
+  <circle cx="600" cy="380" r="150" fill="#d5f0df"/>
+  <path d="M485 390c0-64 52-116 116-116s116 52 116 116-52 116-116 116-116-52-116-116Z" fill="#009c3b" opacity=".2"/>
+  <path d="M386 644h428" stroke="#00752d" stroke-width="28" stroke-linecap="round"/>
+  <path d="M445 585h310" stroke="#00752d" stroke-width="22" stroke-linecap="round" opacity=".75"/>
+  <text x="600" y="725" text-anchor="middle" fill="#10231a" font-family="Arial, sans-serif" font-size="42" font-weight="700">Imagem ilustrativa</text>
+  <text x="600" y="780" text-anchor="middle" fill="#3f5148" font-family="Arial, sans-serif" font-size="28">substituir por fotografia validada da espécie</text>
+</svg>

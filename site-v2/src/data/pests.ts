@@ -1,11 +1,12 @@
-export type PestCategory = 'Insetos' | 'Roedores' | 'Aracnídeos' | 'Aves' | 'Mamíferos';
-export type RiskLevel = 'Baixo' | 'Moderado' | 'Alto' | 'Muito alto';
+export type PestCategory = 'Insetos' | 'Roedores' | 'Aracnídeos' | 'Carrapatos' | 'Aves' | 'Mamíferos';
+export type RiskLevel = 'Baixo' | 'Moderado' | 'Alto' | 'Muito alto' | 'Médio ou alto';
 
 export type Pest = {
   slug: string;
   name: string;
   scientificName: string;
   category: PestCategory;
+  type?: string;
   risk: RiskLevel;
   healthRisk: RiskLevel;
   propertyRisk: RiskLevel;
@@ -28,8 +29,11 @@ export type Pest = {
     title: string;
     credit: string;
     sourceUrl: string;
+    webpUrl?: string;
+    note?: string;
   };
   aliases?: string[];
+  lifeCycle?: string[];
 };
 
 const productNotice =
@@ -38,11 +42,15 @@ const productNotice =
 const commons = (file: string) =>
   `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}?width=900`;
 
-const image = (file: string, alt: string, title: string): Pest['image'] => ({
+const localWebp = (file: string) =>
+  file.startsWith('/') && /\.(jpe?g|png)$/i.test(file) ? file.replace(/\.(jpe?g|png)$/i, '.webp') : undefined;
+
+const image = (file: string, alt: string, title: string, credit = 'Imagem: Wikimedia Commons'): Pest['image'] => ({
   url: file.startsWith('/') ? file : commons(file),
   alt,
   title,
-  credit: 'Imagem: Wikimedia Commons',
+  credit,
+  webpUrl: localWebp(file),
   sourceUrl: file.startsWith('/')
     ? `https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=${encodeURIComponent(title)}`
     : `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(file).replaceAll('%20', '_')}`,
@@ -50,6 +58,46 @@ const image = (file: string, alt: string, title: string): Pest['image'] => ({
 
 const basePlaces = ['Residências', 'Cozinhas', 'Banheiros', 'Ralos', 'Restaurantes', 'Bares', 'Padarias', 'Mercados', 'Condomínios', 'Escolas', 'Hospitais', 'Galpões', 'Estoques'];
 const basePrevention = ['Manter alimentos fechados.', 'Retirar o lixo regularmente.', 'Limpar gordura e resíduos.', 'Vedar frestas e passagens.', 'Corrigir vazamentos.', 'Organizar depósitos e evitar acúmulo de materiais.', 'Proteger ralos e pontos de acesso.'];
+
+const insectLifeCycle = [
+  'Ovo.',
+  'Fase jovem: larva ou ninfa, conforme a espécie.',
+  'Pupa, quando aplicável à espécie.',
+  'Adulto.',
+  'Detalhes do ciclo, duração e condições de desenvolvimento variam conforme a espécie e o ambiente.',
+];
+
+const rodentLifeCycle = [
+  'Gestação.',
+  'Filhote.',
+  'Jovem.',
+  'Adulto.',
+  'Detalhes do ciclo, duração e capacidade reprodutiva variam conforme a espécie e as condições ambientais.',
+];
+
+const arachnidLifeCycle = [
+  'Ovo.',
+  'Filhote ou forma jovem.',
+  'Crescimento com mudas sucessivas.',
+  'Adulto.',
+  'Detalhes do ciclo, duração e desenvolvimento variam conforme a espécie e as condições ambientais.',
+];
+
+const birdLifeCycle = [
+  'Ovo.',
+  'Filhote.',
+  'Jovem.',
+  'Adulto.',
+  'Detalhes do ciclo, duração e comportamento reprodutivo variam conforme a espécie e as condições ambientais.',
+];
+
+const mammalLifeCycle = [
+  'Gestação.',
+  'Filhote.',
+  'Jovem.',
+  'Adulto.',
+  'Detalhes do ciclo, duração e comportamento reprodutivo variam conforme a espécie e as condições ambientais.',
+];
 
 const insectDefaults = {
   places: basePlaces,
@@ -59,6 +107,7 @@ const insectDefaults = {
   prevention: basePrevention,
   professionalSolutions: ['Desinsetização.', 'Inspeção técnica.', 'Aplicação residual.', 'Tratamento localizado.', 'Manejo integrado de pragas.', 'Manejo ambiental.'],
   techniques: ['Gel inseticida.', 'Isca inseticida.', 'Inseticida residual.', 'Produto microencapsulado.', 'Regulador de crescimento.', 'Pulverização técnica.', 'Aplicação localizada.', productNotice],
+  lifeCycle: insectLifeCycle,
 };
 
 const rodentDefaults = {
@@ -69,6 +118,7 @@ const rodentDefaults = {
   prevention: ['Manter alimentos fechados.', 'Retirar lixo regularmente.', 'Vedar frestas e passagens.', 'Evitar acúmulo de materiais.', 'Organizar depósitos.', 'Corrigir falhas em portas, ralos e tubulações.', 'Reduzir fontes de água e abrigo.'],
   professionalSolutions: ['Desratização.', 'Inspeção técnica.', 'Iscagem em porta-isca.', 'Monitoramento com armadilhas.', 'Vedações de acessos.', 'Manejo integrado de pragas.'],
   techniques: ['Isca raticida em porta-isca.', 'Armadilha adesiva.', 'Armadilha mecânica.', 'Barreira física.', 'Monitoramento por dispositivos.', 'Manejo ambiental.', productNotice],
+  lifeCycle: rodentLifeCycle,
 };
 
 const arachnidDefaults = {
@@ -79,6 +129,24 @@ const arachnidDefaults = {
   prevention: ['Evitar acúmulo de materiais.', 'Manter jardins limpos.', 'Vedar frestas.', 'Proteger ralos.', 'Reduzir insetos que servem de alimento.', 'Inspecionar calçados, caixas e materiais armazenados.'],
   professionalSolutions: ['Controle de escorpiões e aracnídeos.', 'Desinsetização de apoio.', 'Inspeção técnica.', 'Tratamento de barreira.', 'Manejo ambiental.', 'Vedações de acessos.'],
   techniques: ['Inseticida residual.', 'Produto microencapsulado.', 'Pulverização técnica.', 'Aplicação localizada.', 'Controle físico.', 'Manejo integrado de pragas.', productNotice],
+  lifeCycle: arachnidLifeCycle,
+};
+
+const tickLifeCycle = [
+  'Ovo.',
+  'Larva.',
+  'Ninfa.',
+  'Adulto.',
+  'Detalhes do ciclo, duração e hospedeiros variam conforme a espécie e as condições ambientais.',
+];
+
+const tickDefaults = {
+  type: 'Aracnídeo',
+  signs: ['Carrapatos fixados em hospedeiros.', 'Carrapatos caminhando em paredes, frestas, rodapés ou áreas externas.', 'Ocorrência recorrente em locais frequentados por animais.', 'Contato com áreas de vegetação, canis, pastos ou ambientes com hospedeiros.'],
+  prevention: ['Inspecionar animais e ambientes frequentados por hospedeiros.', 'Reduzir abrigos em frestas, rodapés e áreas externas.', 'Manter quintais, canis e áreas de permanência limpos.', 'Orientar o controle dos hospedeiros com profissional responsável.', 'Evitar contato direto com carrapatos; a remoção deve seguir orientação técnica.'],
+  professionalSolutions: ['Inspeção técnica.', 'Manejo integrado de pragas.', 'Tratamento ambiental direcionado.', 'Correção de abrigos e pontos de passagem.', 'Monitoramento e orientação preventiva.'],
+  techniques: ['Tratamento ambiental localizado.', 'Barreira química quando tecnicamente indicada.', 'Manejo ambiental.', 'Vedações e correções físicas.', productNotice],
+  lifeCycle: tickLifeCycle,
 };
 
 const birdDefaults = {
@@ -89,6 +157,7 @@ const birdDefaults = {
   prevention: ['Evitar oferta de alimento.', 'Instalar barreiras físicas adequadas.', 'Corrigir acessos a forros.', 'Manter limpeza técnica de áreas contaminadas.', 'Organizar rotina de monitoramento.'],
   professionalSolutions: ['Manejo de fauna sinantrópica.', 'Inspeção técnica.', 'Barreiras físicas.', 'Vedações de acessos.', 'Controle mecânico.', 'Manejo ambiental.'],
   techniques: ['Barreira física.', 'Tela de proteção.', 'Espículas compatíveis com a estrutura.', 'Controle mecânico.', 'Limpeza técnica de áreas contaminadas.', productNotice],
+  lifeCycle: birdLifeCycle,
 };
 
 const makeFaqs = (name: string, service: string): Pest['faqs'] => [
@@ -179,6 +248,7 @@ export const pests: Pest[] = [
     prevention: ['Inspecionar madeira.', 'Evitar umidade.', 'Manter móveis afastados de pontos úmidos.', 'Avaliar peças usadas antes de instalar.', 'Monitorar asas e resíduos.'],
     professionalSolutions: ['Descupinização.', 'Inspeção técnica.', 'Tratamento localizado.', 'Tratamento de madeira.', 'Monitoramento.', 'Manejo integrado de pragas.'],
     techniques: ['Tratamento de madeira.', 'Cupinicida.', 'Aplicação localizada.', 'Polvilhamento técnico.', 'Barreira física quando aplicável.', productNotice],
+    lifeCycle: insectLifeCycle,
     service: 'descupinização',
     aliases: ['cupim'],
     image: image('/images/pragas/cupim-de-madeira-seca.jpg', 'Dano por cupim de madeira seca', 'Cupim de madeira seca'),
@@ -203,6 +273,7 @@ export const pests: Pest[] = [
     prevention: ['Corrigir umidade.', 'Evitar madeira em contato com solo.', 'Inspecionar áreas técnicas.', 'Vedar passagens.', 'Monitorar revoadas e túneis.'],
     professionalSolutions: ['Descupinização.', 'Inspeção técnica.', 'Tratamento de barreira.', 'Iscagem quando aplicável.', 'Manejo integrado de pragas.', 'Monitoramento.'],
     techniques: ['Cupinicida.', 'Tratamento de barreira.', 'Iscas para cupins quando tecnicamente indicadas.', 'Aplicação localizada.', 'Monitoramento por dispositivos.', productNotice],
+    lifeCycle: insectLifeCycle,
     service: 'descupinização',
     aliases: ['cupim'],
     image: image('/images/pragas/cupim-subterraneo.jpg', 'Cupim subterrâneo em madeira', 'Cupim subterrâneo'),
@@ -227,6 +298,7 @@ export const pests: Pest[] = [
     prevention: ['Inspecionar madeira.', 'Controlar umidade.', 'Evitar armazenamento prolongado sem inspeção.', 'Avaliar peças antigas antes de instalar.'],
     professionalSolutions: ['Inspeção técnica.', 'Tratamento de madeira.', 'Tratamento localizado.', 'Manejo integrado de pragas.'],
     techniques: ['Tratamento de madeira.', 'Aplicação localizada.', 'Inseticida residual compatível.', 'Barreira física quando aplicável.', productNotice],
+    lifeCycle: insectLifeCycle,
     service: 'tratamento de madeira',
     image: image('/images/pragas/broca-de-madeira.png', 'Orifícios causados por broca de madeira', 'Broca de madeira'),
   }),
@@ -268,6 +340,7 @@ export const pests: Pest[] = [
     prevention: ['Eliminar água parada.', 'Manter caixas d’água fechadas.', 'Limpar calhas.', 'Proteger ralos.', 'Instalar telas.', 'Organizar áreas externas.'],
     professionalSolutions: ['Controle de mosquitos.', 'Inspeção técnica.', 'Manejo ambiental.', 'Tratamento larvário quando aplicável.', 'Aplicação residual.', 'Monitoramento.'],
     techniques: ['Regulador de crescimento.', 'Inseticida residual.', 'Aplicação localizada.', 'Atomização quando tecnicamente indicada.', 'Manejo ambiental.', productNotice],
+    lifeCycle: insectLifeCycle,
     service: 'controle de mosquitos',
     image: image('/images/pragas/mosquito.jpg', 'Mosquito adulto em detalhe', 'Mosquito'),
   }),
@@ -291,6 +364,7 @@ export const pests: Pest[] = [
     prevention: ['Eliminar água parada.', 'Manter caixas d’água fechadas.', 'Limpar calhas.', 'Guardar recipientes virados para baixo.', 'Proteger ralos.', 'Inspecionar áreas externas semanalmente.'],
     professionalSolutions: ['Controle de mosquitos.', 'Inspeção técnica.', 'Manejo ambiental.', 'Monitoramento de criadouros.', 'Tratamento larvário quando aplicável.', 'Aplicação técnica em áreas indicadas.'],
     techniques: ['Regulador de crescimento.', 'Produto larvicida quando indicado.', 'Inseticida residual.', 'Aplicação localizada.', 'Atomização quando tecnicamente indicada.', productNotice],
+    lifeCycle: insectLifeCycle,
     service: 'controle de mosquitos',
     image: image('/images/pragas/aedes-aegypti.jpg', 'Aedes aegypti sobre pele humana', 'Aedes aegypti'),
   }),
@@ -314,6 +388,7 @@ export const pests: Pest[] = [
     prevention: ['Eliminar água parada.', 'Proteger ralos.', 'Instalar telas.', 'Manter jardins limpos.', 'Corrigir vazamentos.', 'Monitorar áreas externas.'],
     professionalSolutions: ['Controle de mosquitos.', 'Manejo ambiental.', 'Inspeção técnica.', 'Tratamento de criadouros.', 'Aplicação residual quando indicada.'],
     techniques: ['Regulador de crescimento.', 'Inseticida residual.', 'Aplicação localizada.', 'Atomização quando tecnicamente indicada.', productNotice],
+    lifeCycle: insectLifeCycle,
     service: 'controle de mosquitos',
     image: image('/images/pragas/pernilongo.jpg', 'Pernilongo adulto em detalhe', 'Pernilongo'),
   }),
@@ -635,6 +710,84 @@ export const pests: Pest[] = [
     image: image('/images/pragas/viuva-negra.jpg', 'Viúva-negra fêmea em detalhe', 'Viúva-negra'),
   }),
   pest({
+    slug: 'carrapato-estrela',
+    name: 'Carrapato-estrela',
+    scientificName: 'Amblyomma sculptum',
+    category: 'Carrapatos',
+    risk: 'Alto',
+    healthRisk: 'Alto',
+    propertyRisk: 'Baixo',
+    infestationEase: 'Moderado',
+    controlDifficulty: 'Alto',
+    summary: 'Carrapato associado a capivaras, cavalos, cães, animais silvestres e seres humanos, com possível transmissão da febre maculosa brasileira.',
+    description: 'O carrapato-estrela é um aracnídeo de importância sanitária. Pode parasitar capivaras, cavalos, cães, animais silvestres e seres humanos; a avaliação técnica deve considerar a espécie, o ambiente e os hospedeiros presentes.',
+    characteristics: ['Tipo: aracnídeo.', 'Hospedeiros comuns: capivaras, cavalos, cães, animais silvestres e seres humanos.', 'Pode ocorrer em áreas com vegetação e circulação de hospedeiros.', 'Principal risco: possível transmissão da febre maculosa brasileira.'],
+    ...tickDefaults,
+    places: ['Áreas com capivaras.', 'Áreas com cavalos.', 'Locais frequentados por cães.', 'Áreas verdes.', 'Parques.', 'Sítios.', 'Ambientes com animais silvestres.', 'Áreas de circulação humana próximas a hospedeiros.'],
+    healthRisks: ['Possível transmissão da febre maculosa brasileira.', 'Risco de picada e reação local.', 'A ocorrência exige identificação correta e orientação técnica.'],
+    propertyDamage: ['Não costuma causar dano estrutural direto.', 'Pode gerar risco sanitário e restrição de uso de áreas externas.', 'Pode exigir manejo ambiental e monitoramento.'],
+    service: 'controle ambiental de carrapatos',
+    aliases: ['carrapato', 'carrapatos', 'carrapato estrela', 'carrapato-estrela', 'amblyomma sculptum'],
+    image: image(
+      '/images/pragas/carrapato-estrela.jpg',
+      'Carrapato-estrela Amblyomma sculptum',
+      'Carrapato-estrela',
+      'Imagem: Pereira Filho et al. 2024, recorte da Figura 4, CC BY 4.0 via MDPI'
+    ),
+  }),
+  pest({
+    slug: 'carrapato-marrom-do-cao',
+    name: 'Carrapato-marrom-do-cão',
+    scientificName: 'Rhipicephalus sanguineus',
+    category: 'Carrapatos',
+    risk: 'Alto',
+    healthRisk: 'Alto',
+    propertyRisk: 'Baixo',
+    infestationEase: 'Alto',
+    controlDifficulty: 'Alto',
+    summary: 'Carrapato associado principalmente a cães, comum em canis, frestas, paredes, rodapés, quintais e ambientes frequentados por cães.',
+    description: 'O carrapato-marrom-do-cão é um aracnídeo cujo hospedeiro principal é o cão. Pode permanecer no ambiente, especialmente em frestas, paredes, rodapés, canis e quintais.',
+    characteristics: ['Tipo: aracnídeo.', 'Hospedeiro principal: cães.', 'Pode se abrigar em frestas, paredes e rodapés.', 'Riscos: transmissão de agentes causadores de doenças em cães e possível contato com seres humanos.'],
+    ...tickDefaults,
+    places: ['Canis.', 'Frestas.', 'Paredes.', 'Rodapés.', 'Quintais.', 'Ambientes frequentados por cães.', 'Áreas de descanso de cães.'],
+    healthRisks: ['Transmissão de agentes causadores de doenças em cães.', 'Possível contato com seres humanos.', 'Risco de picada e reação local.'],
+    propertyDamage: ['Não costuma causar dano estrutural direto.', 'Pode exigir tratamento ambiental e correção de abrigos.', 'Pode gerar recorrência quando hospedeiro e ambiente não são tratados de forma integrada.'],
+    service: 'controle ambiental de carrapatos',
+    aliases: ['carrapato', 'carrapatos', 'carrapato marrom', 'carrapato-marrom', 'carrapato-do-cão', 'carrapato do cão', 'carrapato-marrom-do-cão', 'rhipicephalus sanguineus'],
+    image: image(
+      '/images/pragas/carrapato-marrom-do-cao.jpg',
+      'Carrapato-marrom-do-cão Rhipicephalus sanguineus em vista dorsal',
+      'Carrapato-marrom-do-cão',
+      'Imagem: Daktaridudu, CC BY-SA 4.0 via Wikimedia Commons'
+    ),
+  }),
+  pest({
+    slug: 'carrapato-do-boi',
+    name: 'Carrapato-do-boi',
+    scientificName: 'Rhipicephalus microplus',
+    category: 'Carrapatos',
+    risk: 'Médio ou alto',
+    healthRisk: 'Moderado',
+    propertyRisk: 'Alto',
+    infestationEase: 'Alto',
+    controlDifficulty: 'Alto',
+    summary: 'Carrapato associado principalmente a bovinos, com risco variável conforme o contexto e impacto na saúde animal e produção pecuária.',
+    description: 'O carrapato-do-boi é um aracnídeo associado principalmente a bovinos. O risco pode ser médio ou alto conforme o contexto, a presença de hospedeiros e as condições ambientais.',
+    characteristics: ['Tipo: aracnídeo.', 'Hospedeiro principal: bovinos.', 'Risco médio ou alto, conforme o contexto.', 'Riscos: prejuízos à saúde animal e à produção pecuária.'],
+    ...tickDefaults,
+    places: ['Pastagens.', 'Currais.', 'Áreas de manejo bovino.', 'Propriedades rurais.', 'Ambientes com bovinos.'],
+    healthRisks: ['Prejuízos à saúde animal.', 'A ocorrência deve ser avaliada conforme espécie, hospedeiro e ambiente.', 'Controle deve considerar manejo dos bovinos e do ambiente.'],
+    propertyDamage: ['Prejuízos à produção pecuária.', 'Impacto econômico por infestação em rebanhos.', 'Necessidade de manejo integrado para reduzir recorrência.'],
+    service: 'controle ambiental de carrapatos',
+    aliases: ['carrapato', 'carrapatos', 'carrapato-do-boi', 'carrapato do boi', 'rhipicephalus microplus'],
+    image: image(
+      '/images/pragas/carrapato-do-boi.jpg',
+      'Carrapato-do-boi Rhipicephalus microplus em vista dorsal',
+      'Carrapato-do-boi',
+      'Imagem: Daktaridudu, CC BY-SA 4.0 via Wikimedia Commons'
+    ),
+  }),
+  pest({
     slug: 'camundongo',
     name: 'Camundongo',
     scientificName: 'Mus musculus',
@@ -725,6 +878,7 @@ export const pests: Pest[] = [
     prevention: ['Vedar acessos após avaliação.', 'Instalar telas compatíveis.', 'Evitar frestas abertas em forros.', 'Manter inspeção de telhados.', 'Não manipular animais caídos ou feridos.'],
     professionalSolutions: ['Inspeção técnica.', 'Manejo ambiental conforme legislação.', 'Exclusão e vedação de acessos quando permitidas.', 'Limpeza técnica.', 'Orientação de segurança.'],
     techniques: ['Barreira física.', 'Tela de proteção.', 'Vedações após saída dos animais.', 'Limpeza técnica.', productNotice],
+    lifeCycle: mammalLifeCycle,
     service: 'manejo ambiental legalmente adequado',
     image: image('/images/pragas/morcego.jpg', 'Morcego em detalhe', 'Morcego'),
     faqs: [
@@ -736,6 +890,6 @@ export const pests: Pest[] = [
   }),
 ];
 
-export const pestCategories = ['Todas', 'Insetos', 'Roedores', 'Aracnídeos', 'Aves', 'Mamíferos', 'Répteis', 'Outros'] as const;
+export const pestCategories = ['Todas', 'Insetos', 'Roedores', 'Aracnídeos', 'Carrapatos', 'Aves', 'Mamíferos'] as const;
 
 export const findPest = (slug: string) => pests.find((item) => item.slug === slug);

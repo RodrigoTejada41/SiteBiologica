@@ -6,6 +6,8 @@ Abra este arquivo primeiro ao retomar o projeto.
 
 - Branch: `main`.
 - Site V2: Astro 7, estático e servido por Nginx.
+- Catálogo de Pragas atualizado com categoria `Carrapatos`, três espécies cadastradas, imagens responsivas, WebP e ciclo de vida nas páginas individuais.
+- Carrapato-estrela usa imagem real isolada da espécie `Amblyomma sculptum`, sem hospedeiro, derivada de fonte técnica aberta com licença CC BY 4.0.
 - Página institucional `/quem-somos/` concluída com história, missão, visão e valores.
 - Navegação da página inicial, cabeçalho e rodapé atualizados.
 - Demo externa ativa com HTTPS válido em `https://172-238-213-72.sslip.io/`.
@@ -20,7 +22,7 @@ cd E:\Projetos\EvolucaoSite\site-v2
 npm.cmd test
 ```
 
-Resultado: 16 rotas geradas; validador aprovado com 15 páginas, 273 links internos, 24 blocos JSON-LD e quatro hashes CSP.
+Resultado mais recente: 51 rotas geradas; validador aprovado com 21 páginas, 464 links internos, 36 blocos JSON-LD e cinco hashes CSP.
 
 Validação externa:
 
@@ -28,6 +30,8 @@ Validação externa:
 - HTTP da demonstração: redirecionamento 308 para HTTPS.
 - Página e CSS via HTTPS: HTTP 200.
 - Containers `site-evolucao-v2` e `evolucao-https` ativos; aplicação marcada como saudável.
+- Release da VPS demo do catálogo: `20260724-131245`.
+- URL validada: `https://172-238-213-72.sslip.io/catalogo-de-pragas/carrapato-estrela/?v=20260724-131245`.
 
 ## Próximo passo recomendado
 

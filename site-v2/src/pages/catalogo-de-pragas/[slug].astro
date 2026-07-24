@@ -28,6 +28,8 @@ const pageSchema = {
   url: detailUrl,
   image: pest.image.url,
 };
+const fallbackImage = '/images/pragas/praga-padrao.svg';
+const fallbackTitle = 'Imagem ilustrativa — substituir por fotografia validada da espécie.';
 const faqSchema = {
   '@type': 'FAQPage',
   mainEntity: pest.faqs.map((faq) => ({
@@ -57,7 +59,20 @@ const schema = { '@context': 'https://schema.org', '@graph': [breadcrumbSchema, 
   <section class="section">
     <div class="container pest-detail-intro">
       <figure class="pest-detail-media">
-        <img src={pest.image.url} alt={pest.image.alt} title={pest.image.title} width="900" height="675" loading="eager" decoding="async" />
+        <picture>
+          {pest.image.webpUrl && <source srcset={pest.image.webpUrl} type="image/webp" />}
+          <img
+            class="praga-detalhes-imagem"
+            src={pest.image.url}
+            alt={pest.name}
+            title={pest.image.title}
+            width="900"
+            height="675"
+            loading="eager"
+            decoding="async"
+            onerror={`this.onerror=null;this.src='${fallbackImage}';this.title='${fallbackTitle}';`}
+          />
+        </picture>
         <figcaption><a href={pest.image.sourceUrl} target="_blank" rel="noopener noreferrer">{pest.image.credit}</a></figcaption>
       </figure>
 
@@ -68,6 +83,7 @@ const schema = { '@context': 'https://schema.org', '@graph': [breadcrumbSchema, 
           <div><dt>Nome popular</dt><dd>{pest.name}</dd></div>
           <div><dt>Nome científico</dt><dd><em>{pest.scientificName}</em></dd></div>
           <div><dt>Categoria</dt><dd>{pest.category}</dd></div>
+          {pest.type && <div><dt>Tipo</dt><dd>{pest.type}</dd></div>}
           <div><dt>Nível de risco</dt><dd>{pest.risk}</dd></div>
         </dl>
         <p>{pest.description}</p>
@@ -136,6 +152,12 @@ const schema = { '@context': 'https://schema.org', '@graph': [breadcrumbSchema, 
         <h2>Produtos e técnicas</h2>
         <ul>{pest.techniques.map((item) => <li>{item}</li>)}</ul>
       </article>
+      {pest.lifeCycle && (
+        <article>
+          <h2>Ciclo de Vida</h2>
+          <ol>{pest.lifeCycle.map((item) => <li>{item}</li>)}</ol>
+        </article>
+      )}
     </div>
   </section>
 
@@ -181,7 +203,20 @@ const schema = { '@context': 'https://schema.org', '@graph': [breadcrumbSchema, 
             <article class="pest-card">
               <a href={`/catalogo-de-pragas/${item.slug}/`} aria-label={`Ver detalhes sobre ${item.name}`}>
                 <div class="pest-card-media">
-                  <img src={item.image.url} alt={item.image.alt} title={item.image.title} width="900" height="675" loading="eager" decoding="async" />
+                  <picture>
+                    {item.image.webpUrl && <source srcset={item.image.webpUrl} type="image/webp" />}
+                    <img
+                      class="praga-imagem"
+                      src={item.image.url}
+                      alt={item.name}
+                      title={item.image.title}
+                      width="900"
+                      height="675"
+                      loading="lazy"
+                      decoding="async"
+                      onerror={`this.onerror=null;this.src='${fallbackImage}';this.title='${fallbackTitle}';`}
+                    />
+                  </picture>
                 </div>
                 <div class="pest-card-body">
                   <span class="pest-category">{item.category}</span>

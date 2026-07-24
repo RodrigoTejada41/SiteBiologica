@@ -14,6 +14,8 @@ const catalogSchema = {
     url: new URL(`/catalogo-de-pragas/${pest.slug}/`, Astro.site).toString(),
   })),
 };
+const fallbackImage = '/images/pragas/praga-padrao.svg';
+const fallbackTitle = 'Imagem ilustrativa — substituir por fotografia validada da espécie.';
 ---
 
 <BaseLayout
@@ -69,15 +71,20 @@ const catalogSchema = {
           >
             <a href={`/catalogo-de-pragas/${pest.slug}/`} aria-label={`Ver detalhes sobre ${pest.name}`}>
               <div class="pest-card-media">
-                <img
-                  src={pest.image.url}
-                  alt={pest.image.alt}
-                  title={pest.image.title}
-                  width="900"
-                  height="675"
-                  loading="eager"
-                  decoding="async"
-                />
+                <picture>
+                  {pest.image.webpUrl && <source srcset={pest.image.webpUrl} type="image/webp" />}
+                  <img
+                    class="praga-imagem"
+                    src={pest.image.url}
+                    alt={pest.name}
+                    title={pest.image.title}
+                    width="900"
+                    height="675"
+                    loading={index < 3 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    onerror={`this.onerror=null;this.src='${fallbackImage}';this.title='${fallbackTitle}';`}
+                  />
+                </picture>
               </div>
               <div class="pest-card-body">
                 <span class="pest-category">{pest.category}</span>
